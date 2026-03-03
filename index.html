@@ -200,7 +200,21 @@
             <form id="heroForm" novalidate>
               <input type="text" name="name" placeholder="Seu nome" required class="form-input w-full px-4 py-3 rounded-xl text-sm mb-3">
               <input type="email" name="email" placeholder="Melhor email" required class="form-input w-full px-4 py-3 rounded-xl text-sm mb-3">
-              <input type="tel" name="whatsapp" placeholder="WhatsApp (00) 00000-0000" required class="form-input w-full px-4 py-3 rounded-xl text-sm mb-4 whatsapp-mask">
+              <input type="tel" name="whatsapp" placeholder="WhatsApp (00) 00000-0000" required class="form-input w-full px-4 py-3 rounded-xl text-sm mb-3 whatsapp-mask">
+              
+              <!-- Honeypot anti-bot (invisível) -->
+              <div class="hidden" aria-hidden="true">
+                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+              </div>
+              
+              <!-- LGPD Checkbox -->
+              <div class="mb-3">
+                <label class="flex items-start gap-2 text-[10px] text-white/60 cursor-pointer">
+                  <input type="checkbox" id="lgpdConsent" required class="mt-0.5 w-3 h-3 rounded border-primary/30 bg-black/60 text-primary focus:ring-primary">
+                  <span>Aceito a <a href="/privacidade.html" class="text-primary-glow hover:underline" target="_blank">Política de Privacidade</a></span>
+                </label>
+              </div>
+              
               <button type="submit" class="btn-cta w-full text-black font-bold py-3 rounded-xl text-sm flex items-center justify-center gap-2">
                 <i class="fas fa-rocket"></i> Entrar na Lista VIP
               </button>
@@ -480,9 +494,22 @@
             <label class="block text-white/60 text-xs font-medium mb-1.5"><i class="fas fa-envelope text-primary/50 mr-1"></i>Melhor email</label>
             <input type="email" id="leadEmail" name="email" placeholder="seu@email.com" required class="form-input w-full px-4 py-3 rounded-xl text-sm">
           </div>
-          <div class="mb-5">
+          <div class="mb-4">
             <label class="block text-white/60 text-xs font-medium mb-1.5"><i class="fab fa-whatsapp text-primary/50 mr-1"></i>WhatsApp</label>
             <input type="tel" id="leadWhatsapp" name="whatsapp" placeholder="(00) 00000-0000" required class="form-input w-full px-4 py-3 rounded-xl text-sm whatsapp-mask">
+          </div>
+          
+          <!-- Honeypot anti-bot (invisível) -->
+          <div class="hidden" aria-hidden="true">
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+          
+          <!-- LGPD Checkbox -->
+          <div class="mb-4">
+            <label class="flex items-start gap-2 text-xs text-white/60 cursor-pointer">
+              <input type="checkbox" id="lgpdConsent" required class="mt-0.5 w-4 h-4 rounded border-primary/30 bg-black/60 text-primary focus:ring-primary">
+              <span>Li e aceito a <a href="/privacidade.html" class="text-primary-glow hover:underline" target="_blank">Política de Privacidade</a> e autorizo o envio de comunicações sobre o Cripto Zion Pro.</span>
+            </label>
           </div>
           <div id="formError" class="hidden mb-3 bg-red-500/10 border border-red-500/30 text-red-400 text-xs px-3 py-2 rounded-lg"><i class="fas fa-exclamation-circle mr-1"></i><span id="formErrorMsg"></span></div>
           <button type="submit" id="submitBtn" class="btn-cta w-full text-black font-bold py-3.5 rounded-xl text-sm flex items-center justify-center gap-2">
@@ -679,7 +706,12 @@
 
     // Hero form
     document.getElementById('heroForm').addEventListener('submit',async function(e){
-      e.preventDefault();const f=new FormData(this);const n=f.get('name').trim(),em=f.get('email').trim(),w=f.get('whatsapp').trim();
+      e.preventDefault();
+      // Honeypot check
+      if(document.getElementById('website').value)return;
+      // LGPD check
+      if(!document.getElementById('lgpdConsent').checked){alert('Por favor, aceite a Política de Privacidade para continuar.');return;}
+      const f=new FormData(this);const n=f.get('name').trim(),em=f.get('email').trim(),w=f.get('whatsapp').trim();
       if(!n||!em||!w)return;
       this.querySelector('button').innerHTML='<i class="fas fa-spinner fa-spin"></i> Cadastrando...';this.querySelector('button').disabled=true;
       await submitLead(n,em,w);showSuccess();
@@ -688,6 +720,15 @@
     // Main form
     document.getElementById('leadForm').addEventListener('submit',async function(e){
       e.preventDefault();
+      // Honeypot check
+      if(document.getElementById('website').value)return;
+      // LGPD check
+      if(!document.getElementById('lgpdConsent').checked){
+        const errEl=document.getElementById('formError'),errMsg=document.getElementById('formErrorMsg');
+        errMsg.textContent='Por favor, aceite a Política de Privacidade para continuar.';
+        errEl.classList.remove('hidden');
+        return;
+      }
       const name=document.getElementById('leadName').value.trim(),email=document.getElementById('leadEmail').value.trim(),whatsapp=document.getElementById('leadWhatsapp').value.trim();
       const errEl=document.getElementById('formError'),errMsg=document.getElementById('formErrorMsg');
       if(!name||!email||!whatsapp){errMsg.textContent='Preencha todos os campos.';errEl.classList.remove('hidden');return;}
