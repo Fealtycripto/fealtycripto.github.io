@@ -16,65 +16,92 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: { DEFAULT:'#008862', light:'#29a37a', bright:'#4cbf93', glow:'#6adbae', soft:'#87f8c9' },
-            dark: { DEFAULT:'#000000', 1:'#050d09', 2:'#0a1410', 3:'#0f1d16', card:'#0d1a13' }
-          },
-          fontFamily: { sans:['Inter','system-ui','sans-serif'], display:['Space Grotesk','Inter','sans-serif'] },
-          animation: { 'float':'float 6s ease-in-out infinite', 'glow':'glow 3s ease-in-out infinite' },
-          keyframes: {
-            float:{'0%,100%':{transform:'translateY(0)'},'50%':{transform:'translateY(-12px)'}},
-            glow:{'0%,100%':{textShadow:'0 0 20px rgba(74,191,147,0.3)'},'50%':{textShadow:'0 0 40px rgba(74,191,147,0.7)'}},
-          }
-        }
-      }
-    }
+    tailwind.config={theme:{extend:{colors:{primary:{DEFAULT:'#008862',light:'#29a37a',bright:'#4cbf93',glow:'#6adbae',soft:'#87f8c9'},dark:{DEFAULT:'#000000',1:'#050d09',2:'#0a1410',3:'#0f1d16',card:'#0d1a13'}},fontFamily:{sans:['Inter','system-ui','sans-serif'],display:['Space Grotesk','Inter','sans-serif']}}}}
   </script>
   <style>
-    *{scroll-behavior:smooth}
+    *{scroll-behavior:smooth;box-sizing:border-box}
     body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden}
-    .hero-parallax{background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,136,98,0.18) 0%,transparent 65%),radial-gradient(ellipse 40% 40% at 80% 30%,rgba(41,163,122,0.10) 0%,transparent 60%),#000}
-    .bg-grid{background-image:linear-gradient(rgba(0,136,98,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,136,98,0.06) 1px,transparent 1px);background-size:60px 60px}
+
+    /* Gradient text */
+    .gradient-text{background:linear-gradient(135deg,#4cbf93,#008862,#87f8c9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .gradient-text-bright{background:linear-gradient(135deg,#87f8c9,#4cbf93,#29a37a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+    /* Glass */
     .glass-card{background:rgba(13,26,19,0.6);backdrop-filter:blur(16px);border:1px solid rgba(0,136,98,0.2)}
-    .glass-card-bright{background:rgba(0,136,98,0.08);backdrop-filter:blur(20px);border:1px solid rgba(41,163,122,0.3)}
-    .gradient-text{background:linear-gradient(135deg,#4cbf93 0%,#008862 50%,#87f8c9 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .gradient-text-bright{background:linear-gradient(135deg,#87f8c9 0%,#4cbf93 60%,#29a37a 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .neon-border{border:1px solid rgba(76,191,147,0.4);box-shadow:0 0 20px rgba(0,136,98,0.15),inset 0 0 20px rgba(0,136,98,0.03)}
-    .neon-border:hover{border-color:rgba(76,191,147,0.8);box-shadow:0 0 40px rgba(0,136,98,0.3)}
+    .neon-border{border:1px solid rgba(76,191,147,0.4);box-shadow:0 0 20px rgba(0,136,98,0.15)}
+    .neon-border:hover{border-color:rgba(76,191,147,0.7);box-shadow:0 0 35px rgba(0,136,98,0.25)}
+
+    /* CTA */
     .btn-cta{background:linear-gradient(135deg,#008862,#29a37a,#4cbf93);background-size:200% 200%;animation:btnShimmer 3s ease infinite;transition:all 0.3s}
     .btn-cta:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(0,136,98,0.5)}
     @keyframes btnShimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-    .reveal{opacity:0;transform:translateY(30px);transition:all 0.7s ease}
-    .reveal.visible{opacity:1;transform:translateY(0)}
-    .reveal-left{opacity:0;transform:translateX(-30px);transition:all 0.7s ease}
-    .reveal-left.visible{opacity:1;transform:translateX(0)}
-    .reveal-right{opacity:0;transform:translateX(30px);transition:all 0.7s ease}
-    .reveal-right.visible{opacity:1;transform:translateX(0)}
-    .particle{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(76,191,147,0.6),transparent);animation:floatParticle linear infinite;pointer-events:none}
-    @keyframes floatParticle{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:0.6}90%{opacity:0.3}100%{transform:translateY(-100px) scale(1);opacity:0}}
-    /* TICKER */
+
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(30px);transition:all 0.7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-left{opacity:0;transform:translateX(-30px);transition:all 0.7s ease}.reveal-left.visible{opacity:1;transform:translateX(0)}
+    .reveal-right{opacity:0;transform:translateX(30px);transition:all 0.7s ease}.reveal-right.visible{opacity:1;transform:translateX(0)}
+
+    /* Particles */
+    .particle{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(76,191,147,0.6),transparent);animation:floatP linear infinite;pointer-events:none}
+    @keyframes floatP{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:.5}90%{opacity:.2}100%{transform:translateY(-100px) scale(1);opacity:0}}
+
+    /* Ticker */
     .ticker-outer{overflow:hidden;width:100%}
-    .ticker-track{display:flex;width:max-content;animation:tickerScroll 35s linear infinite}
-    .ticker-track:hover{animation-play-state:paused}
-    @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-    .ticker-item{display:inline-flex;align-items:center;white-space:nowrap;padding:0 2.5rem}
-    /* FORM */
-    .form-input{background:rgba(0,0,0,0.6);border:2px solid rgba(0,136,98,0.4);color:#fff;transition:all 0.3s}
-    .form-input:focus{outline:none;border-color:#4cbf93;box-shadow:0 0 0 4px rgba(0,136,98,0.15);background:rgba(0,136,98,0.05)}
-    .form-input::placeholder{color:rgba(255,255,255,0.3)}
-    /* SUCCESS */
+    .ticker-track{display:flex;width:max-content;animation:tickScroll 40s linear infinite}
+    @keyframes tickScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .ticker-item{display:inline-flex;align-items:center;white-space:nowrap;padding:0 2rem;font-size:.75rem}
+
+    /* Image gradient fade */
+    .img-fade{position:relative;overflow:hidden;border-radius:1.5rem}
+    .img-fade img{width:100%;height:100%;object-fit:cover;display:block}
+    .img-fade::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,0.85) 100%),linear-gradient(90deg,rgba(0,0,0,0.3) 0%,transparent 20%,transparent 80%,rgba(0,0,0,0.3) 100%);pointer-events:none}
+    .img-fade-soft::after{background:radial-gradient(ellipse at center,transparent 30%,rgba(0,0,0,0.9) 100%)}
+    .img-fade-hero::after{background:linear-gradient(180deg,rgba(0,0,0,0.2) 0%,transparent 30%,transparent 50%,rgba(0,0,0,0.95) 100%)}
+
+    /* Form */
+    .form-input{background:rgba(0,0,0,0.6);border:2px solid rgba(0,136,98,0.4);color:#fff;transition:all .3s}
+    .form-input:focus{outline:none;border-color:#4cbf93;box-shadow:0 0 0 4px rgba(0,136,98,.15);background:rgba(0,136,98,.05)}
+    .form-input::placeholder{color:rgba(255,255,255,.3)}
+
+    /* Floating CTA */
+    #floatingCTA{position:fixed;bottom:24px;right:24px;z-index:999;opacity:0;transform:translateY(20px);transition:all .4s ease;pointer-events:none}
+    #floatingCTA.show{opacity:1;transform:translateY(0);pointer-events:auto}
+
+    /* Success */
     #successPage{display:none;position:fixed;inset:0;z-index:9999;background:#000;align-items:center;justify-content:center}
     #successPage.active{display:flex}
-    .success-ring{width:120px;height:120px;border-radius:50%;border:3px solid #4cbf93;box-shadow:0 0 40px rgba(76,191,147,0.5);animation:pulseGreen 2s ease-in-out infinite}
-    @keyframes pulseGreen{0%,100%{box-shadow:0 0 0 0 rgba(0,136,98,0.4)}50%{box-shadow:0 0 0 20px rgba(0,136,98,0)}}
-    nav{background:rgba(0,0,0,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,136,98,0.15)}
-    .section-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(0,136,98,0.5),transparent)}
-    .whatsapp-btn{background:linear-gradient(135deg,#25d366,#128c7e);transition:all 0.3s}
-    .whatsapp-btn:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 15px 40px rgba(37,211,102,0.4)}
-    .strategy-img{width:100%;height:260px;object-fit:cover;border-radius:1.5rem;border:1px solid rgba(0,136,98,0.25)}
+    .success-ring{width:120px;height:120px;border-radius:50%;border:3px solid #4cbf93;box-shadow:0 0 40px rgba(76,191,147,.5);animation:pulseG 2s ease-in-out infinite}
+    @keyframes pulseG{0%,100%{box-shadow:0 0 0 0 rgba(0,136,98,.4)}50%{box-shadow:0 0 0 20px rgba(0,136,98,0)}}
+
+    /* Nav */
+    nav{background:rgba(0,0,0,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,136,98,.15)}
+    .section-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(0,136,98,.5),transparent)}
+    .bg-grid{background-image:linear-gradient(rgba(0,136,98,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,136,98,.05) 1px,transparent 1px);background-size:60px 60px}
+
+    /* WhatsApp */
+    .whatsapp-btn{background:linear-gradient(135deg,#25d366,#128c7e);transition:all .3s}
+    .whatsapp-btn:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(37,211,102,.4)}
+
+    /* PRO badge aligned */
+    .pro-badge{display:inline-flex;align-items:center;vertical-align:middle;font-size:.65rem;background:rgba(0,136,98,.2);border:1px solid rgba(0,136,98,.3);color:#6adbae;padding:2px 8px;border-radius:9999px;font-weight:600;margin-left:6px;line-height:1}
+
+    /* Mobile first */
+    @media(max-width:768px){
+      .hero-grid{grid-template-columns:1fr!important;text-align:center}
+      .hero-form-wrap{order:2;margin-top:2rem}
+      .hero-text-wrap{order:1}
+      .strategy-grid{grid-template-columns:1fr!important}
+      .strategy-grid .order-1,.strategy-grid .order-2{order:unset!important}
+      .community-grid{grid-template-columns:1fr!important}
+      .testimonials-grid{grid-template-columns:1fr!important}
+      .footer-inner{flex-direction:column;text-align:center;gap:1.5rem}
+      h1{font-size:2.4rem!important}
+      h2{font-size:1.8rem!important}
+      .stats-grid{gap:.5rem!important}
+      .stat-num{font-size:1.6rem!important}
+      #floatingCTA{bottom:16px;right:16px;left:16px}
+      #floatingCTA a{width:100%;justify-content:center}
+    }
   </style>
 </head>
 <body>
@@ -82,248 +109,262 @@
 
   <!-- NAV -->
   <nav class="fixed top-0 left-0 right-0 z-50" id="navbar">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="#" class="font-display font-bold text-xl tracking-tight">
-        <span class="text-white">CRIPTO</span><span class="gradient-text"> ZION</span>
-        <span class="ml-2 text-xs bg-primary/20 border border-primary/30 text-primary-glow px-2 py-0.5 rounded-full">PRO</span>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="#" class="font-display font-bold text-lg sm:text-xl tracking-tight flex items-center">
+        <span class="text-white">CRIPTO</span><span class="gradient-text"> ZION</span><span class="pro-badge">PRO</span>
       </a>
-      <a href="#cadastro" class="btn-cta text-black font-bold px-6 py-2.5 rounded-full text-sm hidden md:inline-flex items-center gap-2">
+      <a href="#cadastro" class="btn-cta text-black font-bold px-5 py-2 rounded-full text-sm hidden sm:inline-flex items-center gap-2">
         <i class="fas fa-bolt text-xs"></i> Quero Acesso
       </a>
     </div>
   </nav>
 
   <!-- TICKER -->
-  <div class="fixed top-0 left-0 right-0 z-40 mt-[65px] bg-dark-2 border-b border-primary/10 py-1.5 text-xs text-primary-glow/70 font-mono">
+  <div class="fixed top-0 left-0 right-0 z-40 mt-[56px] bg-black/80 border-b border-primary/10 py-1.5 font-mono text-primary-glow/70">
     <div class="ticker-outer">
       <div class="ticker-track">
-        <span class="ticker-item">₿ BTC — Longo Prazo</span>
+        <span class="ticker-item">₿ BTC — HODL</span>
+        <span class="ticker-item">◈ ETH — Ethereum</span>
         <span class="ticker-item">📈 DCA — Consistência</span>
         <span class="ticker-item">🎯 Buy the Dip — Oportunidade</span>
         <span class="ticker-item">💹 Scaling Out — Estratégia</span>
         <span class="ticker-item">💧 Pools — Renda Passiva</span>
-        <span class="ticker-item">◈ ETH — Liquidez</span>
         <span class="ticker-item">🔐 Cripto Zion Pro — Em Breve</span>
-        <span class="ticker-item">🏆 HODL — Bitcoin</span>
-        <!-- duplicado para loop infinito -->
-        <span class="ticker-item">₿ BTC — Longo Prazo</span>
+        <span class="ticker-item">🏆 HODL — Bitcoin & Ethereum</span>
+        <span class="ticker-item">₿ BTC — HODL</span>
+        <span class="ticker-item">◈ ETH — Ethereum</span>
         <span class="ticker-item">📈 DCA — Consistência</span>
         <span class="ticker-item">🎯 Buy the Dip — Oportunidade</span>
         <span class="ticker-item">💹 Scaling Out — Estratégia</span>
         <span class="ticker-item">💧 Pools — Renda Passiva</span>
-        <span class="ticker-item">◈ ETH — Liquidez</span>
         <span class="ticker-item">🔐 Cripto Zion Pro — Em Breve</span>
-        <span class="ticker-item">🏆 HODL — Bitcoin</span>
+        <span class="ticker-item">🏆 HODL — Bitcoin & Ethereum</span>
       </div>
     </div>
   </div>
 
-  <!-- HERO -->
-  <section class="hero-parallax bg-grid min-h-screen flex items-center justify-center relative pt-36 pb-20 px-6">
-    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none animate-float"></div>
-    <div class="absolute bottom-1/3 right-1/4 w-64 h-64 bg-primary-bright/5 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="relative z-10 text-center max-w-4xl mx-auto">
-      <div class="reveal inline-flex items-center gap-2 bg-primary/10 border border-primary/30 text-primary-glow px-4 py-2 rounded-full text-sm font-medium mb-8">
-        <span class="w-2 h-2 bg-primary-bright rounded-full animate-pulse"></span>
-        Acesso Antecipado — Lista de Espera Aberta
-      </div>
-      <h1 class="reveal font-display font-black text-5xl md:text-7xl leading-[1.05] tracking-tight mb-6" style="transition-delay:0.1s">
-        Invista Cripto<br><span class="gradient-text-bright animate-glow">Com Estratégia</span>
-      </h1>
-      <p class="reveal text-lg md:text-xl text-white/60 leading-relaxed max-w-2xl mx-auto mb-10" style="transition-delay:0.2s">
-        A comunidade que <strong class="text-white/90">pensa no longo prazo.</strong> DCA, Buy the Dip, Scaling Out e Pools de Liquidez — aprenda a construir patrimônio de verdade no mercado cripto.
-      </p>
-      <div class="reveal flex flex-col sm:flex-row gap-4 justify-center items-center" style="transition-delay:0.3s">
-        <a href="#cadastro" class="btn-cta text-black font-bold px-8 py-4 rounded-full text-base flex items-center gap-2">
-          <i class="fas fa-rocket"></i> Entrar na Lista de Espera
-        </a>
-        <a href="#estrategias" class="glass-card text-white/80 font-semibold px-8 py-4 rounded-full text-base flex items-center gap-2 hover:text-white transition-colors neon-border">
-          <i class="fas fa-play text-primary-bright text-xs"></i> Ver Estratégias
-        </a>
-      </div>
-      <!-- Stats -->
-      <div class="reveal grid grid-cols-3 gap-4 md:gap-8 max-w-xl mx-auto mt-16" style="transition-delay:0.4s">
-        <div class="text-center">
-          <div class="font-display font-black text-3xl md:text-4xl gradient-text">4+</div>
-          <div class="text-white/40 text-sm mt-1">Anos no mercado</div>
+  <!-- ═══════════════════════════════════
+       HERO + MINI FORM
+  ═══════════════════════════════════ -->
+  <section class="min-h-screen flex items-center relative pt-28 sm:pt-32 pb-16 px-4 sm:px-6 bg-grid" id="hero">
+    <!-- BG glow -->
+    <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,136,98,.15) 0%,transparent 60%)"></div>
+
+    <div class="max-w-6xl mx-auto relative z-10 w-full">
+      <div class="hero-grid grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center" style="grid-template-columns:1.2fr 1fr">
+
+        <!-- Left: Text -->
+        <div class="hero-text-wrap">
+          <div class="reveal inline-flex items-center gap-2 bg-primary/10 border border-primary/30 text-primary-glow px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium mb-6">
+            <span class="w-2 h-2 bg-primary-bright rounded-full animate-pulse"></span>
+            Lista de Espera Aberta
+          </div>
+          <h1 class="reveal font-display font-black text-4xl sm:text-5xl md:text-6xl leading-[1.05] tracking-tight mb-5" style="transition-delay:.1s">
+            Invista Cripto<br><span class="gradient-text-bright">Com Estratégia</span>
+          </h1>
+          <p class="reveal text-base sm:text-lg text-white/60 leading-relaxed max-w-lg mb-8" style="transition-delay:.2s">
+            A comunidade que <strong class="text-white/90">pensa no longo prazo.</strong> DCA, Buy the Dip, Scaling Out e Pools de Liquidez — aprenda a construir patrimônio de verdade no mercado cripto.
+          </p>
+          <!-- Stats inline -->
+          <div class="reveal stats-grid grid grid-cols-3 gap-3 sm:gap-6 max-w-md" style="transition-delay:.3s">
+            <div class="text-center sm:text-left">
+              <div class="stat-num font-display font-black text-2xl sm:text-3xl gradient-text">4+</div>
+              <div class="text-white/40 text-xs mt-1">Anos no mercado</div>
+            </div>
+            <div class="text-center border-x border-primary/10 px-2">
+              <div class="stat-num font-display font-black text-2xl sm:text-3xl gradient-text">100%</div>
+              <div class="text-white/40 text-xs mt-1">Transparente</div>
+            </div>
+            <div class="text-center sm:text-right">
+              <div class="stat-num font-display font-black text-2xl sm:text-3xl gradient-text">HODL</div>
+              <div class="text-white/40 text-xs mt-1">Bitcoin & Ethereum</div>
+            </div>
+          </div>
         </div>
-        <div class="text-center border-x border-primary/10">
-          <div class="font-display font-black text-3xl md:text-4xl gradient-text">100%</div>
-          <div class="text-white/40 text-sm mt-1">Transparente</div>
-        </div>
-        <div class="text-center">
-          <div class="font-display font-black text-3xl md:text-4xl gradient-text">HODL</div>
-          <div class="text-white/40 text-sm mt-1">Bitcoin</div>
+
+        <!-- Right: Mini Form -->
+        <div class="hero-form-wrap reveal" style="transition-delay:.3s">
+          <div class="glass-card neon-border rounded-2xl p-5 sm:p-7">
+            <div class="text-center mb-5">
+              <h3 class="font-display font-bold text-lg sm:text-xl mb-1">Garanta seu Acesso</h3>
+              <p class="text-white/40 text-xs sm:text-sm">Seja avisado antes de todo mundo</p>
+            </div>
+            <form id="heroForm" novalidate>
+              <input type="text" name="name" placeholder="Seu nome" required class="form-input w-full px-4 py-3 rounded-xl text-sm mb-3">
+              <input type="email" name="email" placeholder="Melhor email" required class="form-input w-full px-4 py-3 rounded-xl text-sm mb-3">
+              <input type="tel" name="whatsapp" placeholder="WhatsApp (00) 00000-0000" required class="form-input w-full px-4 py-3 rounded-xl text-sm mb-4 whatsapp-mask">
+              <button type="submit" class="btn-cta w-full text-black font-bold py-3 rounded-xl text-sm flex items-center justify-center gap-2">
+                <i class="fas fa-rocket"></i> Entrar na Lista VIP
+              </button>
+            </form>
+            <p class="text-center text-white/25 text-[10px] mt-3"><i class="fas fa-lock mr-1"></i> Sem spam. Dados protegidos.</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 text-xs">
-      <span>Scroll</span>
-      <div class="w-px h-12 bg-gradient-to-b from-primary/50 to-transparent animate-pulse"></div>
     </div>
   </section>
 
   <div class="section-divider"></div>
 
-  <!-- SOBRE — FEALTY -->
-  <section class="py-24 px-6 relative overflow-hidden" id="sobre">
+  <!-- ═══════════════════════════════════
+       SOBRE — FEALTY
+  ═══════════════════════════════════ -->
+  <section class="py-20 sm:py-24 px-4 sm:px-6 relative overflow-hidden" id="sobre">
     <div class="absolute inset-0 bg-gradient-to-b from-dark-2 to-black pointer-events-none"></div>
     <div class="max-w-5xl mx-auto relative z-10">
-      <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+      <div class="strategy-grid grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center" style="grid-template-columns:auto 1.4fr">
+
         <div class="reveal-left">
-          <div class="relative">
-            <div class="w-full max-w-sm mx-auto rounded-3xl overflow-hidden neon-border">
-              <img src="fealty-profile.jpg" alt="Fealty - Fundador Cripto Zion" class="w-full h-auto object-cover" style="max-height:420px;object-position:top">
+          <div class="relative max-w-xs mx-auto">
+            <div class="img-fade img-fade-soft rounded-3xl neon-border" style="height:380px">
+              <img src="fealty-profile.jpg" alt="Fealty - Fundador Cripto Zion" style="object-position:top">
             </div>
-            <div class="absolute -bottom-4 -right-4 glass-card-bright rounded-2xl px-4 py-3 neon-border">
-              <div class="text-primary-glow font-bold text-lg">4+ anos</div>
-              <div class="text-white/50 text-xs">no mercado</div>
+            <div class="absolute -bottom-3 -right-3 glass-card rounded-xl px-3 py-2 neon-border text-center" style="background:rgba(0,0,0,.8)">
+              <div class="text-primary-glow font-bold text-sm">4+ anos</div>
+              <div class="text-white/40 text-[10px]">no mercado</div>
             </div>
           </div>
         </div>
+
         <div class="reveal-right">
-          <span class="text-primary-bright text-sm font-semibold uppercase tracking-widest">Quem Construiu a Cripto Zion</span>
-          <div class="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 text-primary-glow text-xs font-semibold px-3 py-1 rounded-full mt-2 mb-4">
-            <i class="fas fa-star text-xs"></i> Fundador & Educador
+          <span class="text-primary-bright text-xs font-semibold uppercase tracking-widest">Quem Construiu a Cripto Zion</span>
+          <div class="flex items-center gap-2 mt-2 mb-4">
+            <span class="bg-primary/10 border border-primary/20 text-primary-glow text-xs font-semibold px-3 py-1 rounded-full"><i class="fas fa-star mr-1"></i>Fundador & Educador</span>
           </div>
-          <h2 class="font-display font-black text-3xl md:text-4xl mb-6">
+          <h2 class="font-display font-black text-2xl sm:text-3xl md:text-4xl mb-5">
             Não prometo <span class="gradient-text">enriquecimento rápido</span>. Prometo estratégia real.
           </h2>
-          <p class="text-white/60 leading-relaxed mb-4">
-            Oi, eu sou <strong class="text-white">Fealty</strong>. Investidor em criptomoedas há 4 anos, construí a <strong class="text-primary-glow">Cripto Zion Pro</strong> para compartilhar o que aprendi nessa jornada. Não prometo enriquecimento rápido — prometo educação real e estratégias comprovadas.
+          <p class="text-white/60 leading-relaxed mb-3 text-sm sm:text-base">
+            Oi, eu sou <strong class="text-white">Fealty</strong>. Investidor em criptomoedas há 4 anos, construí a <strong class="text-primary-glow">Cripto Zion Pro</strong> para compartilhar o que aprendi. Não prometo enriquecimento rápido — prometo educação real e estratégias comprovadas.
           </p>
-          <p class="text-white/60 leading-relaxed mb-6">
-            Minha filosofia é simples: <strong class="text-white">longo prazo, consistência e educação</strong> antes de qualquer investimento. Não especulo — construo.
-          </p>
+
           <!-- Minha Experiência -->
-          <div class="glass-card neon-border rounded-2xl p-5 mb-6">
-            <h4 class="font-display font-bold text-base text-primary-glow mb-3"><i class="fas fa-medal mr-2"></i>Minha Experiência</h4>
+          <div class="glass-card neon-border rounded-xl p-4 mb-5">
+            <h4 class="font-display font-bold text-sm text-primary-glow mb-3"><i class="fas fa-medal mr-2"></i>Minha Experiência</h4>
             <ul class="space-y-2">
-              <li class="flex items-center gap-3 text-white/70 text-sm"><i class="fas fa-check-circle text-primary-bright flex-shrink-0"></i>4+ anos operando mercado cripto com capital real</li>
-              <li class="flex items-center gap-3 text-white/70 text-sm"><i class="fas fa-check-circle text-primary-bright flex-shrink-0"></i>Estratégias DCA e Scaling Out em BTC e ETH</li>
-              <li class="flex items-center gap-3 text-white/70 text-sm"><i class="fas fa-check-circle text-primary-bright flex-shrink-0"></i>Pools de liquidez ativas em Base e Arbitrum</li>
-              <li class="flex items-center gap-3 text-white/70 text-sm"><i class="fas fa-check-circle text-primary-bright flex-shrink-0"></i>Educação de centenas de investidores iniciantes</li>
+              <li class="flex items-center gap-2 text-white/70 text-xs sm:text-sm"><i class="fas fa-check-circle text-primary-bright flex-shrink-0 text-xs"></i>4+ anos operando mercado cripto com capital real</li>
+              <li class="flex items-center gap-2 text-white/70 text-xs sm:text-sm"><i class="fas fa-check-circle text-primary-bright flex-shrink-0 text-xs"></i>Estratégias DCA, Buy the Dip e Scaling Out em BTC e ETH</li>
+              <li class="flex items-center gap-2 text-white/70 text-xs sm:text-sm"><i class="fas fa-check-circle text-primary-bright flex-shrink-0 text-xs"></i>Pools de liquidez ativas em Base e Arbitrum</li>
+              <li class="flex items-center gap-2 text-white/70 text-xs sm:text-sm"><i class="fas fa-check-circle text-primary-bright flex-shrink-0 text-xs"></i>Educação de centenas de investidores iniciantes</li>
             </ul>
           </div>
-          <div class="flex flex-wrap gap-3">
-            <a href="https://www.youtube.com/@CriptoZion" target="_blank" class="glass-card text-white/70 hover:text-red-400 px-4 py-2 rounded-xl text-sm flex items-center gap-2 transition-colors border border-white/10 hover:border-red-500/30"><i class="fab fa-youtube"></i> YouTube</a>
-            <a href="https://x.com/0xFealty" target="_blank" class="glass-card text-white/70 hover:text-white px-4 py-2 rounded-xl text-sm flex items-center gap-2 transition-colors border border-white/10 hover:border-white/30"><i class="fab fa-x-twitter"></i> @0xFealty</a>
-            <a href="https://www.instagram.com/criptozion" target="_blank" class="glass-card text-white/70 hover:text-pink-400 px-4 py-2 rounded-xl text-sm flex items-center gap-2 transition-colors border border-white/10 hover:border-pink-500/30"><i class="fab fa-instagram"></i> Instagram</a>
+
+          <div class="flex flex-wrap gap-2">
+            <a href="https://www.youtube.com/@CriptoZion" target="_blank" class="glass-card text-white/60 hover:text-red-400 px-3 py-1.5 rounded-lg text-xs flex items-center gap-2 transition-colors border border-white/10 hover:border-red-500/30"><i class="fab fa-youtube"></i> YouTube</a>
+            <a href="https://x.com/0xFealty" target="_blank" class="glass-card text-white/60 hover:text-white px-3 py-1.5 rounded-lg text-xs flex items-center gap-2 transition-colors border border-white/10 hover:border-white/30"><i class="fab fa-x-twitter"></i> X</a>
+            <a href="https://www.instagram.com/criptozion" target="_blank" class="glass-card text-white/60 hover:text-pink-400 px-3 py-1.5 rounded-lg text-xs flex items-center gap-2 transition-colors border border-white/10 hover:border-pink-500/30"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://www.linkedin.com/in/fealty-crypto-960791318/" target="_blank" class="glass-card text-white/60 hover:text-blue-400 px-3 py-1.5 rounded-lg text-xs flex items-center gap-2 transition-colors border border-white/10 hover:border-blue-500/30"><i class="fab fa-linkedin"></i> LinkedIn</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- MINI CTA between sections -->
+  <div class="py-10 px-4 text-center relative">
+    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent pointer-events-none"></div>
+    <a href="#cadastro" class="btn-cta inline-flex text-black font-bold px-8 py-3 rounded-full text-sm items-center gap-2 relative z-10">
+      <i class="fas fa-bolt"></i> Quero Acesso Antecipado
+    </a>
+  </div>
+
   <div class="section-divider"></div>
 
-  <!-- ESTRATÉGIAS — 4 -->
-  <section class="py-24 px-6 bg-dark-1 bg-grid relative" id="estrategias">
+  <!-- ═══════════════════════════════════
+       4 ESTRATÉGIAS
+  ═══════════════════════════════════ -->
+  <section class="py-20 sm:py-24 px-4 sm:px-6 bg-dark-1 bg-grid relative" id="estrategias">
     <div class="max-w-6xl mx-auto relative z-10">
-      <div class="reveal text-center mb-16">
-        <span class="text-primary-bright text-sm font-semibold uppercase tracking-widest">Pilares do método</span>
-        <h2 class="font-display font-black text-4xl md:text-5xl mt-3">
+
+      <div class="reveal text-center mb-14">
+        <span class="text-primary-bright text-xs font-semibold uppercase tracking-widest">Pilares do método</span>
+        <h2 class="font-display font-black text-3xl sm:text-4xl md:text-5xl mt-3">
           Quatro estratégias.<br><span class="gradient-text">Uma filosofia.</span>
         </h2>
-        <p class="text-white/50 mt-4 text-lg max-w-xl mx-auto">O método que sustenta a construção de patrimônio consistente no mercado cripto.</p>
+        <p class="text-white/50 mt-3 text-sm sm:text-base max-w-xl mx-auto">O método que sustenta a construção de patrimônio consistente no mercado cripto.</p>
       </div>
 
       <!-- DCA -->
-      <div class="reveal grid md:grid-cols-2 gap-10 md:gap-16 items-center mb-20">
+      <div class="reveal strategy-grid grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center mb-16">
         <div class="order-2 md:order-1">
-          <div class="inline-flex items-center gap-2 text-primary-glow text-sm font-semibold bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-4">
+          <div class="inline-flex items-center gap-2 text-primary-glow text-xs font-semibold bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-3">
             <i class="fas fa-chart-line text-xs"></i> Estratégia 01
           </div>
-          <h3 class="font-display font-black text-3xl md:text-4xl mb-4">Dollar Cost Averaging <span class="gradient-text">(DCA)</span></h3>
-          <p class="text-white/60 leading-relaxed mb-6">Compre em intervalos fixos, independente do preço. Em vez de tentar prever o mercado, você <strong class="text-white">elimina o risco emocional</strong> e reduz o preço médio ao longo do tempo.</p>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3 text-white/70"><i class="fas fa-check-circle text-primary-bright mt-1 flex-shrink-0"></i><span>Aportes fixos mensais, sem olhar pro gráfico</span></li>
-            <li class="flex items-start gap-3 text-white/70"><i class="fas fa-check-circle text-primary-bright mt-1 flex-shrink-0"></i><span>Funciona com qualquer capital, mesmo R$ 50/mês</span></li>
-            <li class="flex items-start gap-3 text-white/70"><i class="fas fa-check-circle text-primary-bright mt-1 flex-shrink-0"></i><span>Disciplina acima de qualquer análise técnica</span></li>
+          <h3 class="font-display font-black text-2xl sm:text-3xl mb-3">Dollar Cost Averaging <span class="gradient-text">(DCA)</span></h3>
+          <p class="text-white/60 leading-relaxed mb-5 text-sm sm:text-base">Compre em intervalos fixos, independente do preço. Você <strong class="text-white">elimina o risco emocional</strong> e reduz o preço médio ao longo do tempo.</p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-white/70 text-sm"><i class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Aportes fixos mensais — funciona com R$50/mês</li>
+            <li class="flex items-start gap-2 text-white/70 text-sm"><i class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Disciplina acima de qualquer análise</li>
           </ul>
         </div>
         <div class="order-1 md:order-2">
-          <img src="fealty-dca.jpg" alt="DCA - Dollar Cost Averaging" class="strategy-img">
+          <div class="img-fade img-fade-hero" style="height:280px"><img src="fealty-dca.jpg" alt="DCA"></div>
         </div>
       </div>
 
-      <div class="section-divider my-10"></div>
+      <div class="section-divider my-8"></div>
 
       <!-- BUY THE DIP -->
-      <div class="reveal grid md:grid-cols-2 gap-10 md:gap-16 items-center mb-20">
+      <div class="reveal strategy-grid grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center mb-16">
         <div>
-          <img src="buy-the-dip.jpg" alt="Buy the Dip" class="strategy-img">
+          <div class="img-fade img-fade-hero" style="height:280px"><img src="buy-the-dip.jpg" alt="Buy the Dip"></div>
         </div>
         <div>
-          <div class="inline-flex items-center gap-2 text-primary-glow text-sm font-semibold bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-4">
+          <div class="inline-flex items-center gap-2 text-primary-glow text-xs font-semibold bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-3">
             <i class="fas fa-arrow-trend-down text-xs"></i> Estratégia 02
           </div>
-          <h3 class="font-display font-black text-3xl md:text-4xl mb-4"><span class="gradient-text">Buy the Dip</span> — Compre a queda</h3>
-          <p class="text-white/60 leading-relaxed mb-6">Quando o mercado cai, a maioria entra em pânico. O investidor estratégico <strong class="text-white">enxerga oportunidade</strong>. Buy the Dip é a arte de acumular mais ativos quando os preços recuam.</p>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3 text-white/70"><i class="fas fa-check-circle text-primary-bright mt-1 flex-shrink-0"></i><span>Define níveis de suporte para compras estratégicas</span></li>
-            <li class="flex items-start gap-3 text-white/70"><i class="fas fa-check-circle text-primary-bright mt-1 flex-shrink-0"></i><span>Combina com DCA para maximizar o preço médio</span></li>
-            <li class="flex items-start gap-3 text-white/70"><i class="fas fa-check-circle text-primary-bright mt-1 flex-shrink-0"></i><span>Mentalidade de longo prazo — queda é desconto</span></li>
+          <h3 class="font-display font-black text-2xl sm:text-3xl mb-3"><span class="gradient-text">Buy the Dip</span> — Compre a queda</h3>
+          <p class="text-white/60 leading-relaxed mb-5 text-sm sm:text-base">Quando o mercado cai, o investidor estratégico <strong class="text-white">enxerga oportunidade</strong>. A arte de acumular mais ativos quando os preços recuam.</p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-white/70 text-sm"><i class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Define níveis de suporte para compras estratégicas</li>
+            <li class="flex items-start gap-2 text-white/70 text-sm"><i class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Mentalidade de longo prazo — queda é desconto</li>
           </ul>
         </div>
       </div>
 
-      <div class="section-divider my-10"></div>
+      <!-- CTA between strategies -->
+      <div class="text-center my-10">
+        <a href="#cadastro" class="btn-cta inline-flex text-black font-bold px-7 py-3 rounded-full text-sm items-center gap-2">
+          <i class="fas fa-rocket text-xs"></i> Cadastre-se Agora
+        </a>
+      </div>
+
+      <div class="section-divider my-8"></div>
 
       <!-- SCALING OUT -->
-      <div class="reveal grid md:grid-cols-2 gap-10 md:gap-16 items-center mb-20">
+      <div class="reveal strategy-grid grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center mb-16">
         <div class="order-2 md:order-1">
-          <div class="inline-flex items-center gap-2 text-primary-glow text-sm font-semibold bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-4">
+          <div class="inline-flex items-center gap-2 text-primary-glow text-xs font-semibold bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-3">
             <i class="fas fa-bullseye text-xs"></i> Estratégia 03
           </div>
-          <h3 class="font-display font-black text-3xl md:text-4xl mb-4"><span class="gradient-text">Scaling Out</span> — Realize sem largar</h3>
-          <p class="text-white/60 leading-relaxed mb-6">Em vez de vender tudo de uma vez, você <strong class="text-white">realiza lucros em partes</strong>, reduzindo risco enquanto mantém exposição ao ativo. A arte de sair no topo sem tentar adivinhar o topo.</p>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3 text-white/70"><i class="fas fa-check-circle text-primary-bright mt-1 flex-shrink-0"></i><span>Define alvos de preço com antecedência</span></li>
-            <li class="flex items-start gap-3 text-white/70"><i class="fas fa-check-circle text-primary-bright mt-1 flex-shrink-0"></i><span>Remove a emoção das decisões de venda</span></li>
-            <li class="flex items-start gap-3 text-white/70"><i class="fas fa-check-circle text-primary-bright mt-1 flex-shrink-0"></i><span>Protege lucro real enquanto deixa o resto correr</span></li>
+          <h3 class="font-display font-black text-2xl sm:text-3xl mb-3"><span class="gradient-text">Scaling Out</span> — Realize sem largar</h3>
+          <p class="text-white/60 leading-relaxed mb-5 text-sm sm:text-base">Você <strong class="text-white">realiza lucros em partes</strong>, reduzindo risco enquanto mantém exposição. A arte de sair no topo sem tentar adivinhar.</p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-white/70 text-sm"><i class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Define alvos de preço com antecedência</li>
+            <li class="flex items-start gap-2 text-white/70 text-sm"><i class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Remove a emoção das decisões de venda</li>
           </ul>
         </div>
         <div class="order-1 md:order-2">
-          <img src="fealty-green.jpg" alt="Scaling Out - Estratégia" class="strategy-img">
+          <div class="img-fade img-fade-hero" style="height:280px"><img src="fealty-green.jpg" alt="Scaling Out"></div>
         </div>
       </div>
 
-      <div class="section-divider my-10"></div>
+      <div class="section-divider my-8"></div>
 
-      <!-- POOLS DE LIQUIDEZ -->
-      <div class="reveal grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <!-- POOLS -->
+      <div class="reveal strategy-grid grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center">
         <div>
-          <div class="glass-card neon-border rounded-3xl p-8 text-center">
-            <div class="text-7xl mb-4" style="animation:float 9s ease-in-out infinite;">💧</div>
-            <div class="font-display font-bold text-4xl gradient-text-bright mb-2">POOLS</div>
-            <div class="text-white/40 text-sm">Liquidez Ativa (DeFi)</div>
-            <div class="mt-6 space-y-3">
-              <div class="flex items-center justify-between bg-primary/10 rounded-xl px-4 py-3">
-                <div class="flex items-center gap-2"><span class="text-lg">◈</span><span class="text-white/80 text-sm font-medium">ETH/USDC</span></div>
-                <span class="text-primary-glow font-bold text-sm">Pool Ativa</span>
-              </div>
-              <div class="flex items-center justify-between bg-primary/5 rounded-xl px-4 py-3">
-                <div class="flex items-center gap-2"><span class="text-lg">🔷</span><span class="text-white/80 text-sm font-medium">Base Network</span></div>
-                <span class="text-primary-bright text-xs">~$0.01 taxa</span>
-              </div>
-              <div class="flex items-center justify-between bg-primary/5 rounded-xl px-4 py-3">
-                <div class="flex items-center gap-2"><span class="text-lg">⚡</span><span class="text-white/80 text-sm font-medium">Arbitrum</span></div>
-                <span class="text-primary-bright text-xs">~$0.05 taxa</span>
-              </div>
-            </div>
-          </div>
+          <div class="img-fade img-fade-hero" style="height:280px"><img src="fealty-thumbnails.jpg" alt="Pools de Liquidez"></div>
         </div>
         <div>
-          <div class="inline-flex items-center gap-2 text-primary-glow text-sm font-semibold bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-4">
+          <div class="inline-flex items-center gap-2 text-primary-glow text-xs font-semibold bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-3">
             <i class="fas fa-water text-xs"></i> Estratégia 04
           </div>
-          <h3 class="font-display font-black text-3xl md:text-4xl mb-4">Pools de <span class="gradient-text">Liquidez</span> — DeFi real</h3>
-          <p class="text-white/60 leading-relaxed mb-6">Vire sócio de uma exchange descentralizada. Ao fornecer liquidez em pools como ETH/USDC na Uniswap ou Aerodrome, você <strong class="text-white">ganha uma fração de cada operação</strong> realizada naquele par.</p>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3 text-white/70"><i class="fas fa-check-circle text-primary-bright mt-1 flex-shrink-0"></i><span>Renda passiva 24/7 sem exchange centralizada</span></li>
-            <li class="flex items-start gap-3 text-white/70"><i class="fas fa-check-circle text-primary-bright mt-1 flex-shrink-0"></i><span>Base e Arbitrum: taxas de centavos por operação</span></li>
-            <li class="flex items-start gap-3 text-white/70"><i class="fas fa-check-circle text-primary-bright mt-1 flex-shrink-0"></i><span>Gestão de range para maximizar fee capture</span></li>
+          <h3 class="font-display font-black text-2xl sm:text-3xl mb-3">Pools de <span class="gradient-text">Liquidez</span> — DeFi real</h3>
+          <p class="text-white/60 leading-relaxed mb-5 text-sm sm:text-base">Forneça liquidez em pools como ETH/USDC e <strong class="text-white">ganhe uma fração de cada operação</strong> realizada naquele par. Renda passiva 24/7.</p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-white/70 text-sm"><i class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Base e Arbitrum: taxas de centavos</li>
+            <li class="flex items-start gap-2 text-white/70 text-sm"><i class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Gestão de range para maximizar retorno</li>
           </ul>
         </div>
       </div>
@@ -332,75 +373,68 @@
 
   <div class="section-divider"></div>
 
-  <!-- COMUNIDADE -->
-  <section class="py-24 px-6 relative overflow-hidden">
+  <!-- ═══════════════════════════════════
+       COMUNIDADE
+  ═══════════════════════════════════ -->
+  <section class="py-20 sm:py-24 px-4 sm:px-6 relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-dark-2 via-black to-dark-3 pointer-events-none"></div>
-    <div class="absolute inset-0 bg-grid opacity-50 pointer-events-none"></div>
     <div class="max-w-5xl mx-auto relative z-10">
-      <div class="reveal text-center mb-16">
-        <span class="text-primary-bright text-sm font-semibold uppercase tracking-widest">A comunidade</span>
-        <h2 class="font-display font-black text-4xl md:text-5xl mt-3 mb-6">Uma comunidade que<br><span class="gradient-text">pensa diferente</span></h2>
-        <p class="text-white/50 text-lg max-w-xl mx-auto">Sem FOMO. Sem tips de shitcoin. Aqui quem entra vem para construir patrimônio com seriedade.</p>
+      <div class="reveal text-center mb-14">
+        <span class="text-primary-bright text-xs font-semibold uppercase tracking-widest">A comunidade</span>
+        <h2 class="font-display font-black text-3xl sm:text-4xl md:text-5xl mt-3 mb-4">Uma comunidade que<br><span class="gradient-text">pensa diferente</span></h2>
+        <p class="text-white/50 text-sm sm:text-base max-w-xl mx-auto">Sem FOMO. Sem tips de shitcoin. Aqui quem entra vem para construir patrimônio com seriedade.</p>
       </div>
-      <div class="grid md:grid-cols-3 gap-6 mb-16">
-        <div class="reveal glass-card neon-border rounded-2xl p-6 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1">
-          <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-graduation-cap text-primary-glow text-xl"></i></div>
-          <h4 class="font-display font-bold text-lg mb-2">Educação Real</h4>
-          <p class="text-white/50 text-sm leading-relaxed">Conteúdo profundo sobre DCA, Buy the Dip, DeFi e gestão de risco. Do básico ao avançado.</p>
+      <div class="community-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 mb-14">
+        <div class="reveal glass-card neon-border rounded-2xl p-5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1">
+          <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center mb-3"><i class="fas fa-graduation-cap text-primary-glow"></i></div>
+          <h4 class="font-display font-bold text-base mb-1">Educação Real</h4>
+          <p class="text-white/50 text-xs leading-relaxed">Conteúdo profundo sobre DCA, Buy the Dip, DeFi e gestão de risco.</p>
         </div>
-        <div class="reveal glass-card neon-border rounded-2xl p-6 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1" style="transition-delay:0.1s">
-          <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-eye text-primary-glow text-xl"></i></div>
-          <h4 class="font-display font-bold text-lg mb-2">Carteira Transparente</h4>
-          <p class="text-white/50 text-sm leading-relaxed">Veja onde cada real está investido. BTC, ETH, pools de liquidez — tudo documentado.</p>
+        <div class="reveal glass-card neon-border rounded-2xl p-5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1" style="transition-delay:.1s">
+          <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center mb-3"><i class="fas fa-eye text-primary-glow"></i></div>
+          <h4 class="font-display font-bold text-base mb-1">Carteira Transparente</h4>
+          <p class="text-white/50 text-xs leading-relaxed">Veja onde cada real está investido. BTC, ETH, pools — tudo documentado.</p>
         </div>
-        <div class="reveal glass-card neon-border rounded-2xl p-6 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1" style="transition-delay:0.2s">
-          <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-users text-primary-glow text-xl"></i></div>
-          <h4 class="font-display font-bold text-lg mb-2">Membros Sérios</h4>
-          <p class="text-white/50 text-sm leading-relaxed">Networking com investidores que pensam no longo prazo. Troca de experiências que agrega.</p>
+        <div class="reveal glass-card neon-border rounded-2xl p-5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1" style="transition-delay:.2s">
+          <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center mb-3"><i class="fas fa-users text-primary-glow"></i></div>
+          <h4 class="font-display font-bold text-base mb-1">Membros Sérios</h4>
+          <p class="text-white/50 text-xs leading-relaxed">Investidores que pensam no longo prazo. Troca de experiências real.</p>
         </div>
-        <div class="reveal glass-card neon-border rounded-2xl p-6 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1" style="transition-delay:0.3s">
-          <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-chart-bar text-primary-glow text-xl"></i></div>
-          <h4 class="font-display font-bold text-lg mb-2">Análises Diárias</h4>
-          <p class="text-white/50 text-sm leading-relaxed">Relatórios do mercado, leituras de gráficos e oportunidades antes de todo mundo.</p>
+        <div class="reveal glass-card neon-border rounded-2xl p-5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1" style="transition-delay:.3s">
+          <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center mb-3"><i class="fas fa-chart-bar text-primary-glow"></i></div>
+          <h4 class="font-display font-bold text-base mb-1">Análises Diárias</h4>
+          <p class="text-white/50 text-xs leading-relaxed">Relatórios e oportunidades identificadas antes de todo mundo.</p>
         </div>
-        <div class="reveal glass-card neon-border rounded-2xl p-6 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1" style="transition-delay:0.4s">
-          <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-shield-alt text-primary-glow text-xl"></i></div>
-          <h4 class="font-display font-bold text-lg mb-2">Gestão de Risco</h4>
-          <p class="text-white/50 text-sm leading-relaxed">Aprenda a nunca perder mais do que pode perder. Stop, sizing e psicologia do investidor.</p>
+        <div class="reveal glass-card neon-border rounded-2xl p-5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1" style="transition-delay:.4s">
+          <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center mb-3"><i class="fas fa-shield-alt text-primary-glow"></i></div>
+          <h4 class="font-display font-bold text-base mb-1">Gestão de Risco</h4>
+          <p class="text-white/50 text-xs leading-relaxed">Nunca perca mais do que pode. Stop, sizing e psicologia do investidor.</p>
         </div>
-        <div class="reveal glass-card neon-border rounded-2xl p-6 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1" style="transition-delay:0.5s">
-          <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mb-4"><i class="fab fa-whatsapp text-primary-glow text-xl"></i></div>
-          <h4 class="font-display font-bold text-lg mb-2">Grupo Exclusivo</h4>
-          <p class="text-white/50 text-sm leading-relaxed">Acesso ao grupo WhatsApp VIP com alertas em tempo real e conteúdo exclusivo Pro.</p>
+        <div class="reveal glass-card neon-border rounded-2xl p-5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1" style="transition-delay:.5s">
+          <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center mb-3"><i class="fab fa-whatsapp text-primary-glow"></i></div>
+          <h4 class="font-display font-bold text-base mb-1">Grupo Exclusivo</h4>
+          <p class="text-white/50 text-xs leading-relaxed">WhatsApp VIP com alertas em tempo real e conteúdo exclusivo Pro.</p>
         </div>
       </div>
+
       <!-- Depoimentos -->
       <div class="reveal">
-        <h3 class="font-display font-bold text-2xl text-center mb-8 text-white/80">O que dizem os membros</h3>
-        <div class="grid md:grid-cols-3 gap-5">
-          <div class="glass-card rounded-2xl p-5 border border-white/5">
-            <div class="flex gap-1 mb-3"><i class="fas fa-star text-yellow-400 text-xs"></i><i class="fas fa-star text-yellow-400 text-xs"></i><i class="fas fa-star text-yellow-400 text-xs"></i><i class="fas fa-star text-yellow-400 text-xs"></i><i class="fas fa-star text-yellow-400 text-xs"></i></div>
-            <p class="text-white/60 text-sm leading-relaxed italic mb-4">"O método DCA do Fealty mudou minha relação com o mercado. Parei de checar preço toda hora e comecei a construir de verdade."</p>
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 bg-primary/30 rounded-full flex items-center justify-center font-bold text-primary-glow text-sm">M</div>
-              <div><div class="font-medium text-sm">Marcos</div><div class="text-white/30 text-xs">Membro desde 2025</div></div>
-            </div>
+        <h3 class="font-display font-bold text-xl text-center mb-6 text-white/80">O que dizem os membros</h3>
+        <div class="testimonials-grid grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="glass-card rounded-xl p-4 border border-white/5">
+            <div class="flex gap-1 mb-2"><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i></div>
+            <p class="text-white/60 text-xs leading-relaxed italic mb-3">"O método DCA do Fealty mudou minha relação com o mercado. Parei de checar preço toda hora."</p>
+            <div class="flex items-center gap-2"><div class="w-7 h-7 bg-primary/30 rounded-full flex items-center justify-center font-bold text-primary-glow text-xs">M</div><div><div class="font-medium text-xs">Marcos</div><div class="text-white/30 text-[10px]">Membro desde 2025</div></div></div>
           </div>
-          <div class="glass-card rounded-2xl p-5 border border-white/5">
-            <div class="flex gap-1 mb-3"><i class="fas fa-star text-yellow-400 text-xs"></i><i class="fas fa-star text-yellow-400 text-xs"></i><i class="fas fa-star text-yellow-400 text-xs"></i><i class="fas fa-star text-yellow-400 text-xs"></i><i class="fas fa-star text-yellow-400 text-xs"></i></div>
-            <p class="text-white/60 text-sm leading-relaxed italic mb-4">"A transparência da carteira é incrível. Sei exatamente onde meu dinheiro está e acompanho os resultados em tempo real."</p>
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 bg-primary/30 rounded-full flex items-center justify-center font-bold text-primary-glow text-sm">A</div>
-              <div><div class="font-medium text-sm">Ana Paula</div><div class="text-white/30 text-xs">Membro desde 2025</div></div>
-            </div>
+          <div class="glass-card rounded-xl p-4 border border-white/5">
+            <div class="flex gap-1 mb-2"><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i></div>
+            <p class="text-white/60 text-xs leading-relaxed italic mb-3">"A transparência da carteira é incrível. Sei exatamente onde meu dinheiro está."</p>
+            <div class="flex items-center gap-2"><div class="w-7 h-7 bg-primary/30 rounded-full flex items-center justify-center font-bold text-primary-glow text-xs">A</div><div><div class="font-medium text-xs">Ana Paula</div><div class="text-white/30 text-[10px]">Membro desde 2025</div></div></div>
           </div>
-          <div class="glass-card rounded-2xl p-5 border border-white/5">
-            <div class="flex gap-1 mb-3"><i class="fas fa-star text-yellow-400 text-xs"></i><i class="fas fa-star text-yellow-400 text-xs"></i><i class="fas fa-star text-yellow-400 text-xs"></i><i class="fas fa-star text-yellow-400 text-xs"></i><i class="fas fa-star text-yellow-400 text-xs"></i></div>
-            <p class="text-white/60 text-sm leading-relaxed italic mb-4">"Aprendi Scaling Out e finalmente realizei lucro sem sair do ativo. Estratégia simples e muito poderosa."</p>
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 bg-primary/30 rounded-full flex items-center justify-center font-bold text-primary-glow text-sm">P</div>
-              <div><div class="font-medium text-sm">Pedro</div><div class="text-white/30 text-xs">Membro desde 2025</div></div>
-            </div>
+          <div class="glass-card rounded-xl p-4 border border-white/5">
+            <div class="flex gap-1 mb-2"><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i></div>
+            <p class="text-white/60 text-xs leading-relaxed italic mb-3">"Aprendi Scaling Out e finalmente realizei lucro sem sair do ativo. Simples e poderoso."</p>
+            <div class="flex items-center gap-2"><div class="w-7 h-7 bg-primary/30 rounded-full flex items-center justify-center font-bold text-primary-glow text-xs">P</div><div><div class="font-medium text-xs">Pedro</div><div class="text-white/30 text-[10px]">Membro desde 2025</div></div></div>
           </div>
         </div>
       </div>
@@ -409,110 +443,141 @@
 
   <div class="section-divider"></div>
 
-  <!-- FORMULÁRIO -->
-  <section class="py-24 px-6 bg-dark-1 bg-grid relative" id="cadastro">
+  <!-- ═══════════════════════════════════
+       FORMULÁRIO COMPLETO
+  ═══════════════════════════════════ -->
+  <section class="py-20 sm:py-24 px-4 sm:px-6 bg-dark-1 bg-grid relative" id="cadastro">
     <div class="max-w-lg mx-auto relative z-10">
-      <div class="reveal text-center mb-10">
-        <div class="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 text-primary-glow px-4 py-2 rounded-full text-sm font-medium mb-6">
+      <div class="reveal text-center mb-8">
+        <div class="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 text-primary-glow px-3 py-1.5 rounded-full text-xs font-medium mb-5">
           <span class="w-2 h-2 bg-primary-bright rounded-full animate-pulse"></span>
           Lançamento em breve
         </div>
-        <h2 class="font-display font-black text-4xl md:text-5xl mb-4">Entre na <span class="gradient-text">Lista VIP</span></h2>
-        <p class="text-white/50 text-base leading-relaxed">Seja um dos primeiros a ter acesso ao <strong class="text-white">Cripto Zion Pro</strong>. Cadastrados recebem condições especiais de lançamento.</p>
+        <h2 class="font-display font-black text-3xl sm:text-4xl mb-3">Entre na <span class="gradient-text">Lista VIP</span></h2>
+        <p class="text-white/50 text-sm">Cadastrados recebem condições especiais de lançamento.</p>
       </div>
-      <div id="formContainer" class="reveal glass-card neon-border rounded-3xl p-8">
+      <div id="formContainer" class="reveal glass-card neon-border rounded-2xl p-5 sm:p-7">
         <form id="leadForm" novalidate>
-          <div class="mb-5">
-            <label class="block text-white/70 text-sm font-medium mb-2"><i class="fas fa-user text-primary/60 mr-1"></i> Nome completo</label>
-            <input type="text" id="leadName" name="name" placeholder="Seu nome completo" required class="form-input w-full px-4 py-3.5 rounded-xl text-sm font-medium">
+          <div class="mb-4">
+            <label class="block text-white/60 text-xs font-medium mb-1.5"><i class="fas fa-user text-primary/50 mr-1"></i>Nome completo</label>
+            <input type="text" id="leadName" name="name" placeholder="Seu nome" required class="form-input w-full px-4 py-3 rounded-xl text-sm">
+          </div>
+          <div class="mb-4">
+            <label class="block text-white/60 text-xs font-medium mb-1.5"><i class="fas fa-envelope text-primary/50 mr-1"></i>Melhor email</label>
+            <input type="email" id="leadEmail" name="email" placeholder="seu@email.com" required class="form-input w-full px-4 py-3 rounded-xl text-sm">
           </div>
           <div class="mb-5">
-            <label class="block text-white/70 text-sm font-medium mb-2"><i class="fas fa-envelope text-primary/60 mr-1"></i> Melhor email</label>
-            <input type="email" id="leadEmail" name="email" placeholder="seu@email.com" required class="form-input w-full px-4 py-3.5 rounded-xl text-sm font-medium">
+            <label class="block text-white/60 text-xs font-medium mb-1.5"><i class="fab fa-whatsapp text-primary/50 mr-1"></i>WhatsApp</label>
+            <input type="tel" id="leadWhatsapp" name="whatsapp" placeholder="(00) 00000-0000" required class="form-input w-full px-4 py-3 rounded-xl text-sm whatsapp-mask">
           </div>
-          <div class="mb-7">
-            <label class="block text-white/70 text-sm font-medium mb-2"><i class="fab fa-whatsapp text-primary/60 mr-1"></i> WhatsApp</label>
-            <input type="tel" id="leadWhatsapp" name="whatsapp" placeholder="(00) 00000-0000" required class="form-input w-full px-4 py-3.5 rounded-xl text-sm font-medium">
-          </div>
-          <div id="formError" class="hidden mb-4 bg-red-500/10 border border-red-500/30 text-red-400 text-sm px-4 py-3 rounded-xl">
-            <i class="fas fa-exclamation-circle mr-2"></i><span id="formErrorMsg">Preencha todos os campos.</span>
-          </div>
-          <button type="submit" id="submitBtn" class="btn-cta w-full text-black font-bold py-4 rounded-xl text-base flex items-center justify-center gap-2">
+          <div id="formError" class="hidden mb-3 bg-red-500/10 border border-red-500/30 text-red-400 text-xs px-3 py-2 rounded-lg"><i class="fas fa-exclamation-circle mr-1"></i><span id="formErrorMsg"></span></div>
+          <button type="submit" id="submitBtn" class="btn-cta w-full text-black font-bold py-3.5 rounded-xl text-sm flex items-center justify-center gap-2">
             <i class="fas fa-rocket"></i><span id="submitText">Garantir Acesso Antecipado</span>
           </button>
         </form>
-        <p class="text-center text-white/30 text-xs mt-5"><i class="fas fa-lock mr-1"></i> Sem spam. Seus dados são usados apenas para avisá-lo do lançamento.</p>
+        <p class="text-center text-white/25 text-[10px] mt-4"><i class="fas fa-lock mr-1"></i>Sem spam. Dados protegidos.</p>
       </div>
     </div>
   </section>
 
+  <!-- FLOATING CTA -->
+  <div id="floatingCTA">
+    <a href="#cadastro" class="btn-cta text-black font-bold px-6 py-3 rounded-full text-sm inline-flex items-center gap-2 shadow-2xl">
+      <i class="fas fa-rocket text-xs"></i> Quero Acesso
+    </a>
+  </div>
+
   <!-- FOOTER -->
-  <footer class="py-12 px-6 border-t border-primary/10">
-    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-      <div class="font-display font-bold text-xl"><span class="text-white">CRIPTO</span><span class="gradient-text"> ZION</span><span class="ml-2 text-xs bg-primary/20 border border-primary/30 text-primary-glow px-2 py-0.5 rounded-full">PRO</span></div>
-      <div class="flex gap-6 items-center">
-        <a href="https://www.youtube.com/@CriptoZion" target="_blank" class="text-white/40 hover:text-red-400 transition-colors text-lg"><i class="fab fa-youtube"></i></a>
-        <a href="https://x.com/0xFealty" target="_blank" class="text-white/40 hover:text-white transition-colors text-lg"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://www.instagram.com/criptozion" target="_blank" class="text-white/40 hover:text-pink-400 transition-colors text-lg"><i class="fab fa-instagram"></i></a>
+  <footer class="py-10 px-4 sm:px-6 border-t border-primary/10">
+    <div class="footer-inner max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="font-display font-bold text-lg flex items-center"><span class="text-white">CRIPTO</span><span class="gradient-text"> ZION</span><span class="pro-badge">PRO</span></div>
+      <div class="flex gap-5 items-center">
+        <a href="https://www.youtube.com/@CriptoZion" target="_blank" class="text-white/40 hover:text-red-400 transition-colors"><i class="fab fa-youtube"></i></a>
+        <a href="https://x.com/0xFealty" target="_blank" class="text-white/40 hover:text-white transition-colors"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/criptozion" target="_blank" class="text-white/40 hover:text-pink-400 transition-colors"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/fealty-crypto-960791318/" target="_blank" class="text-white/40 hover:text-blue-400 transition-colors"><i class="fab fa-linkedin"></i></a>
       </div>
-      <div class="flex gap-6 text-white/30 text-sm">
+      <div class="flex gap-4 text-white/30 text-xs">
         <a href="/privacidade.html" class="hover:text-white/60 transition-colors">Privacidade</a>
         <a href="/termos.html" class="hover:text-white/60 transition-colors">Termos</a>
       </div>
     </div>
-    <div class="text-center text-white/20 text-xs mt-8">© 2026 Cripto Zion — Educação e Investimentos em Cripto</div>
+    <div class="text-center text-white/15 text-[10px] mt-6">© 2026 Cripto Zion — Educação e Investimentos</div>
   </footer>
 
   <!-- SUCCESS PAGE -->
   <div id="successPage" class="bg-grid">
     <div class="absolute inset-0 bg-gradient-to-br from-dark-2 via-black to-dark-3 pointer-events-none"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/8 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="relative z-10 text-center max-w-lg px-6 mx-auto">
-      <div class="success-ring flex items-center justify-center mx-auto mb-8">
-        <i class="fas fa-check text-primary-glow text-4xl"></i>
-      </div>
-      <h2 class="font-display font-black text-4xl md:text-5xl mb-4"><span class="gradient-text-bright">Você está dentro!</span></h2>
-      <p class="text-white/60 text-lg leading-relaxed mb-3">Cadastro realizado com sucesso! 🎉</p>
-      <p class="text-white/50 mb-10">Em breve você receberá atualizações sobre o lançamento do <strong class="text-primary-glow">Cripto Zion Pro</strong> no seu email e WhatsApp.</p>
-      <div class="glass-card neon-border rounded-2xl p-6 mb-6">
-        <p class="text-white/80 font-medium mb-4">Enquanto isso, entre no nosso grupo:</p>
-        <a href="https://chat.whatsapp.com/FJVQ3MbbSdm0Jtra0FZW8z?mode=gi_t" target="_blank" class="whatsapp-btn w-full text-white font-bold py-4 px-6 rounded-xl flex items-center justify-center gap-3 text-base">
-          <i class="fab fa-whatsapp text-2xl"></i> Entrar no Grupo do WhatsApp
+    <div class="relative z-10 text-center max-w-md px-6 mx-auto">
+      <div class="success-ring flex items-center justify-center mx-auto mb-8"><i class="fas fa-check text-primary-glow text-4xl"></i></div>
+      <h2 class="font-display font-black text-3xl sm:text-4xl mb-4"><span class="gradient-text-bright">Você está dentro!</span></h2>
+      <p class="text-white/60 text-base mb-2">Cadastro realizado com sucesso! 🎉</p>
+      <p class="text-white/50 text-sm mb-8">Em breve você receberá atualizações sobre o <strong class="text-primary-glow">Cripto Zion Pro</strong>.</p>
+      <div class="glass-card neon-border rounded-2xl p-5 mb-5">
+        <p class="text-white/80 text-sm font-medium mb-3">Enquanto isso, entre no grupo:</p>
+        <a href="https://chat.whatsapp.com/FJVQ3MbbSdm0Jtra0FZW8z?mode=gi_t" target="_blank" class="whatsapp-btn w-full text-white font-bold py-3.5 px-5 rounded-xl flex items-center justify-center gap-3 text-sm">
+          <i class="fab fa-whatsapp text-xl"></i> Entrar no Grupo do WhatsApp
         </a>
       </div>
-      <button onclick="voltarInicio()" class="text-white/40 hover:text-white/70 text-sm transition-colors"><i class="fas fa-arrow-left mr-2"></i>Voltar ao início</button>
+      <button onclick="voltarInicio()" class="text-white/40 hover:text-white/70 text-xs transition-colors"><i class="fas fa-arrow-left mr-1"></i>Voltar</button>
     </div>
   </div>
 
+  <!-- ═══════════════════════════════════
+       SCRIPTS
+  ═══════════════════════════════════ -->
   <script>
     // Particles
-    (function(){const c=document.getElementById('particles');for(let i=0;i<18;i++){const p=document.createElement('div');const s=Math.random()*4+1;p.className='particle';p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${Math.random()*20+15}s;animation-delay:${Math.random()*15}s;opacity:${Math.random()*0.5+0.1};`;c.appendChild(p);}})();
-    // Scroll Reveal
-    const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+    (function(){const c=document.getElementById('particles');for(let i=0;i<15;i++){const p=document.createElement('div');const s=Math.random()*3+1;p.className='particle';p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${Math.random()*20+15}s;animation-delay:${Math.random()*15}s;`;c.appendChild(p);}})();
+
+    // Scroll reveal
+    const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
     document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
-    // Navbar
-    window.addEventListener('scroll',()=>{document.getElementById('navbar').style.background=window.scrollY>50?'rgba(0,0,0,0.97)':'rgba(0,0,0,0.85)'});
-    // WhatsApp mask
-    document.getElementById('leadWhatsapp').addEventListener('input',function(e){let v=e.target.value.replace(/\D/g,'').substring(0,11);if(v.length>6)v=`(${v.substring(0,2)}) ${v.substring(2,7)}-${v.substring(7)}`;else if(v.length>2)v=`(${v.substring(0,2)}) ${v.substring(2)}`;else if(v.length>0)v=`(${v}`;e.target.value=v;});
-    // Form
-    const _b1='xkeysib-3e7d72a72fd36c57d2073ea5ec',_b2='9df59c80e5bb11c5463acc164184c046262b32',_b3='-19JrTe3JSWqgs142';const BREVO_API_KEY=_b1+_b2+_b3;
+
+    // Nav scroll
+    window.addEventListener('scroll',()=>{document.getElementById('navbar').style.background=scrollY>50?'rgba(0,0,0,.97)':'rgba(0,0,0,.85)'});
+
+    // Floating CTA — show after hero
+    const heroEl=document.getElementById('hero');
+    const floatCTA=document.getElementById('floatingCTA');
+    const floatObs=new IntersectionObserver(([e])=>{floatCTA.classList.toggle('show',!e.isIntersecting)},{threshold:0});
+    floatObs.observe(heroEl);
+
+    // WhatsApp mask — all inputs
+    document.querySelectorAll('.whatsapp-mask').forEach(el=>{
+      el.addEventListener('input',function(e){let v=e.target.value.replace(/\D/g,'').substring(0,11);if(v.length>6)v=`(${v.substring(0,2)}) ${v.substring(2,7)}-${v.substring(7)}`;else if(v.length>2)v=`(${v.substring(0,2)}) ${v.substring(2)}`;else if(v.length>0)v=`(${v}`;e.target.value=v;});
+    });
+
+    // Brevo
+    const _b1='xkeysib-3e7d72a72fd36c57d2073ea5ec',_b2='9df59c80e5bb11c5463acc164184c046262b32',_b3='-19JrTe3JSWqgs142';const BK=_b1+_b2+_b3;
+
+    async function submitLead(name,email,whatsapp){
+      try{await fetch('https://api.brevo.com/v3/contacts',{method:'POST',headers:{'api-key':BK,'Content-Type':'application/json'},body:JSON.stringify({email,attributes:{NOME:name,WHATSAPP:whatsapp,SOURCE:'criptozion_landing'},listIds:[5],updateEnabled:true})});}catch(e){console.warn('Brevo:',e);}
+      try{localStorage.setItem('cz_'+Date.now(),JSON.stringify({name,email,whatsapp,ts:new Date().toISOString()}));}catch(_){}
+    }
+
+    // Hero form
+    document.getElementById('heroForm').addEventListener('submit',async function(e){
+      e.preventDefault();const f=new FormData(this);const n=f.get('name').trim(),em=f.get('email').trim(),w=f.get('whatsapp').trim();
+      if(!n||!em||!w)return;
+      this.querySelector('button').innerHTML='<i class="fas fa-spinner fa-spin"></i> Cadastrando...';this.querySelector('button').disabled=true;
+      await submitLead(n,em,w);showSuccess();
+    });
+
+    // Main form
     document.getElementById('leadForm').addEventListener('submit',async function(e){
       e.preventDefault();
-      const name=document.getElementById('leadName').value.trim();
-      const email=document.getElementById('leadEmail').value.trim();
-      const whatsapp=document.getElementById('leadWhatsapp').value.trim();
-      const errEl=document.getElementById('formError');const errMsg=document.getElementById('formErrorMsg');
+      const name=document.getElementById('leadName').value.trim(),email=document.getElementById('leadEmail').value.trim(),whatsapp=document.getElementById('leadWhatsapp').value.trim();
+      const errEl=document.getElementById('formError'),errMsg=document.getElementById('formErrorMsg');
       if(!name||!email||!whatsapp){errMsg.textContent='Preencha todos os campos.';errEl.classList.remove('hidden');return;}
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){errMsg.textContent='Email inválido.';errEl.classList.remove('hidden');return;}
       errEl.classList.add('hidden');
-      const btn=document.getElementById('submitBtn');
-      btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> <span>Cadastrando...</span>';
-      try{await fetch('https://api.brevo.com/v3/contacts',{method:'POST',headers:{'api-key':BREVO_API_KEY,'Content-Type':'application/json'},body:JSON.stringify({email,attributes:{NOME:name,WHATSAPP:whatsapp,SOURCE:'criptozion_landing'},listIds:[5],updateEnabled:true})});}catch(err){console.warn('Brevo:',err);}
-      try{localStorage.setItem('cz_lead_'+Date.now(),JSON.stringify({name,email,whatsapp,ts:new Date().toISOString()}));}catch(_){}
-      showSuccess();
+      const btn=document.getElementById('submitBtn');btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Cadastrando...';
+      await submitLead(name,email,whatsapp);showSuccess();
     });
-    function showSuccess(){const sp=document.getElementById('successPage');sp.classList.add('active');document.body.style.overflow='hidden';sp.style.opacity='0';sp.style.transition='opacity 0.5s ease';requestAnimationFrame(()=>requestAnimationFrame(()=>{sp.style.opacity='1';}));window.scrollTo(0,0);}
-    function voltarInicio(){const sp=document.getElementById('successPage');sp.style.opacity='0';setTimeout(()=>{sp.classList.remove('active');document.body.style.overflow='';window.scrollTo(0,0);},500);}
+
+    function showSuccess(){const sp=document.getElementById('successPage');sp.classList.add('active');document.body.style.overflow='hidden';sp.style.opacity='0';sp.style.transition='opacity .5s';requestAnimationFrame(()=>requestAnimationFrame(()=>{sp.style.opacity='1';}));scrollTo(0,0);}
+    function voltarInicio(){const sp=document.getElementById('successPage');sp.style.opacity='0';setTimeout(()=>{sp.classList.remove('active');document.body.style.overflow='';scrollTo(0,0);},500);}
   </script>
 </body>
 </html>
