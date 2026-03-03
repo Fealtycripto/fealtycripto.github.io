@@ -554,6 +554,57 @@
     async function submitLead(name,email,whatsapp){
       try{await fetch('https://api.brevo.com/v3/contacts',{method:'POST',headers:{'api-key':BK,'Content-Type':'application/json'},body:JSON.stringify({email,attributes:{NOME:name,WHATSAPP:whatsapp,SOURCE:'criptozion_landing'},listIds:[5],updateEnabled:true})});}catch(e){console.warn('Brevo:',e);}
       try{localStorage.setItem('cz_'+Date.now(),JSON.stringify({name,email,whatsapp,ts:new Date().toISOString()}));}catch(_){}
+      // Send welcome email
+      await sendWelcomeEmail(email,name);
+    }
+
+    // Send transactional welcome email
+    async function sendWelcomeEmail(email,name){
+      const htmlContent=`<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Bem-vindo à Cripto Zion Pro</title></head>
+<body style="margin:0;padding:0;background:#000;font-family:Inter,sans-serif;color:#fff;">
+  <div style="max-width:600px;margin:0 auto;background:#0a1410;border:1px solid #008862;padding:30px;">
+    <div style="text-align:center;margin-bottom:25px;">
+      <h1 style="color:#4cbf93;margin:0;font-size:24px;">CRIPTO <span style="color:#fff;">ZION</span> <span style="background:#008862;color:#000;padding:2px 8px;border-radius:10px;font-size:12px;">PRO</span></h1>
+    </div>
+    <h2 style="color:#87f8c9;font-size:20px;margin-bottom:15px;">Olá, ${name || 'Investidor'}! 👋</h2>
+    <p style="color:#fff;line-height:1.6;margin-bottom:15px;">Seu cadastro na <strong style="color:#4cbf93;">Cripto Zion Pro</strong> foi confirmado com sucesso!</p>
+    <p style="color:#aaa;line-height:1.6;margin-bottom:20px;">Você está na lista VIP e será um dos primeiros a saber quando abrirmos as vagas para a comunidade. Prepararemos conteúdos exclusivos sobre:</p>
+    <ul style="color:#aaa;line-height:1.8;margin-bottom:20px;padding-left:20px;">
+      <li>📈 DCA — Dollar Cost Averaging</li>
+      <li>🎯 Buy the Dip — Comprar na queda</li>
+      <li>💹 Scaling Out — Realização inteligente</li>
+      <li>💧 Pools de Liquidez — DeFi real</li>
+    </ul>
+    <div style="background:rgba(0,136,98,0.1);border:1px solid #008862;border-radius:10px;padding:20px;margin:25px 0;text-align:center;">
+      <p style="color:#fff;margin-bottom:15px;"><strong>Enquanto isso, entre no nosso grupo do WhatsApp:</strong></p>
+      <a href="https://chat.whatsapp.com/FJVQ3MbbSdm0Jtra0FZW8z?mode=gi_t" style="display:inline-block;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;text-decoration:none;padding:12px 25px;border-radius:25px;font-weight:bold;">Entrar no Grupo</a>
+    </div>
+    <p style="color:#aaa;line-height:1.6;margin-bottom:10px;">Qualquer dúvida, estou à disposição.</p>
+    <p style="color:#4cbf93;font-weight:bold;margin-bottom:5px;">Fealty</p>
+    <p style="color:#666;font-size:12px;margin:0;">Fundador & Educador — Cripto Zion Pro</p>
+    <hr style="border:none;border-top:1px solid #222;margin:25px 0;">
+    <p style="color:#555;font-size:11px;text-align:center;">© 2026 Cripto Zion — Educação e Investimentos<br>Este email foi enviado automaticamente após seu cadastro.</p>
+  </div>
+</body>
+</html>`;
+      
+      try{
+        await fetch('https://api.brevo.com/v3/smtp/email',{
+          method:'POST',
+          headers:{'api-key':BK,'Content-Type':'application/json'},
+          body:JSON.stringify({
+            sender:{name:'Fealty — Cripto Zion Pro',email:'fealtycripto@hotmail.com'},
+            to:[{email:email}],
+            subject:'🚀 Bem-vindo à Cripto Zion Pro — Lista VIP Confirmada!',
+            htmlContent:htmlContent
+          })
+        });
+        console.log('Email de boas-vindas enviado para:',email);
+      }catch(e){
+        console.warn('Erro ao enviar email:',e);
+      }
     }
 
     // Hero form
