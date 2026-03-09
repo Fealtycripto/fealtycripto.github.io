@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Zion Smart DCA — Cripto Zion</title>
+  <meta name="description" content="Compare DCA Tradicional, Lump Sum e a estratégia exclusiva Zion Smart DCA com dados reais do Bitcoin.">
+  <meta property="og:title" content="Calculadora Zion Smart DCA — Cripto Zion">
+  <meta property="og:description" content="Compare DCA vs Lump Sum vs Zion Smart DCA com dados reais da Binance e Fear & Greed Index.">
+  <meta property="og:url" content="https://criptozion.xyz/calculadora.html">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: '#008862',
+              light: '#29a37a',
+              bright: '#4cbf93',
+              glow: '#6adbae',
+              soft: '#87f8c9',
+              pale: '#e7fff1',
+            },
+            dark: {
+              DEFAULT: '#000000',
+              1: '#050d09',
+              2: '#0a1410',
+              3: '#0f1d16',
+              4: '#142619',
+              card: '#0d1a13',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'Inter', 'sans-serif'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-green': 'pulse-green 2s ease-in-out infinite',
+            'slide-up': 'slideUp 0.6s ease-out forwards',
+            'fade-in': 'fadeIn 0.8s ease-out forwards',
+            'glow': 'glow 3s ease-in-out infinite',
+          },
+          keyframes: {
+            float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-12px)' } },
+            'pulse-green': { '0%,100%': { boxShadow: '0 0 0 0 rgba(0,136,98,0.4)' }, '50%': { boxShadow: '0 0 0 20px rgba(0,136,98,0)' } },
+            slideUp: { from: { opacity: 0, transform: 'translateY(40px)' }, to: { opacity: 1, transform: 'translateY(0)' } },
+            fadeIn: { from: { opacity: 0 }, to: { opacity: 1 } },
+            glow: { '0%,100%': { textShadow: '0 0 20px rgba(74,191,147,0.3)' }, '50%': { textShadow: '0 0 40px rgba(74,191,147,0.7), 0 0 60px rgba(0,136,98,0.4)' } },
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #000; color: #fff; overflow-x: hidden; }
+
+    /* ── Parallax Hero ── */
+    .hero-parallax {
+      background: 
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,136,98,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 80% 30%, rgba(41,163,122,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 30% at 20% 60%, rgba(0,136,98,0.08) 0%, transparent 60%),
+        #000;
+    }
+
+    .bg-grid {
+      background-image: 
+        linear-gradient(rgba(0,136,98,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,136,98,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* ── Glassmorphism Cards ── */
+    .glass-card {
+      background: rgba(13, 26, 19, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(0,136,98,0.2);
+    }
+    .glass-card-bright {
+      background: rgba(0,136,98,0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(41,163,122,0.3);
+    }
+
+    /* ── Gradient Text ── */
+    .gradient-text {
+      background: linear-gradient(135deg, #4cbf93 0%, #008862 50%, #87f8c9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .gradient-text-bright {
+      background: linear-gradient(135deg, #87f8c9 0%, #4cbf93 60%, #29a37a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Neon Border ── */
+    .neon-border {
+      border: 1px solid rgba(76,191,147,0.4);
+      box-shadow: 0 0 20px rgba(0,136,98,0.15), inset 0 0 20px rgba(0,136,98,0.03);
+    }
+    .neon-border:hover {
+      border-color: rgba(76,191,147,0.8);
+      box-shadow: 0 0 40px rgba(0,136,98,0.3), inset 0 0 20px rgba(0,136,98,0.05);
+    }
+
+    /* ── CTA Button ── */
+    .btn-cta {
+      background: linear-gradient(135deg, #008862, #29a37a, #4cbf93);
+      background-size: 200% 200%;
+      animation: btnShimmer 3s ease infinite;
+      transition: all 0.3s;
+    }
+    .btn-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0,136,98,0.5);
+    }
+    @keyframes btnShimmer {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ── Scroll Reveal ── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Floating Particles ── */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(76,191,147,0.6), transparent);
+      animation: floatParticle linear infinite;
+      pointer-events: none;
+    }
+    @keyframes floatParticle {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10% { opacity: 0.6; }
+      90% { opacity: 0.3; }
+      100% { transform: translateY(-100px) scale(1); opacity: 0; }
+    }
+
+    /* ── Ticker ── */
+    .ticker-wrap { overflow: hidden; }
+    .ticker { display: flex; animation: ticker 30s linear infinite; white-space: nowrap; }
+    .ticker:hover { animation-play-state: paused; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ── Nav ── */
+    nav {
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,136,98,0.15);
+    }
+
+    /* ── Section dividers ── */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,136,98,0.5), transparent);
+    }
+
+    /* ── Form Inputs ── */
+    .form-input {
+      background: rgba(0,0,0,0.6);
+      border: 2px solid rgba(0,136,98,0.4);
+      color: #fff;
+      transition: all 0.3s;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: #4cbf93;
+      box-shadow: 0 0 0 4px rgba(0,136,98,0.15), 0 0 20px rgba(76,191,147,0.1);
+      background: rgba(0,136,98,0.05);
+    }
+
+    /* ── Results ── */
+    .result-card {
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .result-card.winner {
+      border-color: rgba(76, 191, 147, 0.8) !important;
+      box-shadow: 0 0 40px rgba(0, 136, 98, 0.4);
+    }
+
+    /* ── Loader ── */
+    .loader {
+      width: 40px; height: 40px;
+      border: 3px solid rgba(0, 136, 98, 0.2);
+      border-top-color: #4cbf93;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in-up { animation: fadeInUp 0.6s ease forwards; }
+
+    /* ── Chart ── */
+    #chartContainer canvas { max-height: 400px; }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0a1410; }
+    ::-webkit-scrollbar-thumb { background: #008862; border-radius: 3px; }
+
+    /* ── Table ── */
+    .log-table { font-size: 0.75rem; }
+    .log-table th { position: sticky; top: 0; background: #0a1410; z-index: 5; }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════
+       PARTICLES BACKGROUND
+  ════════════════════════════════════════════ -->
+  <div id="particles" class="fixed inset-0 pointer-events-none z-0 overflow-hidden"></div>
+
+  <!-- ════════════════════════════════════════════
+       NAVIGATION
+  ════════════════════════════════════════════ -->
+  <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="font-display font-bold text-xl tracking-tight">
+        <span class="text-white">CRIPTO</span><span class="gradient-text"> ZION</span>
+        <span class="ml-2 text-xs bg-primary/20 border border-primary/30 text-primary-glow px-2 py-0.5 rounded-full font-medium">PRO</span>
+      </a>
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="text-sm text-white/60 hover:text-white transition-colors hidden sm:inline-flex items-center gap-1">
+          <i class="fas fa-arrow-left text-xs"></i> Voltar ao Site
+        </a>
+        <span class="text-xs bg-primary/20 border border-primary/30 text-primary-glow px-3 py-1.5 rounded-full font-semibold">
+          <i class="fas fa-calculator mr-1"></i> CALC
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════════
+       TICKER
+  ════════════════════════════════════════════ -->
+  <div class="ticker-wrap fixed top-0 left-0 right-0 z-40 mt-[65px] bg-dark-2 border-b border-primary/10 py-1.5 text-xs text-primary-glow/70 font-mono overflow-hidden">
+    <div class="ticker">
+      <span class="px-8">₿ BTC — Longo Prazo</span>
+      <span class="px-8">◈ ETH — Liquidez</span>
+      <span class="px-8">📈 DCA — Consistência</span>
+      <span class="px-8">💧 Pools — Renda Passiva</span>
+      <span class="px-8">🎯 Scaling Out — Estratégia</span>
+      <span class="px-8">🧮 Calculadora — Simule Agora</span>
+      <span class="px-8">₿ BTC — Longo Prazo</span>
+      <span class="px-8">◈ ETH — Liquidez</span>
+      <span class="px-8">📈 DCA — Consistência</span>
+      <span class="px-8">💧 Pools — Renda Passiva</span>
+      <span class="px-8">🎯 Scaling Out — Estratégia</span>
+      <span class="px-8">🧮 Calculadora — Simule Agora</span>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════════ -->
+  <section class="hero-parallax bg-grid relative pt-32 pb-16 px-6">
+    <!-- Ambient orbs -->
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none animate-float"></div>
+    <div class="absolute bottom-1/3 right-1/4 w-64 h-64 bg-primary-bright/5 rounded-full blur-3xl pointer-events-none" style="animation: float 8s ease-in-out infinite reverse;"></div>
+
+    <div class="max-w-4xl mx-auto relative z-10 text-center">
+      <div class="reveal inline-flex items-center gap-2 bg-primary/10 border border-primary/30 text-primary-glow px-4 py-2 rounded-full text-sm font-medium mb-6">
+        <span class="w-2 h-2 bg-primary-bright rounded-full animate-pulse"></span>
+        Dados reais da Binance + Fear & Greed Index
+      </div>
+      <h1 class="reveal font-display font-black text-4xl md:text-6xl leading-tight mb-4" style="transition-delay: 0.1s;">
+        Calculadora<br><span class="gradient-text-bright animate-glow">Zion Smart DCA</span>
+      </h1>
+      <p class="reveal text-white/50 text-lg max-w-2xl mx-auto" style="transition-delay: 0.2s;">
+        Compare o DCA Tradicional, Lump Sum e a estratégia exclusiva <strong class="text-white/80">Zion Smart DCA</strong> —
+        com modulação Fear & Greed, compras RSI e realizações inteligentes.
+      </p>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ════════════════════════════════════════════
+       CALCULATOR FORM
+  ════════════════════════════════════════════ -->
+  <section class="py-12 px-6 bg-dark-1 bg-grid relative" id="calculadora">
+    <div class="max-w-5xl mx-auto">
+
+      <div class="reveal glass-card neon-border rounded-3xl p-8 md:p-10">
+        <h2 class="font-display font-bold text-2xl mb-8 flex items-center gap-3">
+          <div class="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center">
+            <i class="fas fa-calculator text-primary-glow"></i>
+          </div>
+          Configurar Simulação
+        </h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <!-- Data Início -->
+          <div>
+            <label class="block text-white/60 text-sm mb-2 font-medium">Data de Início</label>
+            <input type="date" id="startDate" value="2020-01-01"
+              class="form-input w-full px-4 py-3 rounded-xl font-mono text-sm">
+          </div>
+          <!-- Data Fim -->
+          <div>
+            <label class="block text-white/60 text-sm mb-2 font-medium">Data de Fim</label>
+            <input type="date" id="endDate" value="2026-03-01"
+              class="form-input w-full px-4 py-3 rounded-xl font-mono text-sm">
+          </div>
+          <!-- Valor Base -->
+          <div>
+            <label class="block text-white/60 text-sm mb-2 font-medium">Aporte Base (USD)</label>
+            <div class="relative">
+              <span class="absolute left-4 top-1/2 -translate-y-1/2 text-primary-glow font-bold">$</span>
+              <input type="number" id="baseAmount" value="100" min="10" step="10"
+                class="form-input w-full pl-8 pr-4 py-3 rounded-xl font-mono text-sm">
+            </div>
+          </div>
+          <!-- Frequência -->
+          <div>
+            <label class="block text-white/60 text-sm mb-2 font-medium">Frequência</label>
+            <select id="frequency" class="form-input w-full px-4 py-3 rounded-xl text-sm">
+              <option value="monthly">Mensal (dia 1)</option>
+              <option value="weekly">Semanal</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Regras Zion Info -->
+        <div class="glass-card-bright rounded-2xl p-5 mb-8">
+          <h3 class="font-display font-bold text-sm text-primary-glow mb-3 flex items-center gap-2">
+            <i class="fas fa-brain"></i> Regras do Zion Smart DCA (automáticas)
+          </h3>
+          <div class="grid md:grid-cols-3 gap-4 text-xs text-white/60">
+            <div class="flex items-start gap-2">
+              <i class="fas fa-shopping-cart text-primary-bright mt-0.5"></i>
+              <span><strong class="text-white/80">Compra Mensal:</strong> Sempre acontece, modulada pelo Fear & Greed (0.2x a 1.8x)</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <i class="fas fa-bolt text-yellow-400 mt-0.5"></i>
+              <span><strong class="text-white/80">Compra Extra:</strong> RSI Diário &lt; 35 = aporte extra (do bolso), modulado F&G</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <i class="fas fa-hand-holding-usd text-green-400 mt-0.5"></i>
+              <span><strong class="text-white/80">Venda:</strong> RSI Semanal &gt; 70 = vende 20% (máx 2/mês). Lucro sacado. Não vende abaixo do preço médio.</span>
+            </div>
+          </div>
+          <div class="mt-3 pt-3 border-t border-primary/20">
+            <h4 class="text-xs font-bold text-white/70 mb-2">Tabela de Modulação Fear & Greed:</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-red-900/30 text-red-300 px-2 py-1 rounded text-xs">Medo Extremo: +80%</span>
+              <span class="bg-orange-900/30 text-orange-300 px-2 py-1 rounded text-xs">Medo: +50%</span>
+              <span class="bg-gray-800/50 text-gray-300 px-2 py-1 rounded text-xs">Neutro: 100%</span>
+              <span class="bg-green-900/30 text-green-300 px-2 py-1 rounded text-xs">Ganância: -50%</span>
+              <span class="bg-emerald-900/30 text-emerald-300 px-2 py-1 rounded text-xs">Ganância Extrema: -80%</span>
+            </div>
+          </div>
+        </div>
+
+        <button id="runBtn" onclick="runSimulation()"
+          class="btn-cta text-black font-bold px-10 py-4 rounded-full text-base flex items-center gap-3 mx-auto">
+          <i class="fas fa-play"></i> Executar Simulação
+        </button>
+      </div>
+
+      <!-- LOADING -->
+      <div id="loadingSection" class="hidden py-16 text-center">
+        <div class="loader mx-auto mb-4"></div>
+        <p class="text-white/60 text-sm" id="loadingText">Buscando dados da Binance...</p>
+        <div class="w-64 mx-auto mt-4 h-1 bg-dark-3 rounded-full overflow-hidden">
+          <div id="progressBar" class="h-full bg-primary-bright rounded-full transition-all duration-500" style="width:0%"></div>
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div id="resultsSection" class="hidden mt-10">
+
+        <!-- Summary Cards -->
+        <div class="grid md:grid-cols-3 gap-6 mb-10" id="resultCards"></div>
+
+        <!-- Chart -->
+        <div class="glass-card neon-border rounded-3xl p-6 md:p-8 mb-10" id="chartContainer">
+          <h3 class="font-display font-bold text-xl mb-6 flex items-center gap-2">
+            <i class="fas fa-chart-area text-primary-glow"></i> Evolução do Patrimônio
+          </h3>
+          <canvas id="mainChart"></canvas>
+        </div>
+
+        <!-- Detailed Stats -->
+        <div class="grid md:grid-cols-2 gap-6 mb-10">
+          <!-- Compras Recorrentes -->
+          <div class="glass-card neon-border rounded-2xl p-6 max-h-80 overflow-auto">
+            <h4 class="font-display font-bold text-sm mb-4 flex items-center gap-2 text-primary-glow">
+              <i class="fas fa-shopping-cart"></i> Compras Recorrentes (Mensais)
+            </h4>
+            <div id="recurringBuysTable"></div>
+          </div>
+          <!-- Vendas -->
+          <div class="glass-card neon-border rounded-2xl p-6 max-h-80 overflow-auto">
+            <h4 class="font-display font-bold text-sm mb-4 flex items-center gap-2 text-green-400">
+              <i class="fas fa-hand-holding-usd"></i> Vendas Parciais (Lucro Sacado)
+            </h4>
+            <div id="sellsTable"></div>
+          </div>
+        </div>
+
+        <!-- Extra Buys Log -->
+        <div class="glass-card neon-border rounded-2xl p-6 max-h-80 overflow-auto mb-10">
+          <h4 class="font-display font-bold text-sm mb-4 flex items-center gap-2 text-yellow-400">
+            <i class="fas fa-bolt"></i> Compras Extras (RSI Diário &lt; 35)
+          </h4>
+          <div id="extraBuysTable"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ════════════════════════════════════════════
+       CTA — VOLTAR AO SITE
+  ════════════════════════════════════════════ -->
+  <section class="py-16 px-6 bg-dark-1 bg-grid relative">
+    <div class="max-w-2xl mx-auto text-center relative z-10">
+      <div class="reveal glass-card neon-border rounded-3xl p-10">
+        <div class="text-5xl mb-4 animate-float">🌿</div>
+        <h3 class="font-display font-bold text-2xl mb-3">Quer dominar essa estratégia?</h3>
+        <p class="text-white/50 mb-6">Entre na lista de espera do Cripto Zion Pro e aprenda DCA, Scaling Out e Pools de Liquidez com a gente.</p>
+        <a href="index.html#cadastro" class="btn-cta text-black font-bold px-8 py-4 rounded-full text-base inline-flex items-center gap-2">
+          <i class="fas fa-rocket"></i> Quero Acesso Antecipado
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════ -->
+  <footer class="py-12 px-6 border-t border-primary/10">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="font-display font-bold text-xl">
+        <span class="text-white">CRIPTO</span><span class="gradient-text"> ZION</span>
+        <span class="ml-2 text-xs bg-primary/20 border border-primary/30 text-primary-glow px-2 py-0.5 rounded-full font-medium">PRO</span>
+      </div>
+      <div class="flex gap-6 items-center">
+        <a href="https://www.youtube.com/@CriptoZion" target="_blank" class="text-white/40 hover:text-red-400 transition-colors text-lg"><i class="fab fa-youtube"></i></a>
+        <a href="https://x.com/0xFealty" target="_blank" class="text-white/40 hover:text-white transition-colors text-lg"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/criptozion" target="_blank" class="text-white/40 hover:text-pink-400 transition-colors text-lg"><i class="fab fa-instagram"></i></a>
+      </div>
+      <div class="flex gap-6 text-white/30 text-sm">
+        <a href="privacidade.html" class="hover:text-white/60 transition-colors">Privacidade</a>
+        <a href="termos.html" class="hover:text-white/60 transition-colors">Termos</a>
+      </div>
+    </div>
+    <div class="text-center text-white/20 text-xs mt-8">
+      <p>© 2026 Cripto Zion — Educação e Investimentos em Cripto</p>
+      <p class="mt-1">Calculadora para fins educacionais. Resultados passados não garantem resultados futuros.</p>
+      <p class="mt-1">Dados: Binance API + Alternative.me Fear & Greed Index</p>
+    </div>
+  </footer>
+
+  <!-- ════════════════════════════════════════════
+       SCRIPTS
+  ════════════════════════════════════════════ -->
+  <script>
+    // ── Particles ──
+    (function() {
+      const container = document.getElementById('particles');
+      const count = 18;
+      for (let i = 0; i < count; i++) {
+        const p = document.createElement('div');
+        const size = Math.random() * 4 + 1;
+        p.className = 'particle';
+        p.style.cssText = `
+          width: ${size}px; height: ${size}px;
+          left: ${Math.random() * 100}%;
+          animation-duration: ${Math.random() * 20 + 15}s;
+          animation-delay: ${Math.random() * 15}s;
+          opacity: ${Math.random() * 0.5 + 0.1};
+        `;
+        container.appendChild(p);
+      }
+    })();
+
+    // ── Scroll Reveal ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Navbar scroll ──
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      nav.style.background = window.scrollY > 50 ? 'rgba(0,0,0,0.95)' : 'rgba(0,0,0,0.85)';
+    });
+
+    // ═══════════════════════════════════════════════════════
+    //  ZION SMART DCA ENGINE — JavaScript v3.0
+    // ═══════════════════════════════════════════════════════
+
+    const RSI_PERIOD = 14;
+    const RSI_COMPRA = 35;
+    const RSI_VENDA_1 = 70;
+    const RSI_VENDA_2 = 80;
+    const TAKE_PROFIT_PCT = 0.20;
+
+    // ── Helpers ──
+    function fmtUSD(n) { return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+    function fmtBTC(n) { return n.toFixed(8); }
+    function fmtPct(n) { return (n >= 0 ? '+' : '') + n.toFixed(2) + '%'; }
+
+    function getFngMult(v) {
+      if (v >= 75) return 0.20;
+      if (v >= 55) return 0.50;
+      if (v >= 45) return 1.00;
+      if (v >= 25) return 1.50;
+      return 1.80;
+    }
+    function fngLabel(v) {
+      if (v >= 75) return 'Ganância Extrema';
+      if (v >= 55) return 'Ganância';
+      if (v >= 45) return 'Neutro';
+      if (v >= 25) return 'Medo';
+      return 'Medo Extremo';
+    }
+    function fngColor(v) {
+      if (v >= 75) return '#10b981';
+      if (v >= 55) return '#34d399';
+      if (v >= 45) return '#9ca3af';
+      if (v >= 25) return '#f97316';
+      return '#ef4444';
+    }
+
+    function dateStr(d) { return d.toISOString().slice(0, 10); }
+
+    // ── Data Fetching ──
+    async function fetchBinanceKlines(symbol, interval, startDate, endDate, progressCb) {
+      const allData = [];
+      let startMs = new Date(startDate).getTime();
+      const endMs = new Date(endDate).getTime();
+      while (startMs < endMs) {
+        const url = `https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&startTime=${startMs}&endTime=${endMs}&limit=1000`;
+        const resp = await fetch(url);
+        const data = await resp.json();
+        if (!data.length) break;
+        allData.push(...data);
+        startMs = data[data.length - 1][6] + 1;
+        if (progressCb) progressCb(allData.length);
+        await new Promise(r => setTimeout(r, 200));
+      }
+      return allData.map(k => ({
+        time: new Date(k[0]),
+        dateStr: new Date(k[0]).toISOString().slice(0, 10),
+        close: parseFloat(k[4]),
+      }));
+    }
+
+    async function fetchFearAndGreed() {
+      const resp = await fetch('https://api.alternative.me/fng/?limit=0');
+      const json = await resp.json();
+      const map = {};
+      json.data.forEach(e => {
+        const d = new Date(parseInt(e.timestamp) * 1000).toISOString().slice(0, 10);
+        map[d] = parseInt(e.value);
+      });
+      return map;
+    }
+
+    // ── RSI Calculation ──
+    function calcRSI(closes, period = 14) {
+      const rsi = new Array(closes.length).fill(NaN);
+      if (closes.length < period + 1) return rsi;
+      let avgGain = 0, avgLoss = 0;
+      for (let i = 1; i <= period; i++) {
+        const d = closes[i] - closes[i - 1];
+        if (d > 0) avgGain += d; else avgLoss -= d;
+      }
+      avgGain /= period;
+      avgLoss /= period;
+      rsi[period] = avgLoss === 0 ? 100 : 100 - (100 / (1 + avgGain / avgLoss));
+      for (let i = period + 1; i < closes.length; i++) {
+        const d = closes[i] - closes[i - 1];
+        const gain = d > 0 ? d : 0;
+        const loss = d < 0 ? -d : 0;
+        avgGain = (avgGain * (period - 1) + gain) / period;
+        avgLoss = (avgLoss * (period - 1) + loss) / period;
+        rsi[i] = avgLoss === 0 ? 100 : 100 - (100 / (1 + avgGain / avgLoss));
+      }
+      return rsi;
+    }
+
+    // ── Generate Aporte Dates ──
+    function genAporteDates(start, end, freq) {
+      const dates = new Set();
+      let cur = new Date(start);
+      const endD = new Date(end);
+      if (freq === 'monthly') {
+        while (cur <= endD) {
+          dates.add(dateStr(cur));
+          cur = new Date(cur.getFullYear(), cur.getMonth() + 1, 1);
+        }
+      } else {
+        while (cur <= endD) {
+          dates.add(dateStr(cur));
+          cur.setDate(cur.getDate() + 7);
+        }
+      }
+      return dates;
+    }
+
+    // ── Simulations ──
+    function simTraditionalDCA(daily, aporteDates, base) {
+      let btc = 0, invested = 0;
+      const timeline = [], investedTimeline = [];
+      daily.forEach(d => {
+        if (aporteDates.has(d.dateStr)) {
+          btc += base / d.close;
+          invested += base;
+        }
+        timeline.push({ date: d.dateStr, value: btc * d.close });
+        investedTimeline.push({ date: d.dateStr, value: invested });
+      });
+      const fp = daily[daily.length - 1].close;
+      const precoMedio = btc > 0 ? invested / btc : 0;
+      return { btc, invested, portfolio: btc * fp, roi: ((btc * fp - invested) / invested * 100), timeline, investedTimeline, precoMedio };
+    }
+
+    function simLumpSum(daily, aporteDates, base) {
+      const total = base * aporteDates.size;
+      const firstPrice = daily[0].close;
+      const btc = total / firstPrice;
+      const timeline = daily.map(d => ({ date: d.dateStr, value: btc * d.close }));
+      const fp = daily[daily.length - 1].close;
+      return { btc, invested: total, portfolio: btc * fp, roi: ((btc * fp - total) / total * 100), timeline, investedTimeline: daily.map(d => ({ date: d.dateStr, value: total })), precoMedio: firstPrice };
+    }
+
+    function simZionSmart(daily, weekly, fng, aporteDates, base) {
+      let btc = 0, invested = 0, totalCost = 0, lucroSacado = 0;
+      const comprasLog = [], extrasLog = [], vendasLog = [];
+      const vendasNoMes = {};
+      const investedTimeline = [];
+
+      const dailyCloses = daily.map(d => d.close);
+      const dailyRSI = calcRSI(dailyCloses, RSI_PERIOD);
+
+      const weeklyCloses = weekly.map(w => w.close);
+      const weeklyRSI = calcRSI(weeklyCloses, RSI_PERIOD);
+      const wRsiMap = {};
+      weekly.forEach((w, i) => {
+        for (let d = 0; d < 7; d++) {
+          const dt = new Date(w.time);
+          dt.setDate(dt.getDate() + d);
+          wRsiMap[dateStr(dt)] = weeklyRSI[i];
+        }
+      });
+
+      const timeline = [];
+
+      daily.forEach((d, i) => {
+        const ds = d.dateStr;
+        const price = d.close;
+        const rsiD = dailyRSI[i];
+        const rsiW = wRsiMap[ds] || 50;
+        const fngV = fng[ds] || 50;
+        const mult = getFngMult(fngV);
+        const mesKey = ds.slice(0, 7);
+
+        // Rule 1: Recurring buy
+        if (aporteDates.has(ds)) {
+          const amt = base * mult;
+          btc += amt / price;
+          invested += amt;
+          totalCost += amt;
+          comprasLog.push({ data: ds, preco: price, fng: fngV, label: fngLabel(fngV), mult, usd: amt });
+        }
+
+        // Rule 2: Extra buy RSI daily < 35
+        if (!isNaN(rsiD) && rsiD < RSI_COMPRA) {
+          const amt = base * mult;
+          btc += amt / price;
+          invested += amt;
+          totalCost += amt;
+          extrasLog.push({ data: ds, preco: price, rsi: rsiD, fng: fngV, label: fngLabel(fngV), mult, usd: amt });
+        }
+
+        // Rule 3: Sell (RSI weekly)
+        if (!isNaN(rsiW) && btc > 0) {
+          const sells = vendasNoMes[mesKey] || 0;
+          if (sells < 2) {
+            const precoMedio = totalCost / btc;
+            if (price > precoMedio) {
+              let canSell = false;
+              if (sells === 0 && rsiW > RSI_VENDA_1) canSell = true;
+              else if (sells === 1 && rsiW >= RSI_VENDA_2) canSell = true;
+              if (canSell) {
+                const btcSold = btc * TAKE_PROFIT_PCT;
+                const usdRec = btcSold * price;
+                btc -= btcSold;
+                lucroSacado += usdRec;
+                totalCost -= totalCost * TAKE_PROFIT_PCT;
+                vendasNoMes[mesKey] = sells + 1;
+                vendasLog.push({ data: ds, preco: price, rsiW, precoMedio, btcSold, usd: usdRec, n: sells + 1 });
+              }
+            }
+          }
+        }
+
+        timeline.push({ date: ds, value: btc * price + lucroSacado });
+        investedTimeline.push({ date: ds, value: invested });
+      });
+
+      const fp = daily[daily.length - 1].close;
+      const patrimonio = btc * fp + lucroSacado;
+      const roi = ((patrimonio - invested) / invested * 100);
+      const precoMedio = btc > 0 ? totalCost / btc : 0;
+
+      return {
+        btc, invested, btcValue: btc * fp, lucroSacado, patrimonio, roi, precoMedio,
+        compras: comprasLog, extras: extrasLog, vendas: vendasLog, timeline, investedTimeline
+      };
+    }
+
+    // ── Chart ──
+    let mainChartInstance = null;
+
+    function renderChart(trad, lump, zion, daily) {
+      const ctx = document.getElementById('mainChart').getContext('2d');
+      if (mainChartInstance) mainChartInstance.destroy();
+
+      const step = Math.max(1, Math.floor(trad.timeline.length / 300));
+      const labels = [], tradData = [], lumpData = [], zionData = [], investedData = [], btcPriceData = [];
+      for (let i = 0; i < trad.timeline.length; i += step) {
+        labels.push(trad.timeline[i].date);
+        tradData.push(trad.timeline[i].value);
+        lumpData.push(lump.timeline[i]?.value || 0);
+        zionData.push(zion.timeline[i]?.value || 0);
+        investedData.push(trad.investedTimeline[i]?.value || 0);
+        btcPriceData.push(daily[i]?.close || 0);
+      }
+
+      mainChartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [
+            {
+              label: 'Total Investido (DCA)',
+              data: investedData,
+              borderColor: '#facc15',
+              backgroundColor: 'transparent',
+              borderDash: [6, 4],
+              fill: false, stepped: true, pointRadius: 0, borderWidth: 2,
+              yAxisID: 'y'
+            },
+            {
+              label: 'DCA Tradicional',
+              data: tradData,
+              borderColor: '#6b7280',
+              backgroundColor: 'rgba(107,114,128,0.1)',
+              fill: false, tension: 0.3, pointRadius: 0, borderWidth: 2,
+              yAxisID: 'y'
+            },
+            {
+              label: 'Lump Sum',
+              data: lumpData,
+              borderColor: '#3b82f6',
+              backgroundColor: 'rgba(59,130,246,0.1)',
+              fill: false, tension: 0.3, pointRadius: 0, borderWidth: 2,
+              yAxisID: 'y'
+            },
+            {
+              label: 'Zion Smart DCA',
+              data: zionData,
+              borderColor: '#4cbf93',
+              backgroundColor: 'rgba(76,191,147,0.15)',
+              fill: true, tension: 0.3, pointRadius: 0, borderWidth: 3,
+              yAxisID: 'y'
+            },
+            {
+              label: 'Preço BTC',
+              data: btcPriceData,
+              borderColor: '#f97316',
+              backgroundColor: 'transparent',
+              borderDash: [2, 2],
+              fill: false, tension: 0.3, pointRadius: 0, borderWidth: 1.5,
+              yAxisID: 'yBTC'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          interaction: { intersect: false, mode: 'index' },
+          plugins: {
+            legend: { labels: { color: '#fff', font: { family: 'Inter', size: 11 }, usePointStyle: true, pointStyle: 'line' } },
+            tooltip: {
+              backgroundColor: 'rgba(0,0,0,0.9)',
+              borderColor: 'rgba(0,136,98,0.3)',
+              borderWidth: 1,
+              callbacks: {
+                label: ctx => `${ctx.dataset.label}: ${fmtUSD(ctx.parsed.y)}`
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: { color: '#ffffff40', maxTicksLimit: 12, font: { size: 10 } },
+              grid: { color: 'rgba(0,136,98,0.06)' }
+            },
+            y: {
+              position: 'left',
+              title: { display: true, text: 'Patrimônio (USD)', color: '#ffffff60', font: { size: 11 } },
+              ticks: { color: '#ffffff40', callback: v => fmtUSD(v), font: { size: 10 } },
+              grid: { color: 'rgba(0,136,98,0.06)' }
+            },
+            yBTC: {
+              position: 'right',
+              title: { display: true, text: 'Preço BTC (USD)', color: '#f9731680', font: { size: 11 } },
+              ticks: { color: '#f9731660', callback: v => fmtUSD(v), font: { size: 10 } },
+              grid: { drawOnChartArea: false }
+            }
+          }
+        }
+      });
+    }
+
+    // ── Result Cards ──
+    function renderResults(trad, lump, zion) {
+      const winnerRoi = Math.max(trad.roi, lump.roi, zion.roi);
+      const cards = [
+        {
+          name: 'DCA Tradicional', icon: 'fa-chart-line', color: '#6b7280',
+          invested: trad.invested, portfolio: trad.portfolio, btc: trad.btc, roi: trad.roi, precoMedio: trad.precoMedio,
+          extra: ''
+        },
+        {
+          name: 'Lump Sum', icon: 'fa-money-bill-wave', color: '#3b82f6',
+          invested: lump.invested, portfolio: lump.portfolio, btc: lump.btc, roi: lump.roi, precoMedio: lump.precoMedio,
+          extra: ''
+        },
+        {
+          name: 'Zion Smart DCA', icon: 'fa-brain', color: '#4cbf93',
+          invested: zion.invested, portfolio: zion.patrimonio, btc: zion.btc, roi: zion.roi, precoMedio: zion.precoMedio,
+          extra: `
+            <div class="mt-3 pt-3 border-t border-primary/20 space-y-1 text-xs">
+              <div class="flex justify-between"><span class="text-white/50">Valor BTC:</span><span>${fmtUSD(zion.btcValue)}</span></div>
+              <div class="flex justify-between"><span class="text-white/50">Lucro Sacado:</span><span class="text-green-400 font-bold">${fmtUSD(zion.lucroSacado)}</span></div>
+              <div class="flex justify-between"><span class="text-white/50">Preço Médio:</span><span>${fmtUSD(zion.precoMedio)}</span></div>
+              <div class="flex justify-between"><span class="text-white/50">Compras Extras:</span><span>${zion.extras.length}</span></div>
+              <div class="flex justify-between"><span class="text-white/50">Vendas:</span><span>${zion.vendas.length}</span></div>
+            </div>
+          `
+        }
+      ];
+
+      document.getElementById('resultCards').innerHTML = cards.map(c => `
+        <div class="result-card glass-card neon-border rounded-2xl p-6 ${c.roi === winnerRoi ? 'winner' : ''}">
+          ${c.roi === winnerRoi ? '<div class="text-xs text-primary-glow font-bold mb-2 flex items-center gap-1"><i class="fas fa-trophy"></i> VENCEDOR</div>' : '<div class="mb-5"></div>'}
+          <div class="flex items-center gap-2 mb-4">
+            <i class="fas ${c.icon}" style="color:${c.color}"></i>
+            <h3 class="font-display font-bold text-lg">${c.name}</h3>
+          </div>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between"><span class="text-white/50">Investido:</span><span>${fmtUSD(c.invested)}</span></div>
+            <div class="flex justify-between"><span class="text-white/50">BTC:</span><span class="font-mono text-xs">${fmtBTC(c.btc)}</span></div>
+            <div class="flex justify-between"><span class="text-white/50">Preço Médio:</span><span>${fmtUSD(c.precoMedio)}</span></div>
+            <div class="flex justify-between"><span class="text-white/50">Patrimônio:</span><span class="font-bold">${fmtUSD(c.portfolio)}</span></div>
+            <div class="flex justify-between items-center">
+              <span class="text-white/50">Lucro:</span>
+              <span class="font-bold text-lg ${(c.portfolio - c.invested) >= 0 ? 'text-green-400' : 'text-red-400'}">${fmtUSD(c.portfolio - c.invested)}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-white/50">Retorno:</span>
+              <span class="text-white/70 text-xs">${fmtPct(c.roi)}</span>
+            </div>
+          </div>
+          ${c.extra}
+        </div>
+      `).join('');
+    }
+
+    // ── Tables ──
+    function renderTable(containerId, rows, columns) {
+      if (!rows.length) {
+        document.getElementById(containerId).innerHTML = '<p class="text-white/30 text-xs">Nenhum registro.</p>';
+        return;
+      }
+      const last = rows.slice(-20);
+      let html = `<table class="log-table w-full text-left"><thead><tr>${columns.map(c => `<th class="text-white/40 font-medium pb-2 px-2">${c.label}</th>`).join('')}</tr></thead><tbody>`;
+      last.forEach(r => {
+        html += '<tr class="border-t border-white/5">';
+        columns.forEach(c => {
+          html += `<td class="py-1.5 px-2 text-white/70">${c.fmt(r)}</td>`;
+        });
+        html += '</tr>';
+      });
+      html += '</tbody></table>';
+      if (rows.length > 20) html = `<p class="text-white/30 text-xs mb-2">Mostrando últimos 20 de ${rows.length}</p>` + html;
+      document.getElementById(containerId).innerHTML = html;
+    }
+
+    // ── Main ──
+    async function runSimulation() {
+      const startDate = document.getElementById('startDate').value;
+      const endDate = document.getElementById('endDate').value;
+      const base = parseFloat(document.getElementById('baseAmount').value);
+      const freq = document.getElementById('frequency').value;
+
+      if (!startDate || !endDate || !base) return alert('Preencha todos os campos.');
+
+      document.getElementById('loadingSection').classList.remove('hidden');
+      document.getElementById('resultsSection').classList.add('hidden');
+      document.getElementById('runBtn').disabled = true;
+      document.getElementById('runBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processando...';
+
+      const setProgress = (pct, text) => {
+        document.getElementById('progressBar').style.width = pct + '%';
+        document.getElementById('loadingText').textContent = text;
+      };
+
+      try {
+        setProgress(10, 'Buscando dados diários da Binance...');
+        const daily = await fetchBinanceKlines('BTCUSDT', '1d', startDate, endDate);
+
+        setProgress(40, 'Buscando dados semanais da Binance...');
+        const weekly = await fetchBinanceKlines('BTCUSDT', '1w', startDate, endDate);
+
+        setProgress(70, 'Buscando Fear & Greed Index...');
+        const fng = await fetchFearAndGreed();
+
+        setProgress(85, 'Calculando simulações...');
+        await new Promise(r => setTimeout(r, 300));
+
+        const aporteDates = genAporteDates(startDate, endDate, freq);
+
+        const trad = simTraditionalDCA(daily, aporteDates, base);
+        const lump = simLumpSum(daily, aporteDates, base);
+        const zion = simZionSmart(daily, weekly, fng, aporteDates, base);
+
+        setProgress(95, 'Renderizando gráficos...');
+        await new Promise(r => setTimeout(r, 200));
+
+        renderResults(trad, lump, zion);
+        renderChart(trad, lump, zion, daily);
+
+        // Tables
+        renderTable('recurringBuysTable', zion.compras, [
+          { label: 'Data', fmt: r => r.data },
+          { label: 'Preço', fmt: r => fmtUSD(r.preco) },
+          { label: 'F&G', fmt: r => `<span style="color:${fngColor(r.fng)}">${r.fng}</span>` },
+          { label: 'Sentimento', fmt: r => r.label },
+          { label: 'x', fmt: r => r.mult + 'x' },
+          { label: 'USD', fmt: r => fmtUSD(r.usd) },
+        ]);
+        renderTable('extraBuysTable', zion.extras, [
+          { label: 'Data', fmt: r => r.data },
+          { label: 'Preço', fmt: r => fmtUSD(r.preco) },
+          { label: 'RSI', fmt: r => r.rsi.toFixed(1) },
+          { label: 'F&G', fmt: r => `<span style="color:${fngColor(r.fng)}">${r.fng}</span>` },
+          { label: 'Sentimento', fmt: r => r.label },
+          { label: 'USD', fmt: r => fmtUSD(r.usd) },
+        ]);
+        renderTable('sellsTable', zion.vendas, [
+          { label: 'Data', fmt: r => r.data },
+          { label: 'Preço', fmt: r => fmtUSD(r.preco) },
+          { label: 'RSI 1W', fmt: r => r.rsiW.toFixed(1) },
+          { label: 'P.Médio', fmt: r => fmtUSD(r.precoMedio) },
+          { label: 'USD Sacado', fmt: r => `<span class="text-green-400">${fmtUSD(r.usd)}</span>` },
+          { label: '#', fmt: r => r.n },
+        ]);
+
+        setProgress(100, 'Concluído!');
+
+        setTimeout(() => {
+          document.getElementById('loadingSection').classList.add('hidden');
+          document.getElementById('resultsSection').classList.remove('hidden');
+          document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 500);
+
+      } catch (err) {
+        alert('Erro ao buscar dados: ' + err.message);
+        console.error(err);
+        document.getElementById('loadingSection').classList.add('hidden');
+      }
+
+      document.getElementById('runBtn').disabled = false;
+      document.getElementById('runBtn').innerHTML = '<i class="fas fa-play"></i> Executar Simulação';
+    }
+  </script>
+
+</body>
+</html>

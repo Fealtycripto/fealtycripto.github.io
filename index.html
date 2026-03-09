@@ -1,117 +1,417 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cripto Zion Pro — Comunidade de Longo Prazo</title>
-  <meta name="description" content="A comunidade cripto que pensa no longo prazo. DCA, Buy the Dip, Scaling Out e Pools de Liquidez.">
+  <meta name="description"
+    content="A comunidade cripto que pensa no longo prazo. DCA, Buy the Dip, Scaling Out e Pools de Liquidez.">
   <meta property="og:title" content="Cripto Zion Pro — Acesso Antecipado">
   <meta property="og:description" content="A comunidade cripto que pensa no longo prazo.">
   <meta property="og:image" content="https://criptozion.xyz/fealty-green.jpg">
   <meta property="og:url" content="https://criptozion.xyz">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%234cbf93'/%3E%3Cstop offset='100%25' style='stop-color:%23008862'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-family='Arial Black,sans-serif' font-size='55' font-weight='900' text-anchor='middle' fill='%23000'%3ECZ%3C/text%3E%3C/svg%3E">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%234cbf93'/%3E%3Cstop offset='100%25' style='stop-color:%23008862'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-family='Arial Black,sans-serif' font-size='55' font-weight='900' text-anchor='middle' fill='%23000'%3ECZ%3C/text%3E%3C/svg%3E">
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-XXXXXXXXXX');
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config={theme:{extend:{colors:{primary:{DEFAULT:'#008862',light:'#29a37a',bright:'#4cbf93',glow:'#6adbae',soft:'#87f8c9'},dark:{DEFAULT:'#000000',1:'#050d09',2:'#0a1410',3:'#0f1d16',card:'#0d1a13'}},fontFamily:{sans:['Inter','system-ui','sans-serif'],display:['Space Grotesk','Inter','sans-serif']}}}}
+    tailwind.config = { theme: { extend: { colors: { primary: { DEFAULT: '#008862', light: '#29a37a', bright: '#4cbf93', glow: '#6adbae', soft: '#87f8c9' }, dark: { DEFAULT: '#000000', 1: '#050d09', 2: '#0a1410', 3: '#0f1d16', card: '#0d1a13' } }, fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], display: ['Space Grotesk', 'Inter', 'sans-serif'] } } } }
   </script>
   <style>
-    *{scroll-behavior:smooth;box-sizing:border-box}
-    body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden}
+    * {
+      scroll-behavior: smooth;
+      box-sizing: border-box
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden
+    }
 
     /* Gradient text */
-    .gradient-text{background:linear-gradient(135deg,#4cbf93,#008862,#87f8c9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .gradient-text-bright{background:linear-gradient(135deg,#87f8c9,#4cbf93,#29a37a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .gradient-text {
+      background: linear-gradient(135deg, #4cbf93, #008862, #87f8c9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text
+    }
+
+    .gradient-text-bright {
+      background: linear-gradient(135deg, #87f8c9, #4cbf93, #29a37a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text
+    }
 
     /* Glass */
-    .glass-card{background:rgba(13,26,19,0.6);backdrop-filter:blur(16px);border:1px solid rgba(0,136,98,0.2)}
-    .neon-border{border:1px solid rgba(76,191,147,0.4);box-shadow:0 0 20px rgba(0,136,98,0.15)}
-    .neon-border:hover{border-color:rgba(76,191,147,0.7);box-shadow:0 0 35px rgba(0,136,98,0.25)}
+    .glass-card {
+      background: rgba(13, 26, 19, 0.6);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(0, 136, 98, 0.2)
+    }
+
+    .neon-border {
+      border: 1px solid rgba(76, 191, 147, 0.4);
+      box-shadow: 0 0 20px rgba(0, 136, 98, 0.15)
+    }
+
+    .neon-border:hover {
+      border-color: rgba(76, 191, 147, 0.7);
+      box-shadow: 0 0 35px rgba(0, 136, 98, 0.25)
+    }
 
     /* CTA */
-    .btn-cta{background:linear-gradient(135deg,#008862,#29a37a,#4cbf93);background-size:200% 200%;animation:btnShimmer 3s ease infinite;transition:all 0.3s}
-    .btn-cta:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(0,136,98,0.5)}
-    @keyframes btnShimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    .btn-cta {
+      background: linear-gradient(135deg, #008862, #29a37a, #4cbf93);
+      background-size: 200% 200%;
+      animation: btnShimmer 3s ease infinite;
+      transition: all 0.3s
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 136, 98, 0.5)
+    }
+
+    @keyframes btnShimmer {
+      0% {
+        background-position: 0% 50%
+      }
+
+      50% {
+        background-position: 100% 50%
+      }
+
+      100% {
+        background-position: 0% 50%
+      }
+    }
 
     /* Reveal */
-    .reveal{opacity:0;transform:translateY(30px);transition:all 0.7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
-    .reveal-left{opacity:0;transform:translateX(-30px);transition:all 0.7s ease}.reveal-left.visible{opacity:1;transform:translateX(0)}
-    .reveal-right{opacity:0;transform:translateX(30px);transition:all 0.7s ease}.reveal-right.visible{opacity:1;transform:translateX(0)}
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s ease
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: all 0.7s ease
+    }
+
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0)
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(30px);
+      transition: all 0.7s ease
+    }
+
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0)
+    }
 
     /* Particles */
-    .particle{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(76,191,147,0.6),transparent);animation:floatP linear infinite;pointer-events:none}
-    @keyframes floatP{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:.5}90%{opacity:.2}100%{transform:translateY(-100px) scale(1);opacity:0}}
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(76, 191, 147, 0.6), transparent);
+      animation: floatP linear infinite;
+      pointer-events: none
+    }
+
+    @keyframes floatP {
+      0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0
+      }
+
+      10% {
+        opacity: .5
+      }
+
+      90% {
+        opacity: .2
+      }
+
+      100% {
+        transform: translateY(-100px) scale(1);
+        opacity: 0
+      }
+    }
 
     /* Ticker */
-    .ticker-outer{overflow:hidden;width:100%}
-    .ticker-track{display:flex;width:max-content;animation:tickScroll 40s linear infinite}
-    @keyframes tickScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-    .ticker-item{display:inline-flex;align-items:center;white-space:nowrap;padding:0 2rem;font-size:.75rem}
+    .ticker-outer {
+      overflow: hidden;
+      width: 100%
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: tickScroll 40s linear infinite
+    }
+
+    @keyframes tickScroll {
+      0% {
+        transform: translateX(0)
+      }
+
+      100% {
+        transform: translateX(-50%)
+      }
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      padding: 0 2rem;
+      font-size: .75rem
+    }
 
     /* Image gradient fade */
-    .img-fade{position:relative;overflow:hidden;border-radius:1.5rem}
-    .img-fade img{width:100%;height:100%;object-fit:cover;display:block}
-    .img-fade::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,0.85) 100%),linear-gradient(90deg,rgba(0,0,0,0.3) 0%,transparent 20%,transparent 80%,rgba(0,0,0,0.3) 100%);pointer-events:none}
-    .img-fade-soft::after{background:radial-gradient(ellipse at center,transparent 30%,rgba(0,0,0,0.9) 100%)}
-    .img-fade-hero::after{background:linear-gradient(180deg,rgba(0,0,0,0.2) 0%,transparent 30%,transparent 50%,rgba(0,0,0,0.95) 100%)}
+    .img-fade {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1.5rem
+    }
+
+    .img-fade img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .img-fade::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.85) 100%), linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, transparent 20%, transparent 80%, rgba(0, 0, 0, 0.3) 100%);
+      pointer-events: none
+    }
+
+    .img-fade-soft::after {
+      background: radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.9) 100%)
+    }
+
+    .img-fade-hero::after {
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, transparent 30%, transparent 50%, rgba(0, 0, 0, 0.95) 100%)
+    }
 
     /* Form */
-    .form-input{background:rgba(0,0,0,0.6);border:2px solid rgba(0,136,98,0.4);color:#fff;transition:all .3s}
-    .form-input:focus{outline:none;border-color:#4cbf93;box-shadow:0 0 0 4px rgba(0,136,98,.15);background:rgba(0,136,98,.05)}
-    .form-input::placeholder{color:rgba(255,255,255,.3)}
+    .form-input {
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid rgba(0, 136, 98, 0.4);
+      color: #fff;
+      transition: all .3s
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #4cbf93;
+      box-shadow: 0 0 0 4px rgba(0, 136, 98, .15);
+      background: rgba(0, 136, 98, .05)
+    }
+
+    .form-input::placeholder {
+      color: rgba(255, 255, 255, .3)
+    }
 
     /* Floating CTA */
-    #floatingCTA{position:fixed;bottom:24px;right:24px;z-index:999;opacity:0;transform:translateY(20px);transition:all .4s ease;pointer-events:none}
-    #floatingCTA.show{opacity:1;transform:translateY(0);pointer-events:auto}
+    #floatingCTA {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all .4s ease;
+      pointer-events: none
+    }
+
+    #floatingCTA.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto
+    }
 
     /* Success */
-    #successPage{display:none;position:fixed;inset:0;z-index:9999;background:#000;align-items:center;justify-content:center}
-    #successPage.active{display:flex}
-    .success-ring{width:120px;height:120px;border-radius:50%;border:3px solid #4cbf93;box-shadow:0 0 40px rgba(76,191,147,.5);animation:pulseG 2s ease-in-out infinite}
-    @keyframes pulseG{0%,100%{box-shadow:0 0 0 0 rgba(0,136,98,.4)}50%{box-shadow:0 0 0 20px rgba(0,136,98,0)}}
+    #successPage {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #000;
+      align-items: center;
+      justify-content: center
+    }
+
+    #successPage.active {
+      display: flex
+    }
+
+    .success-ring {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid #4cbf93;
+      box-shadow: 0 0 40px rgba(76, 191, 147, .5);
+      animation: pulseG 2s ease-in-out infinite
+    }
+
+    @keyframes pulseG {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(0, 136, 98, .4)
+      }
+
+      50% {
+        box-shadow: 0 0 0 20px rgba(0, 136, 98, 0)
+      }
+    }
 
     /* Nav */
-    nav{background:rgba(0,0,0,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,136,98,.15)}
-    .section-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(0,136,98,.5),transparent)}
-    .bg-grid{background-image:linear-gradient(rgba(0,136,98,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,136,98,.05) 1px,transparent 1px);background-size:60px 60px}
+    nav {
+      background: rgba(0, 0, 0, .85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 136, 98, .15)
+    }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0, 136, 98, .5), transparent)
+    }
+
+    .bg-grid {
+      background-image: linear-gradient(rgba(0, 136, 98, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 136, 98, .05) 1px, transparent 1px);
+      background-size: 60px 60px
+    }
 
     /* WhatsApp */
-    .whatsapp-btn{background:linear-gradient(135deg,#25d366,#128c7e);transition:all .3s}
-    .whatsapp-btn:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(37,211,102,.4)}
+    .whatsapp-btn {
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      transition: all .3s
+    }
+
+    .whatsapp-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(37, 211, 102, .4)
+    }
 
     /* PRO badge aligned */
-    .pro-badge{display:inline-flex;align-items:center;vertical-align:middle;font-size:.65rem;background:rgba(0,136,98,.2);border:1px solid rgba(0,136,98,.3);color:#6adbae;padding:2px 8px;border-radius:9999px;font-weight:600;margin-left:6px;line-height:1}
+    .pro-badge {
+      display: inline-flex;
+      align-items: center;
+      vertical-align: middle;
+      font-size: .65rem;
+      background: rgba(0, 136, 98, .2);
+      border: 1px solid rgba(0, 136, 98, .3);
+      color: #6adbae;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      font-weight: 600;
+      margin-left: 6px;
+      line-height: 1
+    }
 
     /* Mobile first */
-    @media(max-width:768px){
-      .hero-grid{grid-template-columns:1fr!important;text-align:center}
-      .hero-form-wrap{order:2;margin-top:2rem}
-      .hero-text-wrap{order:1}
-      .strategy-grid{grid-template-columns:1fr!important}
-      .strategy-grid .order-1,.strategy-grid .order-2{order:unset!important}
-      .community-grid{grid-template-columns:1fr!important}
-      .testimonials-grid{grid-template-columns:1fr!important}
-      .footer-inner{flex-direction:column;text-align:center;gap:1.5rem}
-      h1{font-size:2.4rem!important}
-      h2{font-size:1.8rem!important}
-      .stats-grid{gap:.5rem!important}
-      .stat-num{font-size:1.6rem!important}
-      #floatingCTA{bottom:16px;right:16px;left:16px}
-      #floatingCTA a{width:100%;justify-content:center}
+    @media(max-width:768px) {
+      .hero-grid {
+        grid-template-columns: 1fr !important;
+        text-align: center
+      }
+
+      .hero-form-wrap {
+        order: 2;
+        margin-top: 2rem
+      }
+
+      .hero-text-wrap {
+        order: 1
+      }
+
+      .strategy-grid {
+        grid-template-columns: 1fr !important
+      }
+
+      .strategy-grid .order-1,
+      .strategy-grid .order-2 {
+        order: unset !important
+      }
+
+      .community-grid {
+        grid-template-columns: 1fr !important
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr !important
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem
+      }
+
+      h1 {
+        font-size: 2.4rem !important
+      }
+
+      h2 {
+        font-size: 1.8rem !important
+      }
+
+      .stats-grid {
+        gap: .5rem !important
+      }
+
+      .stat-num {
+        font-size: 1.6rem !important
+      }
+
+      #floatingCTA {
+        bottom: 16px;
+        right: 16px;
+        left: 16px
+      }
+
+      #floatingCTA a {
+        width: 100%;
+        justify-content: center
+      }
     }
   </style>
 </head>
+
 <body>
   <div id="particles" class="fixed inset-0 pointer-events-none z-0 overflow-hidden"></div>
 
@@ -121,14 +421,20 @@
       <a href="#" class="font-display font-bold text-lg sm:text-xl tracking-tight flex items-center">
         <span class="text-white">CRIPTO</span><span class="gradient-text"> ZION</span><span class="pro-badge">PRO</span>
       </a>
-      <a href="#cadastro" class="btn-cta text-black font-bold px-5 py-2 rounded-full text-sm hidden sm:inline-flex items-center gap-2">
+      <a href="calculadora.html"
+        class="text-sm text-white/60 hover:text-primary-glow transition-colors hidden sm:inline-flex items-center gap-1.5">
+        <i class="fas fa-calculator text-xs"></i> Calculadora DCA
+      </a>
+      <a href="#cadastro"
+        class="btn-cta text-black font-bold px-5 py-2 rounded-full text-sm hidden sm:inline-flex items-center gap-2">
         <i class="fas fa-bolt text-xs"></i> Quero Acesso
       </a>
     </div>
   </nav>
 
   <!-- TICKER -->
-  <div class="fixed top-0 left-0 right-0 z-40 mt-[56px] bg-black/80 border-b border-primary/10 py-1.5 font-mono text-primary-glow/70">
+  <div
+    class="fixed top-0 left-0 right-0 z-40 mt-[56px] bg-black/80 border-b border-primary/10 py-1.5 font-mono text-primary-glow/70">
     <div class="ticker-outer">
       <div class="ticker-track">
         <span class="ticker-item">₿ BTC — HODL</span>
@@ -156,22 +462,28 @@
   ═══════════════════════════════════ -->
   <section class="min-h-screen flex items-center relative pt-28 sm:pt-32 pb-16 px-4 sm:px-6 bg-grid" id="hero">
     <!-- BG glow -->
-    <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,136,98,.15) 0%,transparent 60%)"></div>
+    <div class="absolute inset-0 pointer-events-none"
+      style="background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,136,98,.15) 0%,transparent 60%)"></div>
 
     <div class="max-w-6xl mx-auto relative z-10 w-full">
-      <div class="hero-grid grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center" style="grid-template-columns:1.2fr 1fr">
+      <div class="hero-grid grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center"
+        style="grid-template-columns:1.2fr 1fr">
 
         <!-- Left: Text -->
         <div class="hero-text-wrap">
-          <div class="reveal inline-flex items-center gap-2 bg-primary/10 border border-primary/30 text-primary-glow px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium mb-6">
+          <div
+            class="reveal inline-flex items-center gap-2 bg-primary/10 border border-primary/30 text-primary-glow px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium mb-6">
             <span class="w-2 h-2 bg-primary-bright rounded-full animate-pulse"></span>
             Lista de Espera Aberta
           </div>
-          <h1 class="reveal font-display font-black text-4xl sm:text-5xl md:text-6xl leading-[1.05] tracking-tight mb-5" style="transition-delay:.1s">
+          <h1 class="reveal font-display font-black text-4xl sm:text-5xl md:text-6xl leading-[1.05] tracking-tight mb-5"
+            style="transition-delay:.1s">
             Invista Cripto<br><span class="gradient-text-bright">Com Estratégia</span>
           </h1>
-          <p class="reveal text-base sm:text-lg text-white/60 leading-relaxed max-w-lg mb-8" style="transition-delay:.2s">
-            A comunidade que <strong class="text-white/90">pensa no longo prazo.</strong> DCA, Buy the Dip, Scaling Out e Pools de Liquidez — aprenda a construir patrimônio de verdade no mercado cripto.
+          <p class="reveal text-base sm:text-lg text-white/60 leading-relaxed max-w-lg mb-8"
+            style="transition-delay:.2s">
+            A comunidade que <strong class="text-white/90">pensa no longo prazo.</strong> DCA, Buy the Dip, Scaling Out
+            e Pools de Liquidez — aprenda a construir patrimônio de verdade no mercado cripto.
           </p>
           <!-- Stats inline -->
           <div class="reveal stats-grid grid grid-cols-3 gap-3 sm:gap-6 max-w-md" style="transition-delay:.3s">
@@ -198,28 +510,35 @@
               <p class="text-white/40 text-xs sm:text-sm">Seja avisado antes de todo mundo</p>
             </div>
             <form id="heroForm" novalidate>
-              <input type="text" name="name" placeholder="Seu nome" required class="form-input w-full px-4 py-3 rounded-xl text-sm mb-3">
-              <input type="email" name="email" placeholder="Melhor email" required class="form-input w-full px-4 py-3 rounded-xl text-sm mb-3">
-              <input type="tel" name="whatsapp" placeholder="WhatsApp (00) 00000-0000" required class="form-input w-full px-4 py-3 rounded-xl text-sm mb-3 whatsapp-mask">
-              
+              <input type="text" name="name" placeholder="Seu nome" required
+                class="form-input w-full px-4 py-3 rounded-xl text-sm mb-3">
+              <input type="email" name="email" placeholder="Melhor email" required
+                class="form-input w-full px-4 py-3 rounded-xl text-sm mb-3">
+              <input type="tel" name="whatsapp" placeholder="WhatsApp (00) 00000-0000" required
+                class="form-input w-full px-4 py-3 rounded-xl text-sm mb-3 whatsapp-mask">
+
               <!-- Honeypot anti-bot (invisível) -->
               <div class="hidden" aria-hidden="true">
                 <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
               </div>
-              
+
               <!-- LGPD Checkbox -->
               <div class="mb-3">
                 <label class="flex items-start gap-2 text-[10px] text-white/60 cursor-pointer">
-                  <input type="checkbox" id="lgpdConsent" required class="mt-0.5 w-3 h-3 rounded border-primary/30 bg-black/60 text-primary focus:ring-primary">
-                  <span>Aceito a <a href="/privacidade.html" class="text-primary-glow hover:underline" target="_blank">Política de Privacidade</a></span>
+                  <input type="checkbox" id="lgpdConsent" required
+                    class="mt-0.5 w-3 h-3 rounded border-primary/30 bg-black/60 text-primary focus:ring-primary">
+                  <span>Aceito a <a href="/privacidade.html" class="text-primary-glow hover:underline"
+                      target="_blank">Política de Privacidade</a></span>
                 </label>
               </div>
-              
-              <button type="submit" class="btn-cta w-full text-black font-bold py-3 rounded-xl text-sm flex items-center justify-center gap-2">
+
+              <button type="submit"
+                class="btn-cta w-full text-black font-bold py-3 rounded-xl text-sm flex items-center justify-center gap-2">
                 <i class="fas fa-rocket"></i> Entrar na Lista VIP
               </button>
             </form>
-            <p class="text-center text-white/25 text-[10px] mt-3"><i class="fas fa-lock mr-1"></i> Sem spam. Dados protegidos.</p>
+            <p class="text-center text-white/25 text-[10px] mt-3"><i class="fas fa-lock mr-1"></i> Sem spam. Dados
+              protegidos.</p>
           </div>
         </div>
       </div>
@@ -234,14 +553,17 @@
   <section class="py-20 sm:py-24 px-4 sm:px-6 relative overflow-hidden" id="sobre">
     <div class="absolute inset-0 bg-gradient-to-b from-dark-2 to-black pointer-events-none"></div>
     <div class="max-w-5xl mx-auto relative z-10">
-      <div class="strategy-grid grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center" style="grid-template-columns:auto 1.4fr">
+      <div class="strategy-grid grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center"
+        style="grid-template-columns:auto 1.4fr">
 
         <div class="reveal-left">
           <div class="relative max-w-xs mx-auto">
             <div class="img-fade img-fade-soft rounded-3xl neon-border" style="height:380px">
-              <img src="images/fealty-profile.jpg" alt="Fealty - Fundador Cripto Zion" style="object-position:top" loading="lazy">
+              <img src="images/fealty-profile.jpg" alt="Fealty - Fundador Cripto Zion" style="object-position:top"
+                loading="lazy">
             </div>
-            <div class="absolute -bottom-3 -right-3 glass-card rounded-xl px-3 py-2 neon-border text-center" style="background:rgba(0,0,0,.8)">
+            <div class="absolute -bottom-3 -right-3 glass-card rounded-xl px-3 py-2 neon-border text-center"
+              style="background:rgba(0,0,0,.8)">
               <div class="text-primary-glow font-bold text-sm">4+ anos</div>
               <div class="text-white/40 text-[10px]">no mercado</div>
             </div>
@@ -249,39 +571,70 @@
         </div>
 
         <div class="reveal-right">
-          <span class="text-primary-bright text-xs font-semibold uppercase tracking-widest">Quem Construiu a Cripto Zion</span>
+          <span class="text-primary-bright text-xs font-semibold uppercase tracking-widest">Quem Construiu a Cripto
+            Zion</span>
           <div class="flex items-center gap-2 mt-2 mb-4">
-            <span class="bg-primary/10 border border-primary/20 text-primary-glow text-xs font-semibold px-3 py-1 rounded-full"><i class="fas fa-star mr-1"></i>Fundador & Educador</span>
+            <span
+              class="bg-primary/10 border border-primary/20 text-primary-glow text-xs font-semibold px-3 py-1 rounded-full"><i
+                class="fas fa-star mr-1"></i>Fundador & Educador</span>
           </div>
           <h2 class="font-display font-black text-2xl sm:text-3xl md:text-4xl mb-5">
             Não prometo <span class="gradient-text">enriquecimento rápido</span>. Prometo estratégia real.
           </h2>
           <p class="text-white/60 leading-relaxed mb-3 text-sm sm:text-base">
-            Há 4 anos entrei no mercado cripto como qualquer pessoa: cheio de dúvidas, caindo em armadilhas de emoção e tentando adivinhar o momento certo de comprar. Com o tempo, aprendi que <strong class="text-white">consistência vence timing</strong>. Desenvolvi minha própria metodologia de DCA — não aquele genérico que todo mundo fala, mas um <strong class="text-primary-glow">DCA otimizado com regras claras de rebalanceamento e realização estratégica de capital</strong>.
+            Há 4 anos entrei no mercado cripto como qualquer pessoa: cheio de dúvidas, caindo em armadilhas de emoção e
+            tentando adivinhar o momento certo de comprar. Com o tempo, aprendi que <strong
+              class="text-white">consistência vence timing</strong>. Desenvolvi minha própria metodologia de DCA — não
+            aquele genérico que todo mundo fala, mas um <strong class="text-primary-glow">DCA otimizado com regras
+              claras de rebalanceamento e realização estratégica de capital</strong>.
           </p>
           <p class="text-white/60 leading-relaxed mb-4 text-sm sm:text-base">
-            Sou holder de verdade, mas holder inteligente. Aprendi que segurar ativos é só metade do jogo — a outra metade é <strong class="text-white">saber quando realizar lucros sem sair do jogo</strong>. E quando descobri as pools de liquidez em DeFi, minha visão mudou: hoje uso essa <strong class="text-primary-glow">renda ativa</strong> (sim, ativa, porque exige gestão de range e acompanhamento) para complementar minha estratégia e otimizar meu portfólio.
+            Sou holder de verdade, mas holder inteligente. Aprendi que segurar ativos é só metade do jogo — a outra
+            metade é <strong class="text-white">saber quando realizar lucros sem sair do jogo</strong>. E quando
+            descobri as pools de liquidez em DeFi, minha visão mudou: hoje uso essa <strong
+              class="text-primary-glow">renda ativa</strong> (sim, ativa, porque exige gestão de range e acompanhamento)
+            para complementar minha estratégia e otimizar meu portfólio.
           </p>
           <p class="text-white/60 leading-relaxed mb-6 text-sm sm:text-base">
-            Criei a <strong class="text-white">Cripto Zion Pro</strong> para compartilhar essa jornada de aprendizado. Aqui você acompanha a <strong class="text-white">carteira da comunidade</strong> — um exemplo vivo das estratégias aplicadas, com total transparência de onde está cada recurso, para que você aprenda na prática, não na teoria. Estou aqui aprendendo junto, todos os dias.
+            Criei a <strong class="text-white">Cripto Zion Pro</strong> para compartilhar essa jornada de aprendizado.
+            Aqui você acompanha a <strong class="text-white">carteira da comunidade</strong> — um exemplo vivo das
+            estratégias aplicadas, com total transparência de onde está cada recurso, para que você aprenda na prática,
+            não na teoria. Estou aqui aprendendo junto, todos os dias.
           </p>
 
           <!-- Minha Jornada -->
           <div class="glass-card neon-border rounded-xl p-4 mb-5">
-            <h4 class="font-display font-bold text-sm text-primary-glow mb-3"><i class="fas fa-seedling mr-2"></i>O que venho construindo</h4>
+            <h4 class="font-display font-bold text-sm text-primary-glow mb-3"><i class="fas fa-seedling mr-2"></i>O que
+              venho construindo</h4>
             <ul class="space-y-2">
-              <li class="flex items-center gap-2 text-white/70 text-xs sm:text-sm"><i class="fas fa-check-circle text-primary-bright flex-shrink-0 text-xs"></i>4 anos de aprendizado prático no mercado cripto</li>
-              <li class="flex items-center gap-2 text-white/70 text-xs sm:text-sm"><i class="fas fa-check-circle text-primary-bright flex-shrink-0 text-xs"></i>Metodologia DCA otimizada com regras de rebalanceamento</li>
-              <li class="flex items-center gap-2 text-white/70 text-xs sm:text-sm"><i class="fas fa-check-circle text-primary-bright flex-shrink-0 text-xs"></i>Estratégia de realização de capital para holders</li>
-              <li class="flex items-center gap-2 text-white/70 text-xs sm:text-sm"><i class="fas fa-check-circle text-primary-bright flex-shrink-0 text-xs"></i>Gestão de pools de liquidez como renda ativa em DeFi</li>
+              <li class="flex items-center gap-2 text-white/70 text-xs sm:text-sm"><i
+                  class="fas fa-check-circle text-primary-bright flex-shrink-0 text-xs"></i>4 anos de aprendizado
+                prático no mercado cripto</li>
+              <li class="flex items-center gap-2 text-white/70 text-xs sm:text-sm"><i
+                  class="fas fa-check-circle text-primary-bright flex-shrink-0 text-xs"></i>Metodologia DCA otimizada
+                com regras de rebalanceamento</li>
+              <li class="flex items-center gap-2 text-white/70 text-xs sm:text-sm"><i
+                  class="fas fa-check-circle text-primary-bright flex-shrink-0 text-xs"></i>Estratégia de realização de
+                capital para holders</li>
+              <li class="flex items-center gap-2 text-white/70 text-xs sm:text-sm"><i
+                  class="fas fa-check-circle text-primary-bright flex-shrink-0 text-xs"></i>Gestão de pools de liquidez
+                como renda ativa em DeFi</li>
             </ul>
           </div>
 
           <div class="flex flex-wrap gap-2">
-            <a href="https://www.youtube.com/@CriptoZion" target="_blank" class="glass-card text-white/60 hover:text-red-400 px-3 py-1.5 rounded-lg text-xs flex items-center gap-2 transition-colors border border-white/10 hover:border-red-500/30"><i class="fab fa-youtube"></i> YouTube</a>
-            <a href="https://x.com/0xFealty" target="_blank" class="glass-card text-white/60 hover:text-white px-3 py-1.5 rounded-lg text-xs flex items-center gap-2 transition-colors border border-white/10 hover:border-white/30"><i class="fab fa-x-twitter"></i> X</a>
-            <a href="https://www.instagram.com/criptozion" target="_blank" class="glass-card text-white/60 hover:text-pink-400 px-3 py-1.5 rounded-lg text-xs flex items-center gap-2 transition-colors border border-white/10 hover:border-pink-500/30"><i class="fab fa-instagram"></i> Instagram</a>
-            <a href="https://www.linkedin.com/in/fealty-crypto-960791318/" target="_blank" class="glass-card text-white/60 hover:text-blue-400 px-3 py-1.5 rounded-lg text-xs flex items-center gap-2 transition-colors border border-white/10 hover:border-blue-500/30"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://www.youtube.com/@CriptoZion" target="_blank"
+              class="glass-card text-white/60 hover:text-red-400 px-3 py-1.5 rounded-lg text-xs flex items-center gap-2 transition-colors border border-white/10 hover:border-red-500/30"><i
+                class="fab fa-youtube"></i> YouTube</a>
+            <a href="https://x.com/0xFealty" target="_blank"
+              class="glass-card text-white/60 hover:text-white px-3 py-1.5 rounded-lg text-xs flex items-center gap-2 transition-colors border border-white/10 hover:border-white/30"><i
+                class="fab fa-x-twitter"></i> X</a>
+            <a href="https://www.instagram.com/criptozion" target="_blank"
+              class="glass-card text-white/60 hover:text-pink-400 px-3 py-1.5 rounded-lg text-xs flex items-center gap-2 transition-colors border border-white/10 hover:border-pink-500/30"><i
+                class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://www.linkedin.com/in/fealty-crypto-960791318/" target="_blank"
+              class="glass-card text-white/60 hover:text-blue-400 px-3 py-1.5 rounded-lg text-xs flex items-center gap-2 transition-colors border border-white/10 hover:border-blue-500/30"><i
+                class="fab fa-linkedin"></i> LinkedIn</a>
           </div>
         </div>
       </div>
@@ -290,8 +643,10 @@
 
   <!-- MINI CTA between sections -->
   <div class="py-10 px-4 text-center relative">
-    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent pointer-events-none"></div>
-    <a href="#cadastro" class="btn-cta inline-flex text-black font-bold px-8 py-3 rounded-full text-sm items-center gap-2 relative z-10">
+    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent pointer-events-none">
+    </div>
+    <a href="#cadastro"
+      class="btn-cta inline-flex text-black font-bold px-8 py-3 rounded-full text-sm items-center gap-2 relative z-10">
       <i class="fas fa-bolt"></i> Quero Acesso Antecipado
     </a>
   </div>
@@ -309,24 +664,34 @@
         <h2 class="font-display font-black text-3xl sm:text-4xl md:text-5xl mt-3">
           Quatro estratégias.<br><span class="gradient-text">Uma filosofia.</span>
         </h2>
-        <p class="text-white/50 mt-3 text-sm sm:text-base max-w-xl mx-auto">O método que sustenta a construção de patrimônio consistente no mercado cripto.</p>
+        <p class="text-white/50 mt-3 text-sm sm:text-base max-w-xl mx-auto">O método que sustenta a construção de
+          patrimônio consistente no mercado cripto.</p>
       </div>
 
       <!-- DCA -->
       <div class="reveal strategy-grid grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center mb-16">
         <div class="order-2 md:order-1">
-          <div class="inline-flex items-center gap-2 text-primary-glow text-xs font-semibold bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-3">
+          <div
+            class="inline-flex items-center gap-2 text-primary-glow text-xs font-semibold bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-3">
             <i class="fas fa-chart-line text-xs"></i> Estratégia 01
           </div>
-          <h3 class="font-display font-black text-2xl sm:text-3xl mb-3">Dollar Cost Averaging <span class="gradient-text">(DCA)</span></h3>
-          <p class="text-white/60 leading-relaxed mb-5 text-sm sm:text-base">Compre em intervalos fixos, independente do preço. Você <strong class="text-white">elimina o risco emocional</strong> e reduz o preço médio ao longo do tempo.</p>
+          <h3 class="font-display font-black text-2xl sm:text-3xl mb-3">Dollar Cost Averaging <span
+              class="gradient-text">(DCA)</span></h3>
+          <p class="text-white/60 leading-relaxed mb-5 text-sm sm:text-base">Compre em intervalos fixos, independente do
+            preço. Você <strong class="text-white">elimina o risco emocional</strong> e reduz o preço médio ao longo do
+            tempo.</p>
           <ul class="space-y-2">
-            <li class="flex items-start gap-2 text-white/70 text-sm"><i class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Aportes fixos mensais — funciona com R$50/mês</li>
-            <li class="flex items-start gap-2 text-white/70 text-sm"><i class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Disciplina acima de qualquer análise</li>
+            <li class="flex items-start gap-2 text-white/70 text-sm"><i
+                class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Aportes fixos mensais —
+              funciona com R$50/mês</li>
+            <li class="flex items-start gap-2 text-white/70 text-sm"><i
+                class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Disciplina acima de
+              qualquer análise</li>
           </ul>
         </div>
         <div class="order-1 md:order-2">
-          <div class="img-fade img-fade-hero" style="height:280px"><img src="images/fealty-dca.jpg" loading="lazy" alt="DCA"></div>
+          <div class="img-fade img-fade-hero" style="height:280px"><img src="images/fealty-dca.jpg" loading="lazy"
+              alt="DCA"></div>
         </div>
       </div>
 
@@ -335,24 +700,34 @@
       <!-- BUY THE DIP -->
       <div class="reveal strategy-grid grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center mb-16">
         <div>
-          <div class="img-fade img-fade-hero" style="height:280px"><img src="images/buy-the-dip.jpg" loading="lazy" alt="Buy the Dip"></div>
+          <div class="img-fade img-fade-hero" style="height:280px"><img src="images/buy-the-dip.jpg" loading="lazy"
+              alt="Buy the Dip"></div>
         </div>
         <div>
-          <div class="inline-flex items-center gap-2 text-primary-glow text-xs font-semibold bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-3">
+          <div
+            class="inline-flex items-center gap-2 text-primary-glow text-xs font-semibold bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-3">
             <i class="fas fa-arrow-trend-down text-xs"></i> Estratégia 02
           </div>
-          <h3 class="font-display font-black text-2xl sm:text-3xl mb-3"><span class="gradient-text">Buy the Dip</span> — Compre a queda</h3>
-          <p class="text-white/60 leading-relaxed mb-5 text-sm sm:text-base">Quando o mercado cai, o investidor estratégico <strong class="text-white">enxerga oportunidade</strong>. A arte de acumular mais ativos quando os preços recuam.</p>
+          <h3 class="font-display font-black text-2xl sm:text-3xl mb-3"><span class="gradient-text">Buy the Dip</span> —
+            Compre a queda</h3>
+          <p class="text-white/60 leading-relaxed mb-5 text-sm sm:text-base">Quando o mercado cai, o investidor
+            estratégico <strong class="text-white">enxerga oportunidade</strong>. A arte de acumular mais ativos quando
+            os preços recuam.</p>
           <ul class="space-y-2">
-            <li class="flex items-start gap-2 text-white/70 text-sm"><i class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Define níveis de suporte para compras estratégicas</li>
-            <li class="flex items-start gap-2 text-white/70 text-sm"><i class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Mentalidade de longo prazo — queda é desconto</li>
+            <li class="flex items-start gap-2 text-white/70 text-sm"><i
+                class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Define níveis de
+              suporte para compras estratégicas</li>
+            <li class="flex items-start gap-2 text-white/70 text-sm"><i
+                class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Mentalidade de longo
+              prazo — queda é desconto</li>
           </ul>
         </div>
       </div>
 
       <!-- CTA between strategies -->
       <div class="text-center my-10">
-        <a href="#cadastro" class="btn-cta inline-flex text-black font-bold px-7 py-3 rounded-full text-sm items-center gap-2">
+        <a href="#cadastro"
+          class="btn-cta inline-flex text-black font-bold px-7 py-3 rounded-full text-sm items-center gap-2">
           <i class="fas fa-rocket text-xs"></i> Cadastre-se Agora
         </a>
       </div>
@@ -362,18 +737,27 @@
       <!-- SCALING OUT -->
       <div class="reveal strategy-grid grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center mb-16">
         <div class="order-2 md:order-1">
-          <div class="inline-flex items-center gap-2 text-primary-glow text-xs font-semibold bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-3">
+          <div
+            class="inline-flex items-center gap-2 text-primary-glow text-xs font-semibold bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-3">
             <i class="fas fa-bullseye text-xs"></i> Estratégia 03
           </div>
-          <h3 class="font-display font-black text-2xl sm:text-3xl mb-3"><span class="gradient-text">Scaling Out</span> — Realize sem largar</h3>
-          <p class="text-white/60 leading-relaxed mb-5 text-sm sm:text-base">Você <strong class="text-white">realiza lucros em partes</strong>, reduzindo risco enquanto mantém exposição. A arte de sair no topo sem tentar adivinhar.</p>
+          <h3 class="font-display font-black text-2xl sm:text-3xl mb-3"><span class="gradient-text">Scaling Out</span> —
+            Realize sem largar</h3>
+          <p class="text-white/60 leading-relaxed mb-5 text-sm sm:text-base">Você <strong class="text-white">realiza
+              lucros em partes</strong>, reduzindo risco enquanto mantém exposição. A arte de sair no topo sem tentar
+            adivinhar.</p>
           <ul class="space-y-2">
-            <li class="flex items-start gap-2 text-white/70 text-sm"><i class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Define alvos de preço com antecedência</li>
-            <li class="flex items-start gap-2 text-white/70 text-sm"><i class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Remove a emoção das decisões de venda</li>
+            <li class="flex items-start gap-2 text-white/70 text-sm"><i
+                class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Define alvos de preço
+              com antecedência</li>
+            <li class="flex items-start gap-2 text-white/70 text-sm"><i
+                class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Remove a emoção das
+              decisões de venda</li>
           </ul>
         </div>
         <div class="order-1 md:order-2">
-          <div class="img-fade img-fade-hero" style="height:280px"><img src="images/fealty-green.jpg" loading="lazy" alt="Scaling Out"></div>
+          <div class="img-fade img-fade-hero" style="height:280px"><img src="images/fealty-green.jpg" loading="lazy"
+              alt="Scaling Out"></div>
         </div>
       </div>
 
@@ -382,17 +766,27 @@
       <!-- POOLS -->
       <div class="reveal strategy-grid grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center">
         <div>
-          <div class="img-fade img-fade-hero" style="height:280px"><img src="images/fealty-thumbnails.jpg" loading="lazy" alt="Pools de Liquidez"></div>
+          <div class="img-fade img-fade-hero" style="height:280px"><img src="images/fealty-thumbnails.jpg"
+              loading="lazy" alt="Pools de Liquidez"></div>
         </div>
         <div>
-          <div class="inline-flex items-center gap-2 text-primary-glow text-xs font-semibold bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-3">
+          <div
+            class="inline-flex items-center gap-2 text-primary-glow text-xs font-semibold bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-3">
             <i class="fas fa-water text-xs"></i> Estratégia 04
           </div>
-          <h3 class="font-display font-black text-2xl sm:text-3xl mb-3">Pools de <span class="gradient-text">Liquidez</span> — DeFi real</h3>
-          <p class="text-white/60 leading-relaxed mb-5 text-sm sm:text-base">Forneça liquidez em pools como ETH/USDC e <strong class="text-white">ganhe uma fração de cada operação</strong> realizada naquele par. É <strong class="text-primary-glow">renda ativa</strong>: exige gestão de range, rebalanço e acompanhamento constante, mas pode complementar e otimizar seu portfólio de forma eficiente.</p>
+          <h3 class="font-display font-black text-2xl sm:text-3xl mb-3">Pools de <span
+              class="gradient-text">Liquidez</span> — DeFi real</h3>
+          <p class="text-white/60 leading-relaxed mb-5 text-sm sm:text-base">Forneça liquidez em pools como ETH/USDC e
+            <strong class="text-white">ganhe uma fração de cada operação</strong> realizada naquele par. É <strong
+              class="text-primary-glow">renda ativa</strong>: exige gestão de range, rebalanço e acompanhamento
+            constante, mas pode complementar e otimizar seu portfólio de forma eficiente.</p>
           <ul class="space-y-2">
-            <li class="flex items-start gap-2 text-white/70 text-sm"><i class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Base e Arbitrum: taxas de centavos</li>
-            <li class="flex items-start gap-2 text-white/70 text-sm"><i class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Gestão de range para maximizar retorno</li>
+            <li class="flex items-start gap-2 text-white/70 text-sm"><i
+                class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Base e Arbitrum: taxas
+              de centavos</li>
+            <li class="flex items-start gap-2 text-white/70 text-sm"><i
+                class="fas fa-check-circle text-primary-bright mt-0.5 flex-shrink-0 text-xs"></i>Gestão de range para
+              maximizar retorno</li>
           </ul>
         </div>
       </div>
@@ -409,39 +803,64 @@
     <div class="max-w-5xl mx-auto relative z-10">
       <div class="reveal text-center mb-14">
         <span class="text-primary-bright text-xs font-semibold uppercase tracking-widest">A comunidade</span>
-        <h2 class="font-display font-black text-3xl sm:text-4xl md:text-5xl mt-3 mb-4">Uma comunidade que<br><span class="gradient-text">pensa diferente</span></h2>
-        <p class="text-white/50 text-sm sm:text-base max-w-xl mx-auto">Sem FOMO. Sem tips de shitcoin. Aqui quem entra vem para construir patrimônio com seriedade.</p>
+        <h2 class="font-display font-black text-3xl sm:text-4xl md:text-5xl mt-3 mb-4">Uma comunidade que<br><span
+            class="gradient-text">pensa diferente</span></h2>
+        <p class="text-white/50 text-sm sm:text-base max-w-xl mx-auto">Sem FOMO. Sem tips de shitcoin. Aqui quem entra
+          vem para construir patrimônio com seriedade.</p>
       </div>
       <div class="community-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 mb-14">
-        <div class="reveal glass-card neon-border rounded-2xl p-5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1">
-          <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center mb-3"><i class="fas fa-graduation-cap text-primary-glow"></i></div>
+        <div
+          class="reveal glass-card neon-border rounded-2xl p-5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1">
+          <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center mb-3"><i
+              class="fas fa-graduation-cap text-primary-glow"></i></div>
           <h4 class="font-display font-bold text-base mb-1">Educação Real</h4>
-          <p class="text-white/50 text-xs leading-relaxed">Conteúdo profundo sobre DCA, Buy the Dip, DeFi e gestão de risco.</p>
+          <p class="text-white/50 text-xs leading-relaxed">Conteúdo profundo sobre DCA, Buy the Dip, DeFi e gestão de
+            risco.</p>
         </div>
-        <div class="reveal glass-card neon-border rounded-2xl p-5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1" style="transition-delay:.1s">
-          <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center mb-3"><i class="fas fa-eye text-primary-glow"></i></div>
+        <div
+          class="reveal glass-card neon-border rounded-2xl p-5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1"
+          style="transition-delay:.1s">
+          <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center mb-3"><i
+              class="fas fa-eye text-primary-glow"></i></div>
           <h4 class="font-display font-bold text-base mb-1">Carteira Transparente</h4>
-          <p class="text-white/50 text-xs leading-relaxed">Veja onde cada real está investido. BTC, ETH, pools — tudo documentado.</p>
+          <p class="text-white/50 text-xs leading-relaxed">Veja onde cada real está investido. BTC, ETH, pools — tudo
+            documentado.</p>
         </div>
-        <div class="reveal glass-card neon-border rounded-2xl p-5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1" style="transition-delay:.2s">
-          <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center mb-3"><i class="fas fa-users text-primary-glow"></i></div>
+        <div
+          class="reveal glass-card neon-border rounded-2xl p-5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1"
+          style="transition-delay:.2s">
+          <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center mb-3"><i
+              class="fas fa-users text-primary-glow"></i></div>
           <h4 class="font-display font-bold text-base mb-1">Membros Sérios</h4>
-          <p class="text-white/50 text-xs leading-relaxed">Investidores que pensam no longo prazo. Troca de experiências real.</p>
+          <p class="text-white/50 text-xs leading-relaxed">Investidores que pensam no longo prazo. Troca de experiências
+            real.</p>
         </div>
-        <div class="reveal glass-card neon-border rounded-2xl p-5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1" style="transition-delay:.3s">
-          <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center mb-3"><i class="fas fa-chart-bar text-primary-glow"></i></div>
+        <div
+          class="reveal glass-card neon-border rounded-2xl p-5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1"
+          style="transition-delay:.3s">
+          <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center mb-3"><i
+              class="fas fa-chart-bar text-primary-glow"></i></div>
           <h4 class="font-display font-bold text-base mb-1">Análises Diárias</h4>
-          <p class="text-white/50 text-xs leading-relaxed">Relatórios e oportunidades identificadas antes de todo mundo.</p>
+          <p class="text-white/50 text-xs leading-relaxed">Relatórios e oportunidades identificadas antes de todo mundo.
+          </p>
         </div>
-        <div class="reveal glass-card neon-border rounded-2xl p-5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1" style="transition-delay:.4s">
-          <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center mb-3"><i class="fas fa-shield-alt text-primary-glow"></i></div>
+        <div
+          class="reveal glass-card neon-border rounded-2xl p-5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1"
+          style="transition-delay:.4s">
+          <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center mb-3"><i
+              class="fas fa-shield-alt text-primary-glow"></i></div>
           <h4 class="font-display font-bold text-base mb-1">Gestão de Risco</h4>
-          <p class="text-white/50 text-xs leading-relaxed">Nunca perca mais do que pode. Stop, sizing e psicologia do investidor.</p>
+          <p class="text-white/50 text-xs leading-relaxed">Nunca perca mais do que pode. Stop, sizing e psicologia do
+            investidor.</p>
         </div>
-        <div class="reveal glass-card neon-border rounded-2xl p-5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1" style="transition-delay:.5s">
-          <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center mb-3"><i class="fab fa-whatsapp text-primary-glow"></i></div>
+        <div
+          class="reveal glass-card neon-border rounded-2xl p-5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1"
+          style="transition-delay:.5s">
+          <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center mb-3"><i
+              class="fab fa-whatsapp text-primary-glow"></i></div>
           <h4 class="font-display font-bold text-base mb-1">Grupo Exclusivo</h4>
-          <p class="text-white/50 text-xs leading-relaxed">WhatsApp VIP com alertas em tempo real e conteúdo exclusivo Pro.</p>
+          <p class="text-white/50 text-xs leading-relaxed">WhatsApp VIP com alertas em tempo real e conteúdo exclusivo
+            Pro.</p>
         </div>
       </div>
 
@@ -450,19 +869,58 @@
         <h3 class="font-display font-bold text-xl text-center mb-6 text-white/80">O que dizem os membros</h3>
         <div class="testimonials-grid grid grid-cols-1 md:grid-cols-3 gap-4">
           <div class="glass-card rounded-xl p-4 border border-white/5">
-            <div class="flex gap-1 mb-2"><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i></div>
-            <p class="text-white/60 text-xs leading-relaxed italic mb-3">"O método DCA do Fealty mudou minha relação com o mercado. Parei de checar preço toda hora."</p>
-            <div class="flex items-center gap-2"><div class="w-7 h-7 bg-primary/30 rounded-full flex items-center justify-center font-bold text-primary-glow text-xs">M</div><div><div class="font-medium text-xs">Marcos</div><div class="text-white/30 text-[10px]">Membro desde 2025</div></div></div>
+            <div class="flex gap-1 mb-2"><i class="fas fa-star text-yellow-400 text-[10px]"></i><i
+                class="fas fa-star text-yellow-400 text-[10px]"></i><i
+                class="fas fa-star text-yellow-400 text-[10px]"></i><i
+                class="fas fa-star text-yellow-400 text-[10px]"></i><i
+                class="fas fa-star text-yellow-400 text-[10px]"></i></div>
+            <p class="text-white/60 text-xs leading-relaxed italic mb-3">"O método DCA do Fealty mudou minha relação com
+              o mercado. Parei de checar preço toda hora."</p>
+            <div class="flex items-center gap-2">
+              <div
+                class="w-7 h-7 bg-primary/30 rounded-full flex items-center justify-center font-bold text-primary-glow text-xs">
+                M</div>
+              <div>
+                <div class="font-medium text-xs">Marcos</div>
+                <div class="text-white/30 text-[10px]">Membro desde 2025</div>
+              </div>
+            </div>
           </div>
           <div class="glass-card rounded-xl p-4 border border-white/5">
-            <div class="flex gap-1 mb-2"><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i></div>
-            <p class="text-white/60 text-xs leading-relaxed italic mb-3">"A transparência da carteira é incrível. Sei exatamente onde meu dinheiro está."</p>
-            <div class="flex items-center gap-2"><div class="w-7 h-7 bg-primary/30 rounded-full flex items-center justify-center font-bold text-primary-glow text-xs">A</div><div><div class="font-medium text-xs">Ana Paula</div><div class="text-white/30 text-[10px]">Membro desde 2025</div></div></div>
+            <div class="flex gap-1 mb-2"><i class="fas fa-star text-yellow-400 text-[10px]"></i><i
+                class="fas fa-star text-yellow-400 text-[10px]"></i><i
+                class="fas fa-star text-yellow-400 text-[10px]"></i><i
+                class="fas fa-star text-yellow-400 text-[10px]"></i><i
+                class="fas fa-star text-yellow-400 text-[10px]"></i></div>
+            <p class="text-white/60 text-xs leading-relaxed italic mb-3">"A transparência da carteira é incrível. Sei
+              exatamente onde meu dinheiro está."</p>
+            <div class="flex items-center gap-2">
+              <div
+                class="w-7 h-7 bg-primary/30 rounded-full flex items-center justify-center font-bold text-primary-glow text-xs">
+                A</div>
+              <div>
+                <div class="font-medium text-xs">Ana Paula</div>
+                <div class="text-white/30 text-[10px]">Membro desde 2025</div>
+              </div>
+            </div>
           </div>
           <div class="glass-card rounded-xl p-4 border border-white/5">
-            <div class="flex gap-1 mb-2"><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i><i class="fas fa-star text-yellow-400 text-[10px]"></i></div>
-            <p class="text-white/60 text-xs leading-relaxed italic mb-3">"Aprendi Scaling Out e finalmente realizei lucro sem sair do ativo. Simples e poderoso."</p>
-            <div class="flex items-center gap-2"><div class="w-7 h-7 bg-primary/30 rounded-full flex items-center justify-center font-bold text-primary-glow text-xs">P</div><div><div class="font-medium text-xs">Pedro</div><div class="text-white/30 text-[10px]">Membro desde 2025</div></div></div>
+            <div class="flex gap-1 mb-2"><i class="fas fa-star text-yellow-400 text-[10px]"></i><i
+                class="fas fa-star text-yellow-400 text-[10px]"></i><i
+                class="fas fa-star text-yellow-400 text-[10px]"></i><i
+                class="fas fa-star text-yellow-400 text-[10px]"></i><i
+                class="fas fa-star text-yellow-400 text-[10px]"></i></div>
+            <p class="text-white/60 text-xs leading-relaxed italic mb-3">"Aprendi Scaling Out e finalmente realizei
+              lucro sem sair do ativo. Simples e poderoso."</p>
+            <div class="flex items-center gap-2">
+              <div
+                class="w-7 h-7 bg-primary/30 rounded-full flex items-center justify-center font-bold text-primary-glow text-xs">
+                P</div>
+              <div>
+                <div class="font-medium text-xs">Pedro</div>
+                <div class="text-white/30 text-[10px]">Membro desde 2025</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -477,53 +935,69 @@
   <section class="py-20 sm:py-24 px-4 sm:px-6 bg-dark-1 bg-grid relative" id="cadastro">
     <div class="max-w-lg mx-auto relative z-10">
       <div class="reveal text-center mb-8">
-        <div class="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 text-primary-glow px-3 py-1.5 rounded-full text-xs font-medium mb-5">
+        <div
+          class="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 text-primary-glow px-3 py-1.5 rounded-full text-xs font-medium mb-5">
           <span class="w-2 h-2 bg-primary-bright rounded-full animate-pulse"></span>
           Lançamento em breve
         </div>
-        <h2 class="font-display font-black text-3xl sm:text-4xl mb-3">Entre na <span class="gradient-text">Lista VIP</span></h2>
+        <h2 class="font-display font-black text-3xl sm:text-4xl mb-3">Entre na <span class="gradient-text">Lista
+            VIP</span></h2>
         <p class="text-white/50 text-sm">Cadastrados recebem condições especiais de lançamento.</p>
       </div>
       <div id="formContainer" class="reveal glass-card neon-border rounded-2xl p-5 sm:p-7">
         <form id="leadForm" novalidate>
           <div class="mb-4">
-            <label class="block text-white/60 text-xs font-medium mb-1.5"><i class="fas fa-user text-primary/50 mr-1"></i>Nome completo</label>
-            <input type="text" id="leadName" name="name" placeholder="Seu nome" required class="form-input w-full px-4 py-3 rounded-xl text-sm">
+            <label class="block text-white/60 text-xs font-medium mb-1.5"><i
+                class="fas fa-user text-primary/50 mr-1"></i>Nome completo</label>
+            <input type="text" id="leadName" name="name" placeholder="Seu nome" required
+              class="form-input w-full px-4 py-3 rounded-xl text-sm">
           </div>
           <div class="mb-4">
-            <label class="block text-white/60 text-xs font-medium mb-1.5"><i class="fas fa-envelope text-primary/50 mr-1"></i>Melhor email</label>
-            <input type="email" id="leadEmail" name="email" placeholder="seu@email.com" required class="form-input w-full px-4 py-3 rounded-xl text-sm">
+            <label class="block text-white/60 text-xs font-medium mb-1.5"><i
+                class="fas fa-envelope text-primary/50 mr-1"></i>Melhor email</label>
+            <input type="email" id="leadEmail" name="email" placeholder="seu@email.com" required
+              class="form-input w-full px-4 py-3 rounded-xl text-sm">
           </div>
           <div class="mb-4">
-            <label class="block text-white/60 text-xs font-medium mb-1.5"><i class="fab fa-whatsapp text-primary/50 mr-1"></i>WhatsApp</label>
-            <input type="tel" id="leadWhatsapp" name="whatsapp" placeholder="(00) 00000-0000" required class="form-input w-full px-4 py-3 rounded-xl text-sm whatsapp-mask">
+            <label class="block text-white/60 text-xs font-medium mb-1.5"><i
+                class="fab fa-whatsapp text-primary/50 mr-1"></i>WhatsApp</label>
+            <input type="tel" id="leadWhatsapp" name="whatsapp" placeholder="(00) 00000-0000" required
+              class="form-input w-full px-4 py-3 rounded-xl text-sm whatsapp-mask">
           </div>
-          
+
           <!-- Honeypot anti-bot (invisível) -->
           <div class="hidden" aria-hidden="true">
             <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
           </div>
-          
+
           <!-- LGPD Checkbox -->
           <div class="mb-4">
             <label class="flex items-start gap-2 text-xs text-white/60 cursor-pointer">
-              <input type="checkbox" id="lgpdConsent" required class="mt-0.5 w-4 h-4 rounded border-primary/30 bg-black/60 text-primary focus:ring-primary">
-              <span>Li e aceito a <a href="/privacidade.html" class="text-primary-glow hover:underline" target="_blank">Política de Privacidade</a> e autorizo o envio de comunicações sobre o Cripto Zion Pro.</span>
+              <input type="checkbox" id="lgpdConsent" required
+                class="mt-0.5 w-4 h-4 rounded border-primary/30 bg-black/60 text-primary focus:ring-primary">
+              <span>Li e aceito a <a href="/privacidade.html" class="text-primary-glow hover:underline"
+                  target="_blank">Política de Privacidade</a> e autorizo o envio de comunicações sobre o Cripto Zion
+                Pro.</span>
             </label>
           </div>
-          <div id="formError" class="hidden mb-3 bg-red-500/10 border border-red-500/30 text-red-400 text-xs px-3 py-2 rounded-lg"><i class="fas fa-exclamation-circle mr-1"></i><span id="formErrorMsg"></span></div>
-          <button type="submit" id="submitBtn" class="btn-cta w-full text-black font-bold py-3.5 rounded-xl text-sm flex items-center justify-center gap-2">
+          <div id="formError"
+            class="hidden mb-3 bg-red-500/10 border border-red-500/30 text-red-400 text-xs px-3 py-2 rounded-lg"><i
+              class="fas fa-exclamation-circle mr-1"></i><span id="formErrorMsg"></span></div>
+          <button type="submit" id="submitBtn"
+            class="btn-cta w-full text-black font-bold py-3.5 rounded-xl text-sm flex items-center justify-center gap-2">
             <i class="fas fa-rocket"></i><span id="submitText">Garantir Acesso Antecipado</span>
           </button>
         </form>
-        <p class="text-center text-white/25 text-[10px] mt-4"><i class="fas fa-lock mr-1"></i>Sem spam. Dados protegidos.</p>
+        <p class="text-center text-white/25 text-[10px] mt-4"><i class="fas fa-lock mr-1"></i>Sem spam. Dados
+          protegidos.</p>
       </div>
     </div>
   </section>
 
   <!-- FLOATING CTA -->
   <div id="floatingCTA">
-    <a href="#cadastro" class="btn-cta text-black font-bold px-6 py-3 rounded-full text-sm inline-flex items-center gap-2 shadow-2xl">
+    <a href="#cadastro"
+      class="btn-cta text-black font-bold px-6 py-3 rounded-full text-sm inline-flex items-center gap-2 shadow-2xl">
       <i class="fas fa-rocket text-xs"></i> Quero Acesso
     </a>
   </div>
@@ -535,47 +1009,60 @@
     <div class="max-w-3xl mx-auto relative z-10">
       <div class="reveal text-center mb-10">
         <span class="text-primary-bright text-xs font-semibold uppercase tracking-widest">Dúvidas</span>
-        <h2 class="font-display font-black text-2xl sm:text-3xl md:text-4xl mt-2">Perguntas <span class="gradient-text">Frequentes</span></h2>
+        <h2 class="font-display font-black text-2xl sm:text-3xl md:text-4xl mt-2">Perguntas <span
+            class="gradient-text">Frequentes</span></h2>
       </div>
       <div class="space-y-3">
         <!-- FAQ 1 -->
         <div class="reveal glass-card rounded-xl border border-primary/20 overflow-hidden">
-          <button onclick="this.nextElementSibling.classList.toggle('hidden');this.querySelector('i').classList.toggle('rotate-180')" class="w-full px-5 py-4 flex items-center justify-between text-left">
+          <button
+            onclick="this.nextElementSibling.classList.toggle('hidden');this.querySelector('i').classList.toggle('rotate-180')"
+            class="w-full px-5 py-4 flex items-center justify-between text-left">
             <span class="font-semibold text-sm sm:text-base">Quando será o lançamento?</span>
             <i class="fas fa-chevron-down text-primary-bright transition-transform duration-300"></i>
           </button>
           <div class="hidden px-5 pb-4 text-white/60 text-sm leading-relaxed">
-            O lançamento está previsto para os próximos 30 dias. Quem está na lista VIP recebe acesso antecipado e condições especiais de lançamento.
+            O lançamento está previsto para os próximos 30 dias. Quem está na lista VIP recebe acesso antecipado e
+            condições especiais de lançamento.
           </div>
         </div>
         <!-- FAQ 2 -->
         <div class="reveal glass-card rounded-xl border border-primary/20 overflow-hidden" style="transition-delay:.1s">
-          <button onclick="this.nextElementSibling.classList.toggle('hidden');this.querySelector('i').classList.toggle('rotate-180')" class="w-full px-5 py-4 flex items-center justify-between text-left">
+          <button
+            onclick="this.nextElementSibling.classList.toggle('hidden');this.querySelector('i').classList.toggle('rotate-180')"
+            class="w-full px-5 py-4 flex items-center justify-between text-left">
             <span class="font-semibold text-sm sm:text-base">Preciso saber de cripto para entrar?</span>
             <i class="fas fa-chevron-down text-primary-bright transition-transform duration-300"></i>
           </button>
           <div class="hidden px-5 pb-4 text-white/60 text-sm leading-relaxed">
-            Não! A Cripto Zion Pro foi criada para educar desde o iniciante até o investidor avançado. Você aprende as 4 estratégias do zero, com conteúdo prático e didático.
+            Não! A Cripto Zion Pro foi criada para educar desde o iniciante até o investidor avançado. Você aprende as 4
+            estratégias do zero, com conteúdo prático e didático.
           </div>
         </div>
         <!-- FAQ 3 -->
         <div class="reveal glass-card rounded-xl border border-primary/20 overflow-hidden" style="transition-delay:.2s">
-          <button onclick="this.nextElementSibling.classList.toggle('hidden');this.querySelector('i').classList.toggle('rotate-180')" class="w-full px-5 py-4 flex items-center justify-between text-left">
+          <button
+            onclick="this.nextElementSibling.classList.toggle('hidden');this.querySelector('i').classList.toggle('rotate-180')"
+            class="w-full px-5 py-4 flex items-center justify-between text-left">
             <span class="font-semibold text-sm sm:text-base">É gratuito entrar na lista VIP?</span>
             <i class="fas fa-chevron-down text-primary-bright transition-transform duration-300"></i>
           </button>
           <div class="hidden px-5 pb-4 text-white/60 text-sm leading-relaxed">
-            Sim! Entrar na lista de espera é 100% gratuito. Você só recebe atualizações sobre o lançamento e acesso prioritário quando abrirmos as vagas.
+            Sim! Entrar na lista de espera é 100% gratuito. Você só recebe atualizações sobre o lançamento e acesso
+            prioritário quando abrirmos as vagas.
           </div>
         </div>
         <!-- FAQ 4 -->
         <div class="reveal glass-card rounded-xl border border-primary/20 overflow-hidden" style="transition-delay:.3s">
-          <button onclick="this.nextElementSibling.classList.toggle('hidden');this.querySelector('i').classList.toggle('rotate-180')" class="w-full px-5 py-4 flex items-center justify-between text-left">
+          <button
+            onclick="this.nextElementSibling.classList.toggle('hidden');this.querySelector('i').classList.toggle('rotate-180')"
+            class="w-full px-5 py-4 flex items-center justify-between text-left">
             <span class="font-semibold text-sm sm:text-base">Como funciona a comunidade?</span>
             <i class="fas fa-chevron-down text-primary-bright transition-transform duration-300"></i>
           </button>
           <div class="hidden px-5 pb-4 text-white/60 text-sm leading-relaxed">
-            Você terá acesso a conteúdo educacional exclusivo, carteira transparente, análises diárias, grupo VIP no WhatsApp e networking com investidores sérios que pensam no longo prazo.
+            Você terá acesso a conteúdo educacional exclusivo, carteira transparente, análises diárias, grupo VIP no
+            WhatsApp e networking com investidores sérios que pensam no longo prazo.
           </div>
         </div>
       </div>
@@ -587,12 +1074,17 @@
   <!-- FOOTER -->
   <footer class="py-10 px-4 sm:px-6 border-t border-primary/10">
     <div class="footer-inner max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="font-display font-bold text-lg flex items-center"><span class="text-white">CRIPTO</span><span class="gradient-text"> ZION</span><span class="pro-badge">PRO</span></div>
+      <div class="font-display font-bold text-lg flex items-center"><span class="text-white">CRIPTO</span><span
+          class="gradient-text"> ZION</span><span class="pro-badge">PRO</span></div>
       <div class="flex gap-5 items-center">
-        <a href="https://www.youtube.com/@CriptoZion" target="_blank" class="text-white/40 hover:text-red-400 transition-colors"><i class="fab fa-youtube"></i></a>
-        <a href="https://x.com/0xFealty" target="_blank" class="text-white/40 hover:text-white transition-colors"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://www.instagram.com/criptozion" target="_blank" class="text-white/40 hover:text-pink-400 transition-colors"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/fealty-crypto-960791318/" target="_blank" class="text-white/40 hover:text-blue-400 transition-colors"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/@CriptoZion" target="_blank"
+          class="text-white/40 hover:text-red-400 transition-colors"><i class="fab fa-youtube"></i></a>
+        <a href="https://x.com/0xFealty" target="_blank" class="text-white/40 hover:text-white transition-colors"><i
+            class="fab fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/criptozion" target="_blank"
+          class="text-white/40 hover:text-pink-400 transition-colors"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/fealty-crypto-960791318/" target="_blank"
+          class="text-white/40 hover:text-blue-400 transition-colors"><i class="fab fa-linkedin"></i></a>
       </div>
       <div class="flex gap-4 text-white/30 text-xs">
         <a href="/privacidade.html" class="hover:text-white/60 transition-colors">Privacidade</a>
@@ -606,17 +1098,22 @@
   <div id="successPage" class="bg-grid">
     <div class="absolute inset-0 bg-gradient-to-br from-dark-2 via-black to-dark-3 pointer-events-none"></div>
     <div class="relative z-10 text-center max-w-md px-6 mx-auto">
-      <div class="success-ring flex items-center justify-center mx-auto mb-8"><i class="fas fa-check text-primary-glow text-4xl"></i></div>
-      <h2 class="font-display font-black text-3xl sm:text-4xl mb-4"><span class="gradient-text-bright">Você está dentro!</span></h2>
+      <div class="success-ring flex items-center justify-center mx-auto mb-8"><i
+          class="fas fa-check text-primary-glow text-4xl"></i></div>
+      <h2 class="font-display font-black text-3xl sm:text-4xl mb-4"><span class="gradient-text-bright">Você está
+          dentro!</span></h2>
       <p class="text-white/60 text-base mb-2">Cadastro realizado com sucesso! 🎉</p>
-      <p class="text-white/50 text-sm mb-8">Em breve você receberá atualizações sobre o <strong class="text-primary-glow">Cripto Zion Pro</strong>.</p>
+      <p class="text-white/50 text-sm mb-8">Em breve você receberá atualizações sobre o <strong
+          class="text-primary-glow">Cripto Zion Pro</strong>.</p>
       <div class="glass-card neon-border rounded-2xl p-5 mb-5">
         <p class="text-white/80 text-sm font-medium mb-3">Enquanto isso, entre no grupo:</p>
-        <a href="https://chat.whatsapp.com/FJVQ3MbbSdm0Jtra0FZW8z?mode=gi_t" target="_blank" class="whatsapp-btn w-full text-white font-bold py-3.5 px-5 rounded-xl flex items-center justify-center gap-3 text-sm">
+        <a href="https://chat.whatsapp.com/FJVQ3MbbSdm0Jtra0FZW8z?mode=gi_t" target="_blank"
+          class="whatsapp-btn w-full text-white font-bold py-3.5 px-5 rounded-xl flex items-center justify-center gap-3 text-sm">
           <i class="fab fa-whatsapp text-xl"></i> Entrar no Grupo do WhatsApp
         </a>
       </div>
-      <button onclick="voltarInicio()" class="text-white/40 hover:text-white/70 text-xs transition-colors"><i class="fas fa-arrow-left mr-1"></i>Voltar</button>
+      <button onclick="voltarInicio()" class="text-white/40 hover:text-white/70 text-xs transition-colors"><i
+          class="fas fa-arrow-left mr-1"></i>Voltar</button>
     </div>
   </div>
 
@@ -624,40 +1121,40 @@
        SCRIPTS
   ═══════════════════════════════════ -->
   <script>
-    // Particles
-    (function(){const c=document.getElementById('particles');for(let i=0;i<15;i++){const p=document.createElement('div');const s=Math.random()*3+1;p.className='particle';p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${Math.random()*20+15}s;animation-delay:${Math.random()*15}s;`;c.appendChild(p);}})();
+      // Particles
+      (function () { const c = document.getElementById('particles'); for (let i = 0; i < 15; i++) { const p = document.createElement('div'); const s = Math.random() * 3 + 1; p.className = 'particle'; p.style.cssText = `width:${s}px;height:${s}px;left:${Math.random() * 100}%;animation-duration:${Math.random() * 20 + 15}s;animation-delay:${Math.random() * 15}s;`; c.appendChild(p); } })();
 
     // Scroll reveal
-    const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
-    document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
+    const obs = new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible') }) }, { threshold: .08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => obs.observe(el));
 
     // Nav scroll
-    window.addEventListener('scroll',()=>{document.getElementById('navbar').style.background=scrollY>50?'rgba(0,0,0,.97)':'rgba(0,0,0,.85)'});
+    window.addEventListener('scroll', () => { document.getElementById('navbar').style.background = scrollY > 50 ? 'rgba(0,0,0,.97)' : 'rgba(0,0,0,.85)' });
 
     // Floating CTA — show after hero
-    const heroEl=document.getElementById('hero');
-    const floatCTA=document.getElementById('floatingCTA');
-    const floatObs=new IntersectionObserver(([e])=>{floatCTA.classList.toggle('show',!e.isIntersecting)},{threshold:0});
+    const heroEl = document.getElementById('hero');
+    const floatCTA = document.getElementById('floatingCTA');
+    const floatObs = new IntersectionObserver(([e]) => { floatCTA.classList.toggle('show', !e.isIntersecting) }, { threshold: 0 });
     floatObs.observe(heroEl);
 
     // WhatsApp mask — all inputs
-    document.querySelectorAll('.whatsapp-mask').forEach(el=>{
-      el.addEventListener('input',function(e){let v=e.target.value.replace(/\D/g,'').substring(0,11);if(v.length>6)v=`(${v.substring(0,2)}) ${v.substring(2,7)}-${v.substring(7)}`;else if(v.length>2)v=`(${v.substring(0,2)}) ${v.substring(2)}`;else if(v.length>0)v=`(${v}`;e.target.value=v;});
+    document.querySelectorAll('.whatsapp-mask').forEach(el => {
+      el.addEventListener('input', function (e) { let v = e.target.value.replace(/\D/g, '').substring(0, 11); if (v.length > 6) v = `(${v.substring(0, 2)}) ${v.substring(2, 7)}-${v.substring(7)}`; else if (v.length > 2) v = `(${v.substring(0, 2)}) ${v.substring(2)}`; else if (v.length > 0) v = `(${v}`; e.target.value = v; });
     });
 
     // Brevo
-    const _b1='xkeysib-3e7d72a72fd36c57d2073ea5ec',_b2='9df59c80e5bb11c5463acc164184c046262b32',_b3='-19JrTe3JSWqgs142';const BK=_b1+_b2+_b3;
+    const _b1 = 'xkeysib-3e7d72a72fd36c57d2073ea5ec', _b2 = '9df59c80e5bb11c5463acc164184c046262b32', _b3 = '-19JrTe3JSWqgs142'; const BK = _b1 + _b2 + _b3;
 
-    async function submitLead(name,email,whatsapp){
-      try{await fetch('https://api.brevo.com/v3/contacts',{method:'POST',headers:{'api-key':BK,'Content-Type':'application/json'},body:JSON.stringify({email,attributes:{NOME:name,WHATSAPP:whatsapp,SOURCE:'criptozion_landing'},listIds:[5],updateEnabled:true})});}catch(e){console.warn('Brevo:',e);}
-      try{localStorage.setItem('cz_'+Date.now(),JSON.stringify({name,email,whatsapp,ts:new Date().toISOString()}));}catch(_){}
+    async function submitLead(name, email, whatsapp) {
+      try { await fetch('https://api.brevo.com/v3/contacts', { method: 'POST', headers: { 'api-key': BK, 'Content-Type': 'application/json' }, body: JSON.stringify({ email, attributes: { NOME: name, WHATSAPP: whatsapp, SOURCE: 'criptozion_landing' }, listIds: [5], updateEnabled: true }) }); } catch (e) { console.warn('Brevo:', e); }
+      try { localStorage.setItem('cz_' + Date.now(), JSON.stringify({ name, email, whatsapp, ts: new Date().toISOString() })); } catch (_) { }
       // Send welcome email
-      await sendWelcomeEmail(email,name);
+      await sendWelcomeEmail(email, name);
     }
 
     // Send transactional welcome email
-    async function sendWelcomeEmail(email,name){
-      const htmlContent=`<!DOCTYPE html>
+    async function sendWelcomeEmail(email, name) {
+      const htmlContent = `<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Bem-vindo à Cripto Zion Pro</title></head>
 <body style="margin:0;padding:0;background:#000;font-family:Inter,sans-serif;color:#fff;">
@@ -686,61 +1183,62 @@
   </div>
 </body>
 </html>`;
-      
-      try{
-        await fetch('https://api.brevo.com/v3/smtp/email',{
-          method:'POST',
-          headers:{'api-key':BK,'Content-Type':'application/json'},
-          body:JSON.stringify({
-            sender:{name:'Fealty — Cripto Zion Pro',email:'fealty@criptozion.xyz'},
-            to:[{email:email}],
-            subject:'🚀 Bem-vindo à Cripto Zion Pro — Lista VIP Confirmada!',
-            htmlContent:htmlContent
+
+      try {
+        await fetch('https://api.brevo.com/v3/smtp/email', {
+          method: 'POST',
+          headers: { 'api-key': BK, 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sender: { name: 'Fealty — Cripto Zion Pro', email: 'fealty@criptozion.xyz' },
+            to: [{ email: email }],
+            subject: '🚀 Bem-vindo à Cripto Zion Pro — Lista VIP Confirmada!',
+            htmlContent: htmlContent
           })
         });
-        console.log('Email de boas-vindas enviado para:',email);
-      }catch(e){
-        console.warn('Erro ao enviar email:',e);
+        console.log('Email de boas-vindas enviado para:', email);
+      } catch (e) {
+        console.warn('Erro ao enviar email:', e);
       }
     }
 
     // Hero form
-    document.getElementById('heroForm').addEventListener('submit',async function(e){
+    document.getElementById('heroForm').addEventListener('submit', async function (e) {
       e.preventDefault();
       // Honeypot check
-      if(document.getElementById('website').value)return;
+      if (document.getElementById('website').value) return;
       // LGPD check
-      if(!document.getElementById('lgpdConsent').checked){alert('Por favor, aceite a Política de Privacidade para continuar.');return;}
-      const f=new FormData(this);const n=f.get('name').trim(),em=f.get('email').trim(),w=f.get('whatsapp').trim();
-      if(!n||!em||!w)return;
-      this.querySelector('button').innerHTML='<i class="fas fa-spinner fa-spin"></i> Cadastrando...';this.querySelector('button').disabled=true;
-      await submitLead(n,em,w);showSuccess();
+      if (!document.getElementById('lgpdConsent').checked) { alert('Por favor, aceite a Política de Privacidade para continuar.'); return; }
+      const f = new FormData(this); const n = f.get('name').trim(), em = f.get('email').trim(), w = f.get('whatsapp').trim();
+      if (!n || !em || !w) return;
+      this.querySelector('button').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Cadastrando...'; this.querySelector('button').disabled = true;
+      await submitLead(n, em, w); showSuccess();
     });
 
     // Main form
-    document.getElementById('leadForm').addEventListener('submit',async function(e){
+    document.getElementById('leadForm').addEventListener('submit', async function (e) {
       e.preventDefault();
       // Honeypot check
-      if(document.getElementById('website').value)return;
+      if (document.getElementById('website').value) return;
       // LGPD check
-      if(!document.getElementById('lgpdConsent').checked){
-        const errEl=document.getElementById('formError'),errMsg=document.getElementById('formErrorMsg');
-        errMsg.textContent='Por favor, aceite a Política de Privacidade para continuar.';
+      if (!document.getElementById('lgpdConsent').checked) {
+        const errEl = document.getElementById('formError'), errMsg = document.getElementById('formErrorMsg');
+        errMsg.textContent = 'Por favor, aceite a Política de Privacidade para continuar.';
         errEl.classList.remove('hidden');
         return;
       }
-      const name=document.getElementById('leadName').value.trim(),email=document.getElementById('leadEmail').value.trim(),whatsapp=document.getElementById('leadWhatsapp').value.trim();
-      const errEl=document.getElementById('formError'),errMsg=document.getElementById('formErrorMsg');
-      if(!name||!email||!whatsapp){errMsg.textContent='Preencha todos os campos.';errEl.classList.remove('hidden');return;}
-      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){errMsg.textContent='Email inválido.';errEl.classList.remove('hidden');return;}
+      const name = document.getElementById('leadName').value.trim(), email = document.getElementById('leadEmail').value.trim(), whatsapp = document.getElementById('leadWhatsapp').value.trim();
+      const errEl = document.getElementById('formError'), errMsg = document.getElementById('formErrorMsg');
+      if (!name || !email || !whatsapp) { errMsg.textContent = 'Preencha todos os campos.'; errEl.classList.remove('hidden'); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { errMsg.textContent = 'Email inválido.'; errEl.classList.remove('hidden'); return; }
       errEl.classList.add('hidden');
-      const btn=document.getElementById('submitBtn');btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Cadastrando...';
-      await submitLead(name,email,whatsapp);showSuccess();
+      const btn = document.getElementById('submitBtn'); btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Cadastrando...';
+      await submitLead(name, email, whatsapp); showSuccess();
     });
 
-    function showSuccess(){const sp=document.getElementById('successPage');sp.classList.add('active');document.body.style.overflow='hidden';sp.style.opacity='0';sp.style.transition='opacity .5s';requestAnimationFrame(()=>requestAnimationFrame(()=>{sp.style.opacity='1';}));scrollTo(0,0);}
-    function voltarInicio(){const sp=document.getElementById('successPage');sp.style.opacity='0';setTimeout(()=>{sp.classList.remove('active');document.body.style.overflow='';scrollTo(0,0);},500);}
+    function showSuccess() { const sp = document.getElementById('successPage'); sp.classList.add('active'); document.body.style.overflow = 'hidden'; sp.style.opacity = '0'; sp.style.transition = 'opacity .5s'; requestAnimationFrame(() => requestAnimationFrame(() => { sp.style.opacity = '1'; })); scrollTo(0, 0); }
+    function voltarInicio() { const sp = document.getElementById('successPage'); sp.style.opacity = '0'; setTimeout(() => { sp.classList.remove('active'); document.body.style.overflow = ''; scrollTo(0, 0); }, 500); }
   </script>
 </body>
+
 </html>
 <!-- Build 1772587806 -->
