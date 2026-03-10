@@ -479,13 +479,14 @@
           <!-- Data Início -->
           <div>
             <label class="block text-white/60 text-sm mb-2 font-medium">Data de Início</label>
-            <input type="date" id="startDate" value="2020-01-01"
+            <input type="date" id="startDate" value="2020-01-01" min="2017-08-17"
               class="form-input w-full px-4 py-3 rounded-xl font-mono text-sm">
+            <span class="text-white/30 text-[10px] mt-1 block">Mín: 17/08/2017 (início BTCUSDT)</span>
           </div>
           <!-- Data Fim -->
           <div>
             <label class="block text-white/60 text-sm mb-2 font-medium">Data de Fim</label>
-            <input type="date" id="endDate" value="2026-03-01"
+            <input type="date" id="endDate" min="2017-08-17"
               class="form-input w-full px-4 py-3 rounded-xl font-mono text-sm">
           </div>
           <!-- Valor Base -->
@@ -771,6 +772,19 @@
       return map;
     }
 
+    // ── SMA Calculation (signal line for RSI) ──
+    function calcSMA(values, period = 14) {
+      const sma = new Array(values.length).fill(NaN);
+      for (let i = period - 1; i < values.length; i++) {
+        let sum = 0, count = 0;
+        for (let j = i - period + 1; j <= i; j++) {
+          if (!isNaN(values[j])) { sum += values[j]; count++; }
+        }
+        if (count === period) sma[i] = sum / count;
+      }
+      return sma;
+    }
+
     // ── RSI Calculation ──
     function calcRSI(closes, period = 14) {
       const rsi = new Array(closes.length).fill(NaN);
@@ -847,15 +861,19 @@
 
       const dailyCloses = daily.map(d => d.close);
       const dailyRSI = calcRSI(dailyCloses, RSI_PERIOD);
+      const dailyRsiSMA = calcSMA(dailyRSI, RSI_PERIOD);
 
       const weeklyCloses = weekly.map(w => w.close);
       const weeklyRSI = calcRSI(weeklyCloses, RSI_PERIOD);
+      const weeklyRsiSMA = calcSMA(weeklyRSI, RSI_PERIOD);
       const wRsiMap = {};
+      const wRsiSmaMap = {};
       weekly.forEach((w, i) => {
         for (let d = 0; d < 7; d++) {
           const dt = new Date(w.time);
           dt.setDate(dt.getDate() + d);
           wRsiMap[dateStr(dt)] = weeklyRSI[i];
+          wRsiSmaMap[dateStr(dt)] = weeklyRsiSMA[i];
         }
       });
 
@@ -865,7 +883,9 @@
         const ds = d.dateStr;
         const price = d.close;
         const rsiD = dailyRSI[i];
+        const rsiDsma = dailyRsiSMA[i];
         const rsiW = wRsiMap[ds] || 50;
+        const rsiWsma = wRsiSmaMap[ds] || 50;
         const fngV = fng[ds] || 50;
         const mult = getFngMult(fngV);
         const mesKey = ds.slice(0, 7);
@@ -879,24 +899,24 @@
           comprasLog.push({ data: ds, preco: price, fng: fngV, label: fngLabel(fngV), mult, usd: amt });
         }
 
-        // Rule 2: Extra buy RSI daily < 35
-        if (!isNaN(rsiD) && rsiD < RSI_COMPRA) {
+        // Rule 2: Extra buy RSI SMA daily < 35
+        if (!isNaN(rsiDsma) && rsiDsma < RSI_COMPRA) {
           const amt = base * mult;
           btc += amt / price;
           invested += amt;
           totalCost += amt;
-          extrasLog.push({ data: ds, preco: price, rsi: rsiD, fng: fngV, label: fngLabel(fngV), mult, usd: amt });
+          extrasLog.push({ data: ds, preco: price, rsi: rsiD, rsiSma: rsiDsma, fng: fngV, label: fngLabel(fngV), mult, usd: amt });
         }
 
-        // Rule 3: Sell (RSI weekly)
-        if (!isNaN(rsiW) && btc > 0) {
+        // Rule 3: Sell (RSI SMA weekly)
+        if (!isNaN(rsiWsma) && btc > 0) {
           const sells = vendasNoMes[mesKey] || 0;
           if (sells < 2) {
             const precoMedio = totalCost / btc;
             if (price > precoMedio) {
               let canSell = false;
-              if (sells === 0 && rsiW > RSI_VENDA_1) canSell = true;
-              else if (sells === 1 && rsiW >= RSI_VENDA_2) canSell = true;
+              if (sells === 0 && rsiWsma > RSI_VENDA_1) canSell = true;
+              else if (sells === 1 && rsiWsma >= RSI_VENDA_2) canSell = true;
               if (canSell) {
                 const btcSold = btc * TAKE_PROFIT_PCT;
                 const usdRec = btcSold * price;
@@ -904,7 +924,7 @@
                 lucroSacado += usdRec;
                 totalCost -= totalCost * TAKE_PROFIT_PCT;
                 vendasNoMes[mesKey] = sells + 1;
-                vendasLog.push({ data: ds, preco: price, rsiW, precoMedio, btcSold, usd: usdRec, n: sells + 1 });
+                vendasLog.push({ data: ds, preco: price, rsiW, rsiWsma, precoMedio, btcSold, usd: usdRec, n: sells + 1 });
               }
             }
           }
@@ -1089,9 +1109,9 @@
         document.getElementById(containerId).innerHTML = '<p class="text-white/30 text-xs">Nenhum registro.</p>';
         return;
       }
-      const last = rows.slice(-20);
-      let html = `<table class="log-table w-full text-left"><thead><tr>${columns.map(c => `<th class="text-white/40 font-medium pb-2 px-2">${c.label}</th>`).join('')}</tr></thead><tbody>`;
-      last.forEach(r => {
+      let html = `<p class="text-white/30 text-xs mb-2">${rows.length} registros</p>`;
+      html += `<table class="log-table w-full text-left"><thead><tr>${columns.map(c => `<th class="text-white/40 font-medium pb-2 px-2">${c.label}</th>`).join('')}</tr></thead><tbody>`;
+      rows.forEach(r => {
         html += '<tr class="border-t border-white/5">';
         columns.forEach(c => {
           html += `<td class="py-1.5 px-2 text-white/70">${c.fmt(r)}</td>`;
@@ -1099,18 +1119,19 @@
         html += '</tr>';
       });
       html += '</tbody></table>';
-      if (rows.length > 20) html = `<p class="text-white/30 text-xs mb-2">Mostrando últimos 20 de ${rows.length}</p>` + html;
       document.getElementById(containerId).innerHTML = html;
     }
 
     // ── Main ──
     async function runSimulation() {
       const startDate = document.getElementById('startDate').value;
-      const endDate = document.getElementById('endDate').value;
+      let endDate = document.getElementById('endDate').value;
       const base = parseFloat(document.getElementById('baseAmount').value);
       const freq = document.getElementById('frequency').value;
 
-      if (!startDate || !endDate || !base) return alert('Preencha todos os campos.');
+      if (!startDate || !base) return alert('Preencha todos os campos.');
+      if (!endDate) endDate = new Date().toISOString().slice(0, 10);
+      if (startDate < '2017-08-17') return alert('Data mínima: 17/08/2017 (início dos dados BTCUSDT na Binance).');
 
       document.getElementById('loadingSection').classList.remove('hidden');
       document.getElementById('resultsSection').classList.add('hidden');
@@ -1159,15 +1180,16 @@
         renderTable('extraBuysTable', zion.extras, [
           { label: 'Data', fmt: r => r.data },
           { label: 'Preço', fmt: r => fmtUSD(r.preco) },
-          { label: 'RSI', fmt: r => r.rsi.toFixed(1) },
+          { label: 'RSI', fmt: r => !isNaN(r.rsi) ? r.rsi.toFixed(1) : '—' },
+          { label: 'RSI SMA', fmt: r => !isNaN(r.rsiSma) ? r.rsiSma.toFixed(1) : '—' },
           { label: 'F&G', fmt: r => `<span style="color:${fngColor(r.fng)}">${r.fng}</span>` },
-          { label: 'Sentimento', fmt: r => r.label },
           { label: 'USD', fmt: r => fmtUSD(r.usd) },
         ]);
         renderTable('sellsTable', zion.vendas, [
           { label: 'Data', fmt: r => r.data },
           { label: 'Preço', fmt: r => fmtUSD(r.preco) },
           { label: 'RSI 1W', fmt: r => r.rsiW.toFixed(1) },
+          { label: 'RSI SMA', fmt: r => !isNaN(r.rsiWsma) ? r.rsiWsma.toFixed(1) : '—' },
           { label: 'P.Médio', fmt: r => fmtUSD(r.precoMedio) },
           { label: 'USD Sacado', fmt: r => `<span class="text-green-400">${fmtUSD(r.usd)}</span>` },
           { label: '#', fmt: r => r.n },
