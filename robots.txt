@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow:
+
+Sitemap: https://criptozion.xyz/sitemap.xml
+
+# Cripto Zion — criptozion.xyz
