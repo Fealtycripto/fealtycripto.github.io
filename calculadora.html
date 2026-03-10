@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadora Zion Smart DCA — Cripto Zion</title>
-  <meta name="description" content="Compare DCA Tradicional, Lump Sum e a estratégia exclusiva Zion Smart DCA com dados reais do Bitcoin.">
+  <meta name="description"
+    content="Compare DCA Tradicional, Lump Sum e a estratégia exclusiva Zion Smart DCA com dados reais do Bitcoin.">
   <meta property="og:title" content="Calculadora Zion Smart DCA — Cripto Zion">
-  <meta property="og:description" content="Compare DCA vs Lump Sum vs Zion Smart DCA com dados reais da Binance e Fear & Greed Index.">
+  <meta property="og:description"
+    content="Compare DCA vs Lump Sum vs Zion Smart DCA com dados reais da Binance e Fear & Greed Index.">
   <meta property="og:url" content="https://criptozion.xyz/calculadora.html">
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%234cbf93'/%3E%3Cstop offset='100%25' style='stop-color:%23008862'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-family='Arial Black,sans-serif' font-size='55' font-weight='900' text-anchor='middle' fill='%23000'%3ECZ%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -63,22 +69,30 @@
   </script>
 
   <style>
-    * { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: #000; color: #fff; overflow-x: hidden; }
+    * {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
 
     /* ── Parallax Hero ── */
     .hero-parallax {
-      background: 
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,136,98,0.18) 0%, transparent 65%),
-        radial-gradient(ellipse 40% 40% at 80% 30%, rgba(41,163,122,0.10) 0%, transparent 60%),
-        radial-gradient(ellipse 30% 30% at 20% 60%, rgba(0,136,98,0.08) 0%, transparent 60%),
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 136, 98, 0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 80% 30%, rgba(41, 163, 122, 0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 30% at 20% 60%, rgba(0, 136, 98, 0.08) 0%, transparent 60%),
         #000;
     }
 
     .bg-grid {
-      background-image: 
-        linear-gradient(rgba(0,136,98,0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,136,98,0.06) 1px, transparent 1px);
+      background-image:
+        linear-gradient(rgba(0, 136, 98, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 136, 98, 0.06) 1px, transparent 1px);
       background-size: 60px 60px;
     }
 
@@ -87,13 +101,14 @@
       background: rgba(13, 26, 19, 0.6);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(0,136,98,0.2);
+      border: 1px solid rgba(0, 136, 98, 0.2);
     }
+
     .glass-card-bright {
-      background: rgba(0,136,98,0.08);
+      background: rgba(0, 136, 98, 0.08);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(41,163,122,0.3);
+      border: 1px solid rgba(41, 163, 122, 0.3);
     }
 
     /* ── Gradient Text ── */
@@ -103,6 +118,7 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
+
     .gradient-text-bright {
       background: linear-gradient(135deg, #87f8c9 0%, #4cbf93 60%, #29a37a 100%);
       -webkit-background-clip: text;
@@ -112,12 +128,13 @@
 
     /* ── Neon Border ── */
     .neon-border {
-      border: 1px solid rgba(76,191,147,0.4);
-      box-shadow: 0 0 20px rgba(0,136,98,0.15), inset 0 0 20px rgba(0,136,98,0.03);
+      border: 1px solid rgba(76, 191, 147, 0.4);
+      box-shadow: 0 0 20px rgba(0, 136, 98, 0.15), inset 0 0 20px rgba(0, 136, 98, 0.03);
     }
+
     .neon-border:hover {
-      border-color: rgba(76,191,147,0.8);
-      box-shadow: 0 0 40px rgba(0,136,98,0.3), inset 0 0 20px rgba(0,136,98,0.05);
+      border-color: rgba(76, 191, 147, 0.8);
+      box-shadow: 0 0 40px rgba(0, 136, 98, 0.3), inset 0 0 20px rgba(0, 136, 98, 0.05);
     }
 
     /* ── CTA Button ── */
@@ -127,73 +144,142 @@
       animation: btnShimmer 3s ease infinite;
       transition: all 0.3s;
     }
+
     .btn-cta:hover {
       transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(0,136,98,0.5);
+      box-shadow: 0 15px 40px rgba(0, 136, 98, 0.5);
     }
+
     @keyframes btnShimmer {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     /* ── Scroll Reveal ── */
-    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* ── Floating Particles ── */
     .particle {
       position: absolute;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(76,191,147,0.6), transparent);
+      background: radial-gradient(circle, rgba(76, 191, 147, 0.6), transparent);
       animation: floatParticle linear infinite;
       pointer-events: none;
     }
+
     @keyframes floatParticle {
-      0% { transform: translateY(100vh) scale(0); opacity: 0; }
-      10% { opacity: 0.6; }
-      90% { opacity: 0.3; }
-      100% { transform: translateY(-100px) scale(1); opacity: 0; }
+      0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0.6;
+      }
+
+      90% {
+        opacity: 0.3;
+      }
+
+      100% {
+        transform: translateY(-100px) scale(1);
+        opacity: 0;
+      }
     }
 
     /* ── Ticker ── */
-    .ticker-wrap { overflow: hidden; }
-    .ticker { display: flex; animation: ticker 30s linear infinite; white-space: nowrap; }
-    .ticker:hover { animation-play-state: paused; }
-    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .ticker-wrap {
+      overflow: hidden;
+    }
+
+    .ticker {
+      display: flex;
+      animation: ticker 30s linear infinite;
+      white-space: nowrap;
+    }
+
+    .ticker:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes ticker {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
 
     /* ── Nav ── */
     nav {
-      background: rgba(0,0,0,0.85);
+      background: rgba(0, 0, 0, 0.85);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(0,136,98,0.15);
+      border-bottom: 1px solid rgba(0, 136, 98, 0.15);
+    }
+
+    /* ── PRO badge ── */
+    .pro-badge {
+      display: inline-flex;
+      align-items: center;
+      vertical-align: middle;
+      font-size: .65rem;
+      background: rgba(0, 136, 98, .2);
+      border: 1px solid rgba(0, 136, 98, .3);
+      color: #6adbae;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      font-weight: 600;
+      margin-left: 6px;
+      line-height: 1
     }
 
     /* ── Section dividers ── */
     .section-divider {
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0,136,98,0.5), transparent);
+      background: linear-gradient(90deg, transparent, rgba(0, 136, 98, 0.5), transparent);
     }
 
     /* ── Form Inputs ── */
     .form-input {
-      background: rgba(0,0,0,0.6);
-      border: 2px solid rgba(0,136,98,0.4);
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid rgba(0, 136, 98, 0.4);
       color: #fff;
       transition: all 0.3s;
     }
+
     .form-input:focus {
       outline: none;
       border-color: #4cbf93;
-      box-shadow: 0 0 0 4px rgba(0,136,98,0.15), 0 0 20px rgba(76,191,147,0.1);
-      background: rgba(0,136,98,0.05);
+      box-shadow: 0 0 0 4px rgba(0, 136, 98, 0.15), 0 0 20px rgba(76, 191, 147, 0.1);
+      background: rgba(0, 136, 98, 0.05);
     }
 
     /* ── Results ── */
     .result-card {
       transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
+
     .result-card.winner {
       border-color: rgba(76, 191, 147, 0.8) !important;
       box-shadow: 0 0 40px rgba(0, 136, 98, 0.4);
@@ -201,33 +287,69 @@
 
     /* ── Loader ── */
     .loader {
-      width: 40px; height: 40px;
+      width: 40px;
+      height: 40px;
       border: 3px solid rgba(0, 136, 98, 0.2);
       border-top-color: #4cbf93;
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
 
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    .fade-in-up { animation: fadeInUp 0.6s ease forwards; }
+
+    .fade-in-up {
+      animation: fadeInUp 0.6s ease forwards;
+    }
 
     /* ── Chart ── */
-    #chartContainer canvas { max-height: 400px; }
+    #chartContainer canvas {
+      max-height: 400px;
+    }
 
     /* ── Scrollbar ── */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #0a1410; }
-    ::-webkit-scrollbar-thumb { background: #008862; border-radius: 3px; }
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0a1410;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #008862;
+      border-radius: 3px;
+    }
 
     /* ── Table ── */
-    .log-table { font-size: 0.75rem; }
-    .log-table th { position: sticky; top: 0; background: #0a1410; z-index: 5; }
+    .log-table {
+      font-size: 0.75rem;
+    }
+
+    .log-table th {
+      position: sticky;
+      top: 0;
+      background: #0a1410;
+      z-index: 5;
+    }
   </style>
 </head>
+
 <body>
 
   <!-- ════════════════════════════════════════════
@@ -239,16 +361,17 @@
        NAVIGATION
   ════════════════════════════════════════════ -->
   <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="index.html" class="font-display font-bold text-xl tracking-tight">
-        <span class="text-white">CRIPTO</span><span class="gradient-text"> ZION</span>
-        <span class="ml-2 text-xs bg-primary/20 border border-primary/30 text-primary-glow px-2 py-0.5 rounded-full font-medium">PRO</span>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="index.html" class="font-display font-bold text-lg sm:text-xl tracking-tight flex items-center">
+        <span class="text-white">CRIPTO</span><span class="gradient-text"> ZION</span><span class="pro-badge">PRO</span>
       </a>
       <div class="flex items-center gap-4">
-        <a href="index.html" class="text-sm text-white/60 hover:text-white transition-colors hidden sm:inline-flex items-center gap-1">
+        <a href="index.html"
+          class="text-sm text-white/60 hover:text-white transition-colors hidden sm:inline-flex items-center gap-1">
           <i class="fas fa-arrow-left text-xs"></i> Voltar ao Site
         </a>
-        <span class="text-xs bg-primary/20 border border-primary/30 text-primary-glow px-3 py-1.5 rounded-full font-semibold">
+        <span
+          class="text-xs bg-primary/20 border border-primary/30 text-primary-glow px-3 py-1.5 rounded-full font-semibold">
           <i class="fas fa-calculator mr-1"></i> CALC
         </span>
       </div>
@@ -258,7 +381,8 @@
   <!-- ════════════════════════════════════════════
        TICKER
   ════════════════════════════════════════════ -->
-  <div class="ticker-wrap fixed top-0 left-0 right-0 z-40 mt-[65px] bg-dark-2 border-b border-primary/10 py-1.5 text-xs text-primary-glow/70 font-mono overflow-hidden">
+  <div
+    class="ticker-wrap fixed top-0 left-0 right-0 z-40 mt-[65px] bg-dark-2 border-b border-primary/10 py-1.5 text-xs text-primary-glow/70 font-mono overflow-hidden">
     <div class="ticker">
       <span class="px-8">₿ BTC — Longo Prazo</span>
       <span class="px-8">◈ ETH — Liquidez</span>
@@ -280,19 +404,25 @@
   ════════════════════════════════════════════ -->
   <section class="hero-parallax bg-grid relative pt-32 pb-16 px-6">
     <!-- Ambient orbs -->
-    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none animate-float"></div>
-    <div class="absolute bottom-1/3 right-1/4 w-64 h-64 bg-primary-bright/5 rounded-full blur-3xl pointer-events-none" style="animation: float 8s ease-in-out infinite reverse;"></div>
+    <div
+      class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none animate-float">
+    </div>
+    <div class="absolute bottom-1/3 right-1/4 w-64 h-64 bg-primary-bright/5 rounded-full blur-3xl pointer-events-none"
+      style="animation: float 8s ease-in-out infinite reverse;"></div>
 
     <div class="max-w-4xl mx-auto relative z-10 text-center">
-      <div class="reveal inline-flex items-center gap-2 bg-primary/10 border border-primary/30 text-primary-glow px-4 py-2 rounded-full text-sm font-medium mb-6">
+      <div
+        class="reveal inline-flex items-center gap-2 bg-primary/10 border border-primary/30 text-primary-glow px-4 py-2 rounded-full text-sm font-medium mb-6">
         <span class="w-2 h-2 bg-primary-bright rounded-full animate-pulse"></span>
         Dados reais da Binance + Fear & Greed Index
       </div>
-      <h1 class="reveal font-display font-black text-4xl md:text-6xl leading-tight mb-4" style="transition-delay: 0.1s;">
+      <h1 class="reveal font-display font-black text-4xl md:text-6xl leading-tight mb-4"
+        style="transition-delay: 0.1s;">
         Calculadora<br><span class="gradient-text-bright animate-glow">Zion Smart DCA</span>
       </h1>
       <p class="reveal text-white/50 text-lg max-w-2xl mx-auto" style="transition-delay: 0.2s;">
-        Compare o DCA Tradicional, Lump Sum e a estratégia exclusiva <strong class="text-white/80">Zion Smart DCA</strong> —
+        Compare o DCA Tradicional, Lump Sum e a estratégia exclusiva <strong class="text-white/80">Zion Smart
+          DCA</strong> —
         com modulação Fear & Greed, compras RSI e realizações inteligentes.
       </p>
     </div>
@@ -354,15 +484,18 @@
           <div class="grid md:grid-cols-3 gap-4 text-xs text-white/60">
             <div class="flex items-start gap-2">
               <i class="fas fa-shopping-cart text-primary-bright mt-0.5"></i>
-              <span><strong class="text-white/80">Compra Mensal:</strong> Sempre acontece, modulada pelo Fear & Greed (0.2x a 1.8x)</span>
+              <span><strong class="text-white/80">Compra Mensal:</strong> Sempre acontece, modulada pelo Fear & Greed
+                (0.2x a 1.8x)</span>
             </div>
             <div class="flex items-start gap-2">
               <i class="fas fa-bolt text-yellow-400 mt-0.5"></i>
-              <span><strong class="text-white/80">Compra Extra:</strong> RSI Diário &lt; 35 = aporte extra (do bolso), modulado F&G</span>
+              <span><strong class="text-white/80">Compra Extra:</strong> RSI Diário &lt; 35 = aporte extra (do bolso),
+                modulado F&G</span>
             </div>
             <div class="flex items-start gap-2">
               <i class="fas fa-hand-holding-usd text-green-400 mt-0.5"></i>
-              <span><strong class="text-white/80">Venda:</strong> RSI Semanal &gt; 70 = vende 20% (máx 2/mês). Lucro sacado. Não vende abaixo do preço médio.</span>
+              <span><strong class="text-white/80">Venda:</strong> RSI Semanal &gt; 70 = vende 20% (máx 2/mês). Lucro
+                sacado. Não vende abaixo do preço médio.</span>
             </div>
           </div>
           <div class="mt-3 pt-3 border-t border-primary/20">
@@ -388,7 +521,8 @@
         <div class="loader mx-auto mb-4"></div>
         <p class="text-white/60 text-sm" id="loadingText">Buscando dados da Binance...</p>
         <div class="w-64 mx-auto mt-4 h-1 bg-dark-3 rounded-full overflow-hidden">
-          <div id="progressBar" class="h-full bg-primary-bright rounded-full transition-all duration-500" style="width:0%"></div>
+          <div id="progressBar" class="h-full bg-primary-bright rounded-full transition-all duration-500"
+            style="width:0%"></div>
         </div>
       </div>
 
@@ -444,10 +578,23 @@
   <section class="py-16 px-6 bg-dark-1 bg-grid relative">
     <div class="max-w-2xl mx-auto text-center relative z-10">
       <div class="reveal glass-card neon-border rounded-3xl p-10">
-        <div class="text-5xl mb-4 animate-float">🌿</div>
+        <div class="mb-4 animate-float"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="64"
+            height="64" class="mx-auto">
+            <defs>
+              <linearGradient id="czg" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#4cbf93" />
+                <stop offset="100%" style="stop-color:#008862" />
+              </linearGradient>
+            </defs>
+            <rect width="100" height="100" rx="20" fill="url(#czg)" /><text x="50" y="68"
+              font-family="Arial Black,sans-serif" font-size="55" font-weight="900" text-anchor="middle"
+              fill="#000">CZ</text>
+          </svg></div>
         <h3 class="font-display font-bold text-2xl mb-3">Quer dominar essa estratégia?</h3>
-        <p class="text-white/50 mb-6">Entre na lista de espera do Cripto Zion Pro e aprenda DCA, Scaling Out e Pools de Liquidez com a gente.</p>
-        <a href="index.html#cadastro" class="btn-cta text-black font-bold px-8 py-4 rounded-full text-base inline-flex items-center gap-2">
+        <p class="text-white/50 mb-6">Entre na lista de espera do Cripto Zion Pro e aprenda DCA, Scaling Out e Pools de
+          Liquidez com a gente.</p>
+        <a href="index.html#cadastro"
+          class="btn-cta text-black font-bold px-8 py-4 rounded-full text-base inline-flex items-center gap-2">
           <i class="fas fa-rocket"></i> Quero Acesso Antecipado
         </a>
       </div>
@@ -461,12 +608,18 @@
     <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
       <div class="font-display font-bold text-xl">
         <span class="text-white">CRIPTO</span><span class="gradient-text"> ZION</span>
-        <span class="ml-2 text-xs bg-primary/20 border border-primary/30 text-primary-glow px-2 py-0.5 rounded-full font-medium">PRO</span>
+        <span
+          class="ml-2 text-xs bg-primary/20 border border-primary/30 text-primary-glow px-2 py-0.5 rounded-full font-medium">PRO</span>
       </div>
-      <div class="flex gap-6 items-center">
-        <a href="https://www.youtube.com/@CriptoZion" target="_blank" class="text-white/40 hover:text-red-400 transition-colors text-lg"><i class="fab fa-youtube"></i></a>
-        <a href="https://x.com/0xFealty" target="_blank" class="text-white/40 hover:text-white transition-colors text-lg"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://www.instagram.com/criptozion" target="_blank" class="text-white/40 hover:text-pink-400 transition-colors text-lg"><i class="fab fa-instagram"></i></a>
+      <div class="flex gap-5 items-center">
+        <a href="https://www.youtube.com/@CriptoZion" target="_blank"
+          class="text-white/40 hover:text-red-400 transition-colors"><i class="fab fa-youtube"></i></a>
+        <a href="https://x.com/0xFealty" target="_blank" class="text-white/40 hover:text-white transition-colors"><i
+            class="fab fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/criptozion" target="_blank"
+          class="text-white/40 hover:text-pink-400 transition-colors"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/fealty-crypto-960791318/" target="_blank"
+          class="text-white/40 hover:text-blue-400 transition-colors"><i class="fab fa-linkedin"></i></a>
       </div>
       <div class="flex gap-6 text-white/30 text-sm">
         <a href="privacidade.html" class="hover:text-white/60 transition-colors">Privacidade</a>
@@ -484,24 +637,24 @@
        SCRIPTS
   ════════════════════════════════════════════ -->
   <script>
-    // ── Particles ──
-    (function() {
-      const container = document.getElementById('particles');
-      const count = 18;
-      for (let i = 0; i < count; i++) {
-        const p = document.createElement('div');
-        const size = Math.random() * 4 + 1;
-        p.className = 'particle';
-        p.style.cssText = `
+      // ── Particles ──
+      (function () {
+        const container = document.getElementById('particles');
+        const count = 18;
+        for (let i = 0; i < count; i++) {
+          const p = document.createElement('div');
+          const size = Math.random() * 4 + 1;
+          p.className = 'particle';
+          p.style.cssText = `
           width: ${size}px; height: ${size}px;
           left: ${Math.random() * 100}%;
           animation-duration: ${Math.random() * 20 + 15}s;
           animation-delay: ${Math.random() * 15}s;
           opacity: ${Math.random() * 0.5 + 0.1};
         `;
-        container.appendChild(p);
-      }
-    })();
+          container.appendChild(p);
+        }
+      })();
 
     // ── Scroll Reveal ──
     const observer = new IntersectionObserver((entries) => {
@@ -1009,4 +1162,5 @@
   </script>
 
 </body>
+
 </html>
