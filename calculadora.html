@@ -1062,6 +1062,16 @@
     // ── Unlock PRO Paywall ──
     const isPro = () => localStorage.getItem('zion_pass_pro') === 'true';
 
+    // Auto-unlock via Stripe redirect (?pro=activated)
+    (function checkStripeRedirect() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('pro') === 'activated') {
+        localStorage.setItem('zion_pass_pro', 'true');
+        window.history.replaceState({}, '', window.location.pathname);
+        alert('🎉 Parabéns! Seu Zion Pass PRO foi ativado com sucesso!');
+      }
+    })();
+
     function unlockPro() {
       const code = prompt("Digite seu código de acesso do Zion Pass para desbloquear:");
       if (code && code.toLowerCase().trim() === 'zion2026') {
@@ -1247,7 +1257,8 @@
               <p class="text-white/60 text-sm mb-6 mx-auto">Para visualizar todas as operações detalhadas do simulador (compras exatas, vendas e lucro sacado dia a dia), torne-se membro PRO.</p>
               <div class="flex flex-col sm:flex-row justify-center gap-3">
                  <button onclick="unlockPro()" class="btn-cta text-black font-bold px-6 py-3 rounded-full text-sm"><i class="fas fa-key"></i> Já sou PRO</button>
-                 <a href="index.html#cadastro" class="glass-card text-white hover:text-primary-glow font-bold px-6 py-3 rounded-full text-sm hover:border-primary/50 transition-colors"><i class="fas fa-rocket"></i> Quero Assinar</a>
+                 <a href="https://buy.stripe.com/test_7sY3cv8d12dgb14285" target="_blank" class="glass-card text-white hover:text-primary-glow font-bold px-6 py-3 rounded-full text-sm hover:border-primary/50 transition-colors"><i class="fas fa-rocket"></i> Mensal R$29,90</a>
+                 <a href="https://buy.stripe.com/test_8x27sL2SH19cc5801" target="_blank" class="glass-card text-white hover:text-primary-bright font-bold px-6 py-3 rounded-full text-sm hover:border-primary/50 transition-colors" style="border-color: rgba(135,248,201,0.5)"><i class="fas fa-crown"></i> Anual R$249,90 <span class="text-xs opacity-70">(-30%)</span></a>
               </div>
             </div>
           `;
