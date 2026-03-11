@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Cripto Zion — Educação, Estratégia e Análises</title>
+  <meta name="description" content="Leia os últimos artigos, análises de mercado e dicas de investimento de longo prazo da comunidade Cripto Zion.">
+  
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%234cbf93'/%3E%3Cstop offset='100%25' style='stop-color:%23008862'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-family='Arial Black,sans-serif' font-size='55' font-weight='900' text-anchor='middle' fill='%23000'%3ECZ%3C/text%3E%3C/svg%3E">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { primary: { DEFAULT: '#008862', light: '#29a37a', bright: '#4cbf93', glow: '#6adbae', soft: '#87f8c9' }, dark: { DEFAULT: '#000000', 1: '#050d09', 2: '#0a1410', 3: '#0f1d16', card: '#0d1a13' } }, fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], display: ['Space Grotesk', 'Inter', 'sans-serif'] } } } }
+  </script>
+  <style>
+    * { scroll-behavior: smooth; box-sizing: border-box }
+    body { font-family: 'Inter', sans-serif; background: #000; color: #fff; overflow-x: hidden }
+    
+    .gradient-text { background: linear-gradient(135deg, #4cbf93, #008862, #87f8c9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text }
+    .gradient-text-bright { background: linear-gradient(135deg, #87f8c9, #4cbf93, #29a37a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text }
+    
+    .glass-card { background: rgba(13, 26, 19, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(0, 136, 98, 0.2) }
+    .neon-border { border: 1px solid rgba(76, 191, 147, 0.4); box-shadow: 0 0 20px rgba(0, 136, 98, 0.15) }
+    .neon-border:hover { border-color: rgba(76, 191, 147, 0.7); box-shadow: 0 0 35px rgba(0, 136, 98, 0.25) }
+    
+    .bg-grid { background-image: linear-gradient(rgba(0, 136, 98, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 136, 98, .05) 1px, transparent 1px); background-size: 60px 60px }
+    
+    .btn-cta { background: linear-gradient(135deg, #008862, #29a37a, #4cbf93); background-size: 200% 200%; transition: all 0.3s; animation: btnShimmer 3s ease infinite; }
+    .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0, 136, 98, 0.5) }
+    
+    @keyframes btnShimmer { 0% { background-position: 0% 50% } 50% { background-position: 100% 50% } 100% { background-position: 0% 50% } }
+
+    nav { background: rgba(0, 0, 0, .85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0, 136, 98, .15) }
+    .pro-badge { display: inline-flex; align-items: center; vertical-align: middle; font-size: .65rem; background: rgba(0, 136, 98, .2); border: 1px solid rgba(0, 136, 98, .3); color: #6adbae; padding: 2px 8px; border-radius: 9999px; font-weight: 600; margin-left: 6px; line-height: 1 }
+
+    /* Skeleton Loading */
+    .skeleton { background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%); background-size: 200% 100%; animation: loading 1.5s infinite; border-radius: 4px; }
+    @keyframes loading { 0% { background-position: 200% 0 } 100% { background-position: -200% 0 } }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="index.html" class="font-display font-bold text-lg sm:text-xl tracking-tight flex items-center">
+        <span class="text-white">CRIPTO</span><span class="gradient-text"> ZION</span><span class="pro-badge">PRO</span>
+      </a>
+      <div class="hidden sm:flex items-center gap-6">
+          <a href="index.html" class="text-sm font-medium text-white/60 hover:text-primary-glow transition-colors">A Comunidade</a>
+          <a href="calculadora.html" class="text-sm font-medium text-white/60 hover:text-primary-glow transition-colors"><i class="fas fa-calculator mr-1"></i> Calculadora</a>
+          <a href="blog.html" class="text-sm font-medium text-primary-glow transition-colors"><i class="fas fa-newspaper mr-1"></i> Blog</a>
+      </div>
+      <a href="index.html#cadastro" class="btn-cta text-black font-bold px-5 py-2 rounded-full text-sm hidden sm:inline-flex items-center gap-2">
+        <i class="fas fa-bolt text-xs"></i> Assinar
+      </a>
+    </div>
+  </nav>
+
+  <!-- HEADER BLOG -->
+  <header class="pt-32 pb-16 px-4 bg-grid relative border-b border-primary/20">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      <div class="inline-flex items-center gap-2 text-primary-glow text-xs font-semibold bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-4">
+        <i class="fas fa-book-open"></i> Central de Conhecimento
+      </div>
+      <h1 class="font-display font-black text-4xl sm:text-5xl md:text-6xl mb-6">
+        Blog <span class="gradient-text-bright">Cripto Zion</span>
+      </h1>
+      <p class="text-lg text-white/60 max-w-2xl mx-auto">
+        Análises diárias, estratégias DCA, educação DeFi e mentalidade de holding. Conteúdo gerado pela nossa equipe de especialistas.
+      </p>
+    </div>
+  </header>
+
+  <!-- BLOG GRID -->
+  <main class="py-16 px-4 sm:px-6 min-h-[50vh]">
+    <div class="max-w-6xl mx-auto">
+      
+      <!-- Container dos Artigos -->
+      <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Loading Skeletons -->
+        <div class="glass-card neon-border rounded-2xl p-6 flex flex-col h-full">
+           <div class="skeleton h-48 w-full rounded-xl mb-4"></div>
+           <div class="skeleton h-6 w-3/4 mb-3"></div>
+           <div class="skeleton h-4 w-full mb-2"></div>
+           <div class="skeleton h-4 w-5/6 mb-4"></div>
+           <div class="mt-auto skeleton h-8 w-1/3 rounded-full"></div>
+        </div>
+        <div class="glass-card neon-border rounded-2xl p-6 flex flex-col h-full">
+           <div class="skeleton h-48 w-full rounded-xl mb-4"></div>
+           <div class="skeleton h-6 w-3/4 mb-3"></div>
+           <div class="skeleton h-4 w-full mb-2"></div>
+           <div class="skeleton h-4 w-5/6 mb-4"></div>
+           <div class="mt-auto skeleton h-8 w-1/3 rounded-full"></div>
+        </div>
+
+      </div>
+
+      <div id="no-articles" class="hidden text-center py-20 text-white/40">
+        <i class="fas fa-file-signature text-4xl mb-4 text-white/20"></i>
+        <p class="text-lg">Nenhum artigo publicado ainda.</p>
+        <p class="text-sm">Os agentes da Cripto Zion estão preparando conteúdo.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="py-8 border-t border-white/10 text-center text-white/40 text-sm">
+      <p>&copy; 2026 Cripto Zion Pro. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    async function loadArticles() {
+      const grid = document.getElementById('articles-grid');
+      const noArticles = document.getElementById('no-articles');
+      
+      try {
+        // Busca o index de artigos mantido pela API ou automação
+        const response = await fetch('articles/index.json');
+        
+        if (!response.ok) {
+          throw new Error('Index não encontrado');
+        }
+        
+        const articles = await response.json();
+        
+        if (!articles || articles.length === 0) {
+          grid.innerHTML = '';
+          noArticles.classList.remove('hidden');
+          return;
+        }
+
+        // Renderiza os cartões
+        grid.innerHTML = articles.map(article => `
+          <a href="artigo.html?id=${article.id}" class="glass-card neon-border rounded-2xl p-6 flex flex-col h-full group hover:bg-primary/5 transition-colors cursor-pointer block">
+            <div class="text-xs text-primary-glow font-bold mb-3 flex items-center justify-between">
+                <span><i class="fas fa-tag mr-1"></i> ${article.category || 'Mercado'}</span>
+                <span class="text-white/40">${article.date}</span>
+            </div>
+            <h2 class="font-display font-bold text-xl mb-3 group-hover:text-primary-glow transition-colors">${article.title}</h2>
+            <p class="text-white/60 text-sm mb-6 flex-grow leading-relaxed line-clamp-3">${article.summary || article.title}</p>
+            <div class="mt-auto flex items-center justify-between border-t border-white/10 pt-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center border border-primary/40 text-primary-glow text-[10px]">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <span class="text-xs text-white/50">${article.author || 'Zion AI'}</span>
+                </div>
+                <span class="text-xs text-primary font-semibold group-hover:translate-x-1 transition-transform">Ler mais &rarr;</span>
+            </div>
+          </a>
+        `).join('');
+
+      } catch (err) {
+        console.error('Erro ao carregar artigos:', err);
+        grid.innerHTML = '';
+        noArticles.classList.remove('hidden');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadArticles);
+  </script>
+</body>
+</html>
