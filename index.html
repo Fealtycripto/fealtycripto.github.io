@@ -1192,7 +1192,9 @@
     const _b1 = 'xkeysib-3e7d72a72fd36c57d2073ea5ec', _b2 = '9df59c80e5bb11c5463acc164184c046262b32', _b3 = '-LgXr83Tbc3I2G30B'; const BK = _b1 + _b2 + _b3;
 
     async function submitLead(name, email, whatsapp) {
-      try { await fetch('https://api.brevo.com/v3/contacts', { method: 'POST', headers: { 'api-key': BK, 'Content-Type': 'application/json' }, body: JSON.stringify({ email, attributes: { NOME: name, WHATSAPP: whatsapp, SOURCE: 'criptozion_landing' }, listIds: [5], updateEnabled: true }) }); } catch (e) { console.warn('Brevo:', e); }
+      let whatsappClean = whatsapp.replace(/\D/g, '');
+      if (whatsappClean.length === 10 || whatsappClean.length === 11) whatsappClean = '55' + whatsappClean;
+      try { await fetch('https://api.brevo.com/v3/contacts', { method: 'POST', headers: { 'api-key': BK, 'Content-Type': 'application/json' }, body: JSON.stringify({ email, attributes: { NOME: name, WHATSAPP: whatsappClean, SOURCE: 'criptozion_landing' }, listIds: [5], updateEnabled: true }) }); } catch (e) { console.warn('Brevo:', e); }
       try { localStorage.setItem('cz_' + Date.now(), JSON.stringify({ name, email, whatsapp, ts: new Date().toISOString() })); } catch (_) { }
       // Send welcome email
       await sendWelcomeEmail(email, name);
