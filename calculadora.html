@@ -177,9 +177,13 @@
     }
 
     .btn-cta:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(0, 136, 98, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(76, 191, 147, 0.4);
     }
+
+    /* Paywall */
+    .paywall-blur { filter: blur(6px); user-select: none; pointer-events: none; opacity: 0.5; }
+    .paywall-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(10, 10, 12, 0.6); z-index: 10; border-radius: inherit; }
 
     @keyframes btnShimmer {
       0% {
@@ -573,16 +577,17 @@
         </div>
 
         <!-- Detailed Stats -->
-        <div class="grid md:grid-cols-2 gap-6 mb-10">
+        <div class="glass-card neon-border rounded-2xl p-6 mb-10 relative" id="detailedStatsContainer">
+          <div class="grid md:grid-cols-2 gap-6" id="tablesWrapper">
           <!-- Compras Recorrentes -->
-          <div class="glass-card neon-border rounded-2xl p-6 max-h-80 overflow-auto">
+          <div class="max-h-80 overflow-auto">
             <h4 class="font-display font-bold text-sm mb-4 flex items-center gap-2 text-primary-glow">
               <i class="fas fa-shopping-cart"></i> Compras Recorrentes (Mensais)
             </h4>
             <div id="recurringBuysTable"></div>
           </div>
           <!-- Vendas -->
-          <div class="glass-card neon-border rounded-2xl p-6 max-h-80 overflow-auto">
+          <div class="max-h-80 overflow-auto">
             <h4 class="font-display font-bold text-sm mb-4 flex items-center gap-2 text-green-400">
               <i class="fas fa-hand-holding-usd"></i> Vendas Parciais (Lucro Sacado)
             </h4>
@@ -591,11 +596,17 @@
         </div>
 
         <!-- Extra Buys Log -->
-        <div class="glass-card neon-border rounded-2xl p-6 max-h-80 overflow-auto mb-10">
-          <h4 class="font-display font-bold text-sm mb-4 flex items-center gap-2 text-yellow-400">
-            <i class="fas fa-bolt"></i> Compras Extras (RSI Diário &lt; 35)
-          </h4>
-          <div id="extraBuysTable"></div>
+          </div>
+          <!-- Extra Buys Log -->
+          <div class="mt-6 border-t border-white/5 pt-6 max-h-80 overflow-auto" id="extrasWrapper">
+            <h4 class="font-display font-bold text-sm mb-4 flex items-center gap-2 text-yellow-400">
+              <i class="fas fa-bolt"></i> Compras Extras (RSI Diário &lt; 35)
+            </h4>
+            <div id="extraBuysTable"></div>
+          </div>
+          
+          <!-- Paywall Overlay Injection -->
+          <div id="tablePaywall" class="hidden paywall-overlay"></div>
         </div>
 
       </div>
@@ -1048,6 +1059,22 @@
       });
     }
 
+    // ── Unlock PRO Paywall ──
+    const isPro = () => localStorage.getItem('zion_pass_pro') === 'true';
+
+    function unlockPro() {
+      const code = prompt("Digite seu código de acesso do Zion Pass para desbloquear:");
+      if (code && code.toLowerCase().trim() === 'zion2026') {
+        localStorage.setItem('zion_pass_pro', 'true');
+        alert("Acesso PRO Liberado! Bem-vindo à Cripto Zion.");
+        if (!document.getElementById('resultsSection').classList.contains('hidden')) {
+            document.getElementById('runBtn').click();
+        }
+      } else if (code) {
+        alert("Código inválido. Assine o Zion Pass para ter acesso.");
+      }
+    }
+
     // ── Result Cards ──
     function renderResults(trad, lump, zion) {
       const winnerRoi = Math.max(trad.roi, lump.roi, zion.roi);
@@ -1065,15 +1092,26 @@
         {
           name: 'Zion Smart DCA', icon: 'fa-brain', color: '#4cbf93',
           invested: zion.invested, portfolio: zion.patrimonio, btc: zion.btc, roi: zion.roi, precoMedio: zion.precoMedio,
-          extra: `
-            <div class="mt-3 pt-3 border-t border-primary/20 space-y-1 text-xs">
-              <div class="flex justify-between"><span class="text-white/50">Valor BTC:</span><span>${fmtUSD(zion.btcValue)}</span></div>
-              <div class="flex justify-between"><span class="text-white/50">Lucro Sacado:</span><span class="text-green-400 font-bold">${fmtUSD(zion.lucroSacado)}</span></div>
-              <div class="flex justify-between"><span class="text-white/50">Preço Médio:</span><span>${fmtUSD(zion.precoMedio)}</span></div>
-              <div class="flex justify-between"><span class="text-white/50">Compras Extras:</span><span>${zion.extras.length}</span></div>
-              <div class="flex justify-between"><span class="text-white/50">Vendas:</span><span>${zion.vendas.length}</span></div>
-            </div>
-          `
+          extra: (!isPro() ? `
+        <div class="mt-3 pt-3 border-t border-primary/20 space-y-1 text-xs relative">
+          <div class="paywall-blur">
+            <div class="flex justify-between"><span class="text-white/50">Valor BTC:</span><span>$X,XXX.XX</span></div>
+            <div class="flex justify-between"><span class="text-white/50">Lucro Sacado:</span><span class="text-green-400 font-bold">$X,XXX.XX</span></div>
+            <div class="flex justify-between"><span class="text-white/50">Preço Médio:</span><span>$XX,XXX.XX</span></div>
+            <div class="flex justify-between"><span class="text-white/50">Compras Extras:</span><span>XX</span></div>
+            <div class="flex justify-between"><span class="text-white/50">Vendas:</span><span>X</span></div>
+          </div>
+          <div class="paywall-overlay rounded-xl">
+             <button onclick="unlockPro()" class="bg-primary/20 hover:bg-primary border border-primary text-primary hover:text-black font-bold py-1.5 px-3 rounded-full text-[10px] w-4/5 text-center mt-2 flex items-center justify-center gap-1 transition-colors"><i class="fas fa-lock text-[10px]"></i> Ver Dados PRO</button>
+          </div>
+        </div>` : `
+        <div class="mt-3 pt-3 border-t border-primary/20 space-y-1 text-xs">
+          <div class="flex justify-between"><span class="text-white/50">Valor BTC:</span><span>${fmtUSD(zion.btcValue)}</span></div>
+          <div class="flex justify-between"><span class="text-white/50">Lucro Sacado:</span><span class="text-green-400 font-bold">${fmtUSD(zion.lucroSacado)}</span></div>
+          <div class="flex justify-between"><span class="text-white/50">Preço Médio:</span><span>${fmtUSD(zion.precoMedio)}</span></div>
+          <div class="flex justify-between"><span class="text-white/50">Compras Extras:</span><span>${zion.extras.length}</span></div>
+          <div class="flex justify-between"><span class="text-white/50">Vendas:</span><span>${zion.vendas.length}</span></div>
+        </div>`)
         }
       ];
 
@@ -1086,8 +1124,8 @@
           </div>
           <div class="space-y-2 text-sm">
             <div class="flex justify-between"><span class="text-white/50">Investido:</span><span>${fmtUSD(c.invested)}</span></div>
-            <div class="flex justify-between"><span class="text-white/50">BTC:</span><span class="font-mono text-xs">${fmtBTC(c.btc)}</span></div>
-            <div class="flex justify-between"><span class="text-white/50">Preço Médio:</span><span>${fmtUSD(c.precoMedio)}</span></div>
+            <div class="flex justify-between"><span class="text-white/50">BTC:</span><span class="font-mono text-xs">${isPro() || c.name !== 'Zion Smart DCA' ? fmtBTC(c.btc) : 'X.XXXX'}</span></div>
+            <div class="flex justify-between"><span class="text-white/50">Preço Médio:</span><span>${isPro() || c.name !== 'Zion Smart DCA' ? fmtUSD(c.precoMedio) : '$X,XXX.XX'}</span></div>
             <div class="flex justify-between"><span class="text-white/50">Patrimônio:</span><span class="font-bold">${fmtUSD(c.portfolio)}</span></div>
             <div class="flex justify-between items-center">
               <span class="text-white/50">Lucro:</span>
@@ -1194,6 +1232,30 @@
           { label: 'USD Sacado', fmt: r => `<span class="text-green-400">${fmtUSD(r.usd)}</span>` },
           { label: '#', fmt: r => r.n },
         ]);
+
+        // Tables Display Logic with Paywall
+        if (!isPro()) {
+          document.getElementById('tablesWrapper').classList.add('paywall-blur');
+          document.getElementById('extrasWrapper').classList.add('paywall-blur');
+          document.getElementById('tablePaywall').classList.remove('hidden');
+          document.getElementById('tablePaywall').innerHTML = `
+            <div class="text-center p-8 w-full max-w-lg">
+              <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-primary/30 shadow-[0_0_30px_rgba(76,191,147,0.3)]">
+                <i class="fas fa-lock text-primary-glow text-2xl"></i>
+              </div>
+              <h4 class="font-display font-bold text-xl mb-2 text-white">Versão Completa Bloqueada</h4>
+              <p class="text-white/60 text-sm mb-6 mx-auto">Para visualizar todas as operações detalhadas do simulador (compras exatas, vendas e lucro sacado dia a dia), torne-se membro PRO.</p>
+              <div class="flex flex-col sm:flex-row justify-center gap-3">
+                 <button onclick="unlockPro()" class="btn-cta text-black font-bold px-6 py-3 rounded-full text-sm"><i class="fas fa-key"></i> Já sou PRO</button>
+                 <a href="index.html#cadastro" class="glass-card text-white hover:text-primary-glow font-bold px-6 py-3 rounded-full text-sm hover:border-primary/50 transition-colors"><i class="fas fa-rocket"></i> Quero Assinar</a>
+              </div>
+            </div>
+          `;
+        } else {
+          document.getElementById('tablesWrapper').classList.remove('paywall-blur');
+          document.getElementById('extrasWrapper').classList.remove('paywall-blur');
+          document.getElementById('tablePaywall').classList.add('hidden');
+        }
 
         setProgress(100, 'Concluído!');
 
