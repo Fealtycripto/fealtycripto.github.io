@@ -478,6 +478,24 @@
         class="btn-cta text-black font-bold px-5 py-2 rounded-full text-sm hidden sm:inline-flex items-center gap-2">
         <i class="fas fa-bolt text-xs"></i> Quero Acesso
       </a>
+      <!-- Mobile Hamburger -->
+      <button id="mobileMenuBtn" class="sm:hidden text-white/70 hover:text-primary-glow transition-colors text-xl p-2" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <!-- Mobile Dropdown -->
+    <div id="mobileMenu" class="hidden sm:hidden border-t border-primary/10" style="background: rgba(0,0,0,0.95); backdrop-filter: blur(20px);">
+      <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-3">
+        <a href="calculadora.html" class="flex items-center gap-3 text-white/70 hover:text-primary-glow py-2 transition-colors">
+          <i class="fas fa-calculator text-primary-glow w-5 text-center"></i> Calculadora Smart DCA
+        </a>
+        <a href="blog.html" class="flex items-center gap-3 text-white/70 hover:text-primary-glow py-2 transition-colors">
+          <i class="fas fa-newspaper text-primary-glow w-5 text-center"></i> Blog
+        </a>
+        <a href="#cadastro" class="btn-cta text-black font-bold px-5 py-2.5 rounded-full text-sm text-center mt-2" onclick="document.getElementById('mobileMenu').classList.add('hidden')">
+          <i class="fas fa-bolt text-xs"></i> Quero Acesso
+        </a>
+      </div>
     </div>
   </nav>
 
