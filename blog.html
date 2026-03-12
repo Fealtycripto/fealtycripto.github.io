@@ -40,6 +40,8 @@
     /* Skeleton Loading */
     .skeleton { background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%); background-size: 200% 100%; animation: loading 1.5s infinite; border-radius: 4px; }
     @keyframes loading { 0% { background-position: 200% 0 } 100% { background-position: -200% 0 } }
+    .premium-card { border-color: rgba(255,215,0,0.25) !important; }
+    .premium-card:hover { border-color: rgba(255,215,0,0.5) !important; box-shadow: 0 0 35px rgba(255,215,0,0.1) !important; }
   </style>
 </head>
 
@@ -138,10 +140,13 @@
 
         // Renderiza os cartões
         grid.innerHTML = articles.map(article => `
-          <a href="artigo.html?id=${article.id}" class="glass-card neon-border rounded-2xl p-6 flex flex-col h-full group hover:bg-primary/5 transition-colors cursor-pointer block">
+          <a href="artigo.html?id=${article.id}" class="glass-card neon-border rounded-2xl p-6 flex flex-col h-full group hover:bg-primary/5 transition-colors cursor-pointer block ${article.premium ? 'premium-card' : ''}">
             <div class="text-xs text-primary-glow font-bold mb-3 flex items-center justify-between">
                 <span><i class="fas fa-tag mr-1"></i> ${article.category || 'Mercado'}</span>
-                <span class="text-white/40">${article.date}</span>
+                <div class="flex items-center gap-2">
+                  ${article.premium ? '<span style="display:inline-flex;align-items:center;gap:4px;font-size:.65rem;background:linear-gradient(135deg,rgba(255,215,0,0.15),rgba(255,215,0,0.05));border:1px solid rgba(255,215,0,0.3);color:#ffd700;padding:2px 8px;border-radius:9999px;font-weight:700;"><i class="fas fa-crown" style="font-size:.55rem"></i> PRO</span>' : ''}
+                  <span class="text-white/40">${article.date}</span>
+                </div>
             </div>
             <h2 class="font-display font-bold text-xl mb-3 group-hover:text-primary-glow transition-colors">${article.title}</h2>
             <p class="text-white/60 text-sm mb-6 flex-grow leading-relaxed line-clamp-3">${article.summary || article.title}</p>
@@ -152,7 +157,7 @@
                     </div>
                     <span class="text-xs text-white/50">${article.author || 'Zion AI'}</span>
                 </div>
-                <span class="text-xs text-primary font-semibold group-hover:translate-x-1 transition-transform">Ler mais &rarr;</span>
+                <span class="text-xs ${article.premium ? 'text-yellow-400' : 'text-primary'} font-semibold group-hover:translate-x-1 transition-transform">${article.premium ? '<i class="fas fa-lock mr-1"></i> Exclusivo' : 'Ler mais &rarr;'}</span>
             </div>
           </a>
         `).join('');

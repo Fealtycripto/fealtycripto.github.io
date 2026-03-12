@@ -54,6 +54,11 @@
     /* Skeleton Loading */
     .skeleton { background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%); background-size: 200% 100%; animation: loading 1.5s infinite; border-radius: 4px; }
     @keyframes loading { 0% { background-position: 200% 0 } 100% { background-position: -200% 0 } }
+
+    /* Paywall Premium */
+    .premium-preview { position: relative; max-height: 400px; overflow: hidden; }
+    .premium-preview::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 200px; background: linear-gradient(to bottom, transparent, #000); pointer-events: none; }
+    .premium-badge { display: inline-flex; align-items: center; gap: 6px; font-size: .7rem; background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,215,0,0.05)); border: 1px solid rgba(255,215,0,0.3); color: #ffd700; padding: 3px 10px; border-radius: 9999px; font-weight: 700; }
   </style>
 </head>
 
@@ -133,13 +138,30 @@
           <!-- Injetado via JS -->
       </article>
       
+      <!-- Paywall Premium -->
+      <div id="premium-paywall" class="hidden mt-8 p-10 glass-card border border-yellow-500/30 rounded-2xl text-center relative overflow-hidden">
+         <div class="absolute inset-0 bg-gradient-to-r from-yellow-500/5 via-transparent to-yellow-500/5 pointer-events-none"></div>
+         <div class="relative z-10">
+           <div class="w-20 h-20 bg-yellow-500/10 rounded-full flex items-center justify-center mx-auto mb-5 border border-yellow-500/30 shadow-[0_0_40px_rgba(255,215,0,0.15)]">
+             <i class="fas fa-crown text-yellow-400 text-3xl"></i>
+           </div>
+           <h3 class="font-display font-bold text-2xl mb-2 text-white">Conteúdo Exclusivo PRO</h3>
+           <p class="text-white/50 text-sm mb-6 max-w-md mx-auto">Este artigo é exclusivo para membros do Zion Pass PRO. Desbloqueie acesso completo à calculadora, artigos premium e análises diárias.</p>
+           <div class="flex flex-col sm:flex-row gap-3 justify-center">
+             <button onclick="unlockPro()" class="btn-cta text-black font-bold px-6 py-3 rounded-full text-sm"><i class="fas fa-key"></i> Já sou PRO</button>
+             <a href="https://buy.stripe.com/fZu14n9hh5UVdDG1uI9R600" target="_blank" class="glass-card text-white hover:text-primary-glow font-bold px-6 py-3 rounded-full text-sm hover:border-primary/50 transition-colors"><i class="fas fa-rocket"></i> Mensal R$29,90</a>
+             <a href="https://buy.stripe.com/00w6oH0KLcjjfLOddq9R601" target="_blank" class="glass-card text-white hover:text-yellow-400 font-bold px-6 py-3 rounded-full text-sm transition-colors" style="border-color: rgba(255,215,0,0.3)"><i class="fas fa-crown"></i> Anual R$249,90 <span class="text-xs opacity-70">(-30%)</span></a>
+           </div>
+         </div>
+      </div>
+
       <!-- CTA Footer -->
       <div id="article-cta" class="hidden mt-16 p-8 glass-card border border-primary/30 rounded-2xl text-center relative overflow-hidden">
          <div class="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 pointer-events-none"></div>
          <h3 class="relative z-10 font-display font-bold text-2xl mb-2">Quer aplicar na prática?</h3>
-         <p class="relative z-10 text-white/60 text-sm mb-6 max-w-lg mx-auto">Inscreva-se na lista de espera do Zion Pass e tenha acesso à carteira aberta e simuladores avançados.</p>
-         <a href="index.html#cadastro" class="relative z-10 btn-cta text-black font-bold px-8 py-3 rounded-full text-sm inline-flex items-center gap-2">
-           <i class="fas fa-rocket"></i> Entrar na Lista VIP
+         <p class="relative z-10 text-white/60 text-sm mb-6 max-w-lg mx-auto">Assine o Zion Pass PRO e tenha acesso à calculadora completa, artigos exclusivos e análises diárias.</p>
+         <a href="https://buy.stripe.com/fZu14n9hh5UVdDG1uI9R600" target="_blank" class="relative z-10 btn-cta text-black font-bold px-8 py-3 rounded-full text-sm inline-flex items-center gap-2">
+           <i class="fas fa-rocket"></i> Assinar Zion Pass PRO
          </a>
       </div>
 
@@ -151,6 +173,30 @@
   </footer>
 
   <script>
+    const isPro = () => localStorage.getItem('zion_pass_pro') === 'true';
+
+    // Auto-unlock via Stripe redirect
+    (function checkStripeRedirect() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('pro') === 'activated') {
+        localStorage.setItem('zion_pass_pro', 'true');
+        const newUrl = new URL(window.location);
+        newUrl.searchParams.delete('pro');
+        window.history.replaceState({}, '', newUrl);
+      }
+    })();
+
+    function unlockPro() {
+      const code = prompt('Digite seu código de acesso do Zion Pass:');
+      if (code && code.toLowerCase().trim() === 'zion2026') {
+        localStorage.setItem('zion_pass_pro', 'true');
+        alert('🎉 Acesso PRO Liberado!');
+        location.reload();
+      } else if (code) {
+        alert('Código inválido. Assine o Zion Pass para ter acesso.');
+      }
+    }
+
     async function loadArticle() {
       const urlParams = new URLSearchParams(window.location.search);
       const articleId = urlParams.get('id');
@@ -161,6 +207,7 @@
       const content = document.getElementById('article-content');
       const error = document.getElementById('article-error');
       const cta = document.getElementById('article-cta');
+      const paywall = document.getElementById('premium-paywall');
 
       if (!articleId) {
         metaSkeleton.classList.add('hidden');
@@ -170,32 +217,39 @@
       }
 
       try {
-        // Primeiro, busca o arquivo JSON do artigo na pasta articles/
         const response = await fetch(`articles/${articleId}.json`);
-        
-        if (!response.ok) {
-          throw new Error('Artigo não encontrado');
-        }
-        
+        if (!response.ok) throw new Error('Artigo não encontrado');
         const article = await response.json();
         
         // Popula Header
         document.title = `${article.title} — Cripto Zion Blog`;
         document.getElementById('art-title').innerText = article.title;
-        document.getElementById('art-category').innerHTML = `<i class="fas fa-tag"></i> ${article.category || 'Mercado'}`;
+        document.getElementById('art-category').innerHTML = `<i class="fas fa-tag"></i> ${article.category || 'Mercado'}` + (article.premium ? ' <span class="premium-badge"><i class="fas fa-crown"></i> PRO</span>' : '');
         document.getElementById('art-author').innerText = article.author || 'Zion AI';
         document.getElementById('art-date').innerHTML = `<i class="far fa-calendar-alt mr-1"></i> ${article.date}`;
         
-        // Popula Conteúdo Raw HTML (gerado em Markdown pré-processado pela AI)
-        content.innerHTML = article.content;
-
-        // Troca Skeletons por Conteúdo Real
-        metaSkeleton.classList.add('hidden');
-        contentSkeleton.classList.add('hidden');
-        
-        header.classList.remove('hidden');
-        content.classList.remove('hidden');
-        cta.classList.remove('hidden');
+        // Verifica se é premium e se o usuário tem acesso
+        if (article.premium && !isPro()) {
+          // Mostra preview com blur
+          content.innerHTML = article.content;
+          content.classList.add('premium-preview');
+          
+          metaSkeleton.classList.add('hidden');
+          contentSkeleton.classList.add('hidden');
+          header.classList.remove('hidden');
+          content.classList.remove('hidden');
+          paywall.classList.remove('hidden');
+          // NÃO mostra o CTA normal
+        } else {
+          // Mostra conteúdo completo
+          content.innerHTML = article.content;
+          
+          metaSkeleton.classList.add('hidden');
+          contentSkeleton.classList.add('hidden');
+          header.classList.remove('hidden');
+          content.classList.remove('hidden');
+          cta.classList.remove('hidden');
+        }
 
       } catch (err) {
         console.error('Erro ao abrir artigo:', err);
