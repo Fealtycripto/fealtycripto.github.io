@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programa de Afiliados — Cripto Zion Pro</title>
+  <meta name="description" content="Ganhe 25% de comissão recorrente indicando a Cripto Zion Pro. Programa de afiliados para criadores de conteúdo e influenciadores cripto.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%234cbf93'/%3E%3Cstop offset='100%25' style='stop-color:%23008862'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-family='Arial Black,sans-serif' font-size='55' font-weight='900' text-anchor='middle' fill='%23000'%3ECZ%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { primary: { DEFAULT: '#008862', light: '#29a37a', bright: '#4cbf93', glow: '#6adbae', soft: '#87f8c9' }, dark: { DEFAULT: '#000000', 1: '#050d09', 2: '#0a1410', 3: '#0f1d16', card: '#0d1a13' } }, fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], display: ['Space Grotesk', 'Inter', 'sans-serif'] } } } }
+  </script>
+  <style>
+    * { scroll-behavior: smooth; box-sizing: border-box }
+    body { font-family: 'Inter', sans-serif; background: #000; color: #fff; overflow-x: hidden }
+    .gradient-text { background: linear-gradient(135deg, #4cbf93, #008862, #87f8c9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text }
+    .glass-card { background: rgba(13, 26, 19, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(0, 136, 98, 0.2) }
+    .neon-border { border: 1px solid rgba(76, 191, 147, 0.4); box-shadow: 0 0 20px rgba(0, 136, 98, 0.15) }
+    .bg-grid { background-image: linear-gradient(rgba(0, 136, 98, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 136, 98, .05) 1px, transparent 1px); background-size: 60px 60px }
+    .btn-cta { background: linear-gradient(135deg, #008862, #29a37a, #4cbf93); background-size: 200% 200%; transition: all 0.3s; animation: btnShimmer 3s ease infinite; }
+    .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0, 136, 98, 0.5) }
+    @keyframes btnShimmer { 0% { background-position: 0% 50% } 50% { background-position: 100% 50% } 100% { background-position: 0% 50% } }
+    nav { background: rgba(0, 0, 0, .85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0, 136, 98, .15) }
+    .pro-badge { display: inline-flex; align-items: center; font-size: .65rem; background: rgba(0, 136, 98, .2); border: 1px solid rgba(0, 136, 98, .3); color: #6adbae; padding: 2px 8px; border-radius: 9999px; font-weight: 600; margin-left: 6px }
+    .step-line { position: relative; }
+    .step-line::after { content: ''; position: absolute; left: 19px; top: 48px; bottom: -20px; width: 2px; background: linear-gradient(180deg, rgba(0,136,98,0.5), rgba(0,136,98,0.1)); }
+    .step-line:last-child::after { display: none; }
+    .gold-gradient { background: linear-gradient(135deg, #ffd700, #ffaa00, #ffd700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="index.html" class="font-display font-bold text-lg sm:text-xl tracking-tight flex items-center">
+        <span class="text-white">CRIPTO</span><span class="gradient-text"> ZION</span><span class="pro-badge">PRO</span>
+      </a>
+      <div class="hidden sm:flex items-center gap-6">
+        <a href="index.html" class="text-sm font-medium text-white/60 hover:text-primary-glow transition-colors">Início</a>
+        <a href="blog.html" class="text-sm font-medium text-white/60 hover:text-primary-glow transition-colors"><i class="fas fa-newspaper mr-1"></i> Blog</a>
+        <a href="academy.html" class="text-sm font-medium text-white/60 hover:text-primary-glow transition-colors"><i class="fas fa-graduation-cap mr-1"></i> Academy</a>
+      </div>
+      <a href="index.html#pricing" class="btn-cta text-black font-bold px-5 py-2 rounded-full text-sm hidden sm:inline-flex items-center gap-2">
+        <i class="fas fa-bolt text-xs"></i> Assinar
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="pt-32 pb-20 px-4 bg-grid relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black pointer-events-none"></div>
+    <div class="max-w-3xl mx-auto text-center relative z-10">
+      <div class="inline-flex items-center gap-2 text-yellow-400 text-xs font-semibold bg-yellow-500/10 border border-yellow-500/20 px-3 py-1 rounded-full mb-4">
+        <i class="fas fa-handshake"></i> Programa de Afiliados
+      </div>
+      <h1 class="font-display font-black text-4xl sm:text-5xl md:text-6xl mb-4">
+        Ganhe <span class="gold-gradient">25%</span> de comissão <span class="gradient-text">recorrente</span>
+      </h1>
+      <p class="text-lg text-white/60 max-w-xl mx-auto mb-8">
+        Indique a Cripto Zion Pro e receba 25% de cada assinatura — todo mês, enquanto seu indicado permanecer ativo.
+      </p>
+      <a href="mailto:afiliados@criptozion.xyz?subject=Quero%20ser%20afiliado%20Cripto%20Zion" class="btn-cta text-black font-bold px-8 py-4 rounded-full text-base inline-flex items-center gap-2">
+        <i class="fas fa-rocket"></i> Quero Ser Afiliado
+      </a>
+    </div>
+  </header>
+
+  <!-- COMO FUNCIONA -->
+  <section class="py-16 px-4 sm:px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-primary-bright text-xs font-semibold uppercase tracking-widest">Simples e direto</span>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl mt-2">Como <span class="gradient-text">funciona</span></h2>
+      </div>
+      <div class="space-y-8">
+        <!-- Step 1 -->
+        <div class="step-line flex items-start gap-5">
+          <div class="w-10 h-10 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center text-primary-glow font-bold text-sm flex-shrink-0">1</div>
+          <div class="pt-1">
+            <h3 class="font-semibold text-base mb-1">Cadastre-se como afiliado</h3>
+            <p class="text-white/50 text-sm leading-relaxed">Envie um email para <strong class="text-primary-glow">afiliados@criptozion.xyz</strong> com seu nome, redes sociais e como pretende divulgar. Você receberá seu link único.</p>
+          </div>
+        </div>
+        <!-- Step 2 -->
+        <div class="step-line flex items-start gap-5">
+          <div class="w-10 h-10 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center text-primary-glow font-bold text-sm flex-shrink-0">2</div>
+          <div class="pt-1">
+            <h3 class="font-semibold text-base mb-1">Compartilhe seu link</h3>
+            <p class="text-white/50 text-sm leading-relaxed">Divulgue nas suas redes sociais, canal, grupo ou lista de email. Cada pessoa que assinar pelo seu link será trackeada automaticamente.</p>
+          </div>
+        </div>
+        <!-- Step 3 -->
+        <div class="step-line flex items-start gap-5">
+          <div class="w-10 h-10 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center text-primary-glow font-bold text-sm flex-shrink-0">3</div>
+          <div class="pt-1">
+            <h3 class="font-semibold text-base mb-1">Receba 25% todo mês</h3>
+            <p class="text-white/50 text-sm leading-relaxed">Para cada assinante ativo que veio pelo seu link, você recebe <strong class="text-white">25% do valor da assinatura</strong> — todo mês, via PIX.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIMULAÇÃO DE GANHOS -->
+  <section class="py-16 px-4 sm:px-6 bg-dark-1 bg-grid relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto relative z-10">
+      <div class="text-center mb-12">
+        <span class="text-primary-bright text-xs font-semibold uppercase tracking-widest">Simulação</span>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl mt-2">Quanto você pode <span class="gradient-text">ganhar</span></h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="glass-card neon-border rounded-xl p-6 text-center">
+          <div class="text-white/40 text-xs uppercase tracking-widest mb-3">10 indicações</div>
+          <div class="font-display font-black text-3xl text-primary-glow mb-1">R$74<span class="text-lg">,75</span></div>
+          <div class="text-white/40 text-xs">por mês</div>
+          <div class="text-white/25 text-[10px] mt-2">10 × R$29,90 × 25%</div>
+        </div>
+        <div class="glass-card rounded-xl p-6 text-center" style="border:2px solid rgba(0,136,98,0.5);box-shadow:0 0 40px rgba(0,136,98,0.15)">
+          <div class="text-primary-bright text-xs uppercase tracking-widest mb-3 font-bold">50 indicações</div>
+          <div class="font-display font-black text-3xl text-primary-glow mb-1">R$373<span class="text-lg">,75</span></div>
+          <div class="text-white/40 text-xs">por mês</div>
+          <div class="text-white/25 text-[10px] mt-2">50 × R$29,90 × 25%</div>
+        </div>
+        <div class="glass-card rounded-xl p-6 text-center" style="border:1px solid rgba(255,215,0,0.3)">
+          <div class="text-yellow-400 text-xs uppercase tracking-widest mb-3 font-bold">100 indicações</div>
+          <div class="font-display font-black text-3xl gold-gradient mb-1">R$747<span class="text-lg">,50</span></div>
+          <div class="text-white/40 text-xs">por mês</div>
+          <div class="text-white/25 text-[10px] mt-2">100 × R$29,90 × 25%</div>
+        </div>
+      </div>
+      <p class="text-center text-white/30 text-xs mt-6">Comissão recorrente enquanto o indicado permanecer assinante. Sem limite de indicações.</p>
+    </div>
+  </section>
+
+  <!-- QUEM PODE PARTICIPAR -->
+  <section class="py-16 px-4 sm:px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-primary-bright text-xs font-semibold uppercase tracking-widest">Para quem é</span>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl mt-2">Ideal para <span class="gradient-text">criadores e educadores</span></h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="glass-card rounded-xl p-5 flex items-center gap-3">
+          <i class="fab fa-youtube text-red-400 text-lg w-6 text-center"></i>
+          <span class="text-sm text-white/70">YouTubers e criadores de conteúdo cripto</span>
+        </div>
+        <div class="glass-card rounded-xl p-5 flex items-center gap-3">
+          <i class="fab fa-instagram text-pink-400 text-lg w-6 text-center"></i>
+          <span class="text-sm text-white/70">Influenciadores e educadores financeiros</span>
+        </div>
+        <div class="glass-card rounded-xl p-5 flex items-center gap-3">
+          <i class="fab fa-telegram text-blue-400 text-lg w-6 text-center"></i>
+          <span class="text-sm text-white/70">Admins de grupos e comunidades cripto</span>
+        </div>
+        <div class="glass-card rounded-xl p-5 flex items-center gap-3">
+          <i class="fas fa-pen-fancy text-primary-glow text-lg w-6 text-center"></i>
+          <span class="text-sm text-white/70">Bloggers e donos de newsletters</span>
+        </div>
+        <div class="glass-card rounded-xl p-5 flex items-center gap-3">
+          <i class="fab fa-twitter text-sky-400 text-lg w-6 text-center"></i>
+          <span class="text-sm text-white/70">CT (Crypto Twitter) e analistas on-chain</span>
+        </div>
+        <div class="glass-card rounded-xl p-5 flex items-center gap-3">
+          <i class="fas fa-users text-primary-glow text-lg w-6 text-center"></i>
+          <span class="text-sm text-white/70">Qualquer pessoa com indicações genuínas</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="py-20 px-4">
+    <div class="glass-card neon-border rounded-2xl p-10 max-w-2xl mx-auto text-center relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-yellow-500/10 pointer-events-none"></div>
+      <div class="relative z-10">
+        <h3 class="font-display font-bold text-2xl mb-3">Pronto para começar?</h3>
+        <p class="text-white/50 text-sm mb-6">Envie um email com seu nome, @redes sociais e como pretende divulgar. Respondemos em até 24h.</p>
+        <a href="mailto:afiliados@criptozion.xyz?subject=Quero%20ser%20afiliado%20Cripto%20Zion&body=Nome:%0ARedes%20sociais:%0AComo%20pretendo%20divulgar:" class="btn-cta text-black font-bold px-8 py-4 rounded-full text-base inline-flex items-center gap-2">
+          <i class="fas fa-envelope"></i> afiliados@criptozion.xyz
+        </a>
+        <p class="text-white/25 text-[10px] mt-4">Programa sujeito a aprovação. Reservamos o direito de recusar perfis não alinhados com os valores da Cripto Zion.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-8 border-t border-white/10 text-center text-white/40 text-sm">
+    <p>&copy; 2026 Cripto Zion Pro. Todos os direitos reservados.</p>
+    <div class="mt-2 flex justify-center gap-4 text-xs">
+      <a href="index.html" class="hover:text-white/70">Início</a>
+      <a href="blog.html" class="hover:text-white/70">Blog</a>
+      <a href="academy.html" class="hover:text-white/70">Academy</a>
+      <a href="newsletter.html" class="hover:text-white/70">Newsletter</a>
+      <a href="/privacidade.html" class="hover:text-white/70">Privacidade</a>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zion Academy — Trilhas de Aprendizado Cripto</title>
+  <meta name="description" content="Aprenda do zero ao avançado com as trilhas organizadas da Cripto Zion. DCA, Buy the Dip, Scaling Out e Pools de Liquidez.">
+  
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%234cbf93'/%3E%3Cstop offset='100%25' style='stop-color:%23008862'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-family='Arial Black,sans-serif' font-size='55' font-weight='900' text-anchor='middle' fill='%23000'%3ECZ%3C/text%3E%3C/svg%3E">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { primary: { DEFAULT: '#008862', light: '#29a37a', bright: '#4cbf93', glow: '#6adbae', soft: '#87f8c9' }, dark: { DEFAULT: '#000000', 1: '#050d09', 2: '#0a1410', 3: '#0f1d16', card: '#0d1a13' } }, fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], display: ['Space Grotesk', 'Inter', 'sans-serif'] } } } }
+  </script>
+  <style>
+    * { scroll-behavior: smooth; box-sizing: border-box }
+    body { font-family: 'Inter', sans-serif; background: #000; color: #fff; overflow-x: hidden }
+    
+    .gradient-text { background: linear-gradient(135deg, #4cbf93, #008862, #87f8c9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text }
+    .gradient-text-bright { background: linear-gradient(135deg, #87f8c9, #4cbf93, #29a37a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text }
+    
+    .glass-card { background: rgba(13, 26, 19, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(0, 136, 98, 0.2) }
+    .neon-border { border: 1px solid rgba(76, 191, 147, 0.4); box-shadow: 0 0 20px rgba(0, 136, 98, 0.15) }
+    .neon-border:hover { border-color: rgba(76, 191, 147, 0.7); box-shadow: 0 0 35px rgba(0, 136, 98, 0.25) }
+    
+    .bg-grid { background-image: linear-gradient(rgba(0, 136, 98, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 136, 98, .05) 1px, transparent 1px); background-size: 60px 60px }
+    
+    .btn-cta { background: linear-gradient(135deg, #008862, #29a37a, #4cbf93); background-size: 200% 200%; transition: all 0.3s; animation: btnShimmer 3s ease infinite; }
+    .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0, 136, 98, 0.5) }
+    
+    @keyframes btnShimmer { 0% { background-position: 0% 50% } 50% { background-position: 100% 50% } 100% { background-position: 0% 50% } }
+
+    nav { background: rgba(0, 0, 0, .85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0, 136, 98, .15) }
+    .pro-badge { display: inline-flex; align-items: center; vertical-align: middle; font-size: .65rem; background: rgba(0, 136, 98, .2); border: 1px solid rgba(0, 136, 98, .3); color: #6adbae; padding: 2px 8px; border-radius: 9999px; font-weight: 600; margin-left: 6px; line-height: 1 }
+    .premium-badge { display: inline-flex; align-items: center; gap: 4px; font-size: .6rem; background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,215,0,0.05)); border: 1px solid rgba(255,215,0,0.3); color: #ffd700; padding: 2px 8px; border-radius: 9999px; font-weight: 700; }
+
+    .trail-card { transition: all 0.4s ease; }
+    .trail-card:hover { transform: translateY(-4px); }
+    
+    .lesson-item { transition: all 0.2s ease; }
+    .lesson-item:hover { background: rgba(0,136,98,0.08); }
+    
+    .progress-bar { height: 4px; background: rgba(255,255,255,0.1); border-radius: 999px; overflow: hidden; }
+    .progress-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #008862, #4cbf93); transition: width 0.5s ease; }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="index.html" class="font-display font-bold text-lg sm:text-xl tracking-tight flex items-center">
+        <span class="text-white">CRIPTO</span><span class="gradient-text"> ZION</span><span class="pro-badge">PRO</span>
+      </a>
+      <div class="hidden sm:flex items-center gap-6">
+          <a href="index.html" class="text-sm font-medium text-white/60 hover:text-primary-glow transition-colors">A Comunidade</a>
+          <a href="calculadora.html" class="text-sm font-medium text-white/60 hover:text-primary-glow transition-colors"><i class="fas fa-calculator mr-1"></i> Calculadora</a>
+          <a href="blog.html" class="text-sm font-medium text-white/60 hover:text-primary-glow transition-colors"><i class="fas fa-newspaper mr-1"></i> Blog</a>
+          <a href="academy.html" class="text-sm font-medium text-primary-glow transition-colors"><i class="fas fa-graduation-cap mr-1"></i> Academy</a>
+      </div>
+      <a href="index.html#cadastro" class="btn-cta text-black font-bold px-5 py-2 rounded-full text-sm hidden sm:inline-flex items-center gap-2">
+        <i class="fas fa-bolt text-xs"></i> Assinar
+      </a>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="pt-32 pb-16 px-4 bg-grid relative border-b border-primary/20">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      <div class="inline-flex items-center gap-2 text-primary-glow text-xs font-semibold bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-4">
+        <i class="fas fa-graduation-cap"></i> Base de Conhecimento
+      </div>
+      <h1 class="font-display font-black text-4xl sm:text-5xl md:text-6xl mb-6">
+        Zion <span class="gradient-text-bright">Academy</span>
+      </h1>
+      <p class="text-lg text-white/60 max-w-2xl mx-auto">
+        Trilhas organizadas do zero ao avançado. Aprenda as 4 estratégias da Cripto Zion com conteúdo prático, progressivo e sem enrolação.
+      </p>
+    </div>
+  </header>
+
+  <!-- TRAILS -->
+  <main class="py-16 px-4 sm:px-6">
+    <div class="max-w-5xl mx-auto">
+
+      <!-- TRAIL 1: FUNDAMENTOS -->
+      <section class="mb-16">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-12 h-12 rounded-xl bg-primary/15 border border-primary/30 flex items-center justify-center text-primary-glow text-xl">
+            <i class="fas fa-seedling"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h2 class="font-display font-bold text-xl sm:text-2xl">Trilha 1 — Fundamentos</h2>
+              <span class="text-[10px] font-bold bg-primary/15 text-primary-glow px-2 py-0.5 rounded-full border border-primary/30">INICIANTE</span>
+            </div>
+            <p class="text-white/40 text-sm mt-1">Construa uma base sólida antes de investir um centavo</p>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <a href="artigo.html?id=o-que-e-bitcoin-e-por-que-ele-importa" class="lesson-item glass-card rounded-xl px-5 py-4 flex items-center justify-between group cursor-pointer block">
+            <div class="flex items-center gap-4">
+              <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary-bright text-xs font-bold border border-primary/20">01</div>
+              <div>
+                <div class="font-semibold text-sm group-hover:text-primary-glow transition-colors">O que é Bitcoin e por que ele importa</div>
+                <div class="text-white/40 text-xs mt-0.5"><i class="far fa-clock mr-1"></i>8 min leitura • Gratuito</div>
+              </div>
+            </div>
+            <i class="fas fa-chevron-right text-white/20 group-hover:text-primary-glow transition-colors text-xs"></i>
+          </a>
+          <a href="artigo.html?id=ethereum-smart-contracts-e-defi" class="lesson-item glass-card rounded-xl px-5 py-4 flex items-center justify-between group cursor-pointer block">
+            <div class="flex items-center gap-4">
+              <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary-bright text-xs font-bold border border-primary/20">02</div>
+              <div>
+                <div class="font-semibold text-sm group-hover:text-primary-glow transition-colors">Ethereum, Smart Contracts e DeFi em 10 minutos</div>
+                <div class="text-white/40 text-xs mt-0.5"><i class="far fa-clock mr-1"></i>10 min leitura • Gratuito</div>
+              </div>
+            </div>
+            <i class="fas fa-chevron-right text-white/20 group-hover:text-primary-glow transition-colors text-xs"></i>
+          </a>
+          <a href="artigo.html?id=carteiras-exchanges-e-seguranca" class="lesson-item glass-card rounded-xl px-5 py-4 flex items-center justify-between group cursor-pointer block">
+            <div class="flex items-center gap-4">
+              <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary-bright text-xs font-bold border border-primary/20">03</div>
+              <div>
+                <div class="font-semibold text-sm group-hover:text-primary-glow transition-colors">Carteiras, exchanges e segurança: o essencial</div>
+                <div class="text-white/40 text-xs mt-0.5"><i class="far fa-clock mr-1"></i>12 min leitura • Gratuito</div>
+              </div>
+            </div>
+            <i class="fas fa-chevron-right text-white/20 group-hover:text-primary-glow transition-colors text-xs"></i>
+          </a>
+          <a href="artigo.html?id=o-guia-brutal-do-dca" class="lesson-item glass-card rounded-xl px-5 py-4 flex items-center justify-between group cursor-pointer block">
+            <div class="flex items-center gap-4">
+              <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary-bright text-xs font-bold border border-primary/20">04</div>
+              <div>
+                <div class="font-semibold text-sm group-hover:text-primary-glow transition-colors">O Guia Brutal do DCA</div>
+                <div class="text-white/40 text-xs mt-0.5"><i class="far fa-clock mr-1"></i>15 min leitura • Gratuito</div>
+              </div>
+            </div>
+            <i class="fas fa-chevron-right text-white/20 group-hover:text-primary-glow transition-colors text-xs"></i>
+          </a>
+        </div>
+      </section>
+
+      <!-- TRAIL 2: ESTRATÉGIA DCA -->
+      <section class="mb-16">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-12 h-12 rounded-xl bg-primary/15 border border-primary/30 flex items-center justify-center text-primary-glow text-xl">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h2 class="font-display font-bold text-xl sm:text-2xl">Trilha 2 — DCA & Buy the Dip</h2>
+              <span class="text-[10px] font-bold bg-amber-500/15 text-amber-400 px-2 py-0.5 rounded-full border border-amber-500/30">INTERMEDIÁRIO</span>
+            </div>
+            <p class="text-white/40 text-sm mt-1">A arte de acumular Bitcoin de forma inteligente</p>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <a href="artigo.html?id=a-estrategia-zion-smart-dca" class="lesson-item glass-card rounded-xl px-5 py-4 flex items-center justify-between group cursor-pointer block">
+            <div class="flex items-center gap-4">
+              <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary-bright text-xs font-bold border border-primary/20">01</div>
+              <div>
+                <div class="font-semibold text-sm group-hover:text-primary-glow transition-colors">A Estratégia Zion Smart DCA</div>
+                <div class="text-white/40 text-xs mt-0.5"><i class="far fa-clock mr-1"></i>20 min leitura • Gratuito</div>
+              </div>
+            </div>
+            <i class="fas fa-chevron-right text-white/20 group-hover:text-primary-glow transition-colors text-xs"></i>
+          </a>
+          <a href="artigo.html?id=como-acumular-bitcoin-em-um-mercado-de-baixa-estrat-gias-essenciais-para-o-sucesso-a-longo-prazo" class="lesson-item glass-card rounded-xl px-5 py-4 flex items-center justify-between group cursor-pointer block">
+            <div class="flex items-center gap-4">
+              <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary-bright text-xs font-bold border border-primary/20">02</div>
+              <div>
+                <div class="font-semibold text-sm group-hover:text-primary-glow transition-colors">Como Acumular Bitcoin em Mercado de Baixa</div>
+                <div class="text-white/40 text-xs mt-0.5"><i class="far fa-clock mr-1"></i>15 min leitura • Gratuito</div>
+              </div>
+            </div>
+            <i class="fas fa-chevron-right text-white/20 group-hover:text-primary-glow transition-colors text-xs"></i>
+          </a>
+          <a href="artigo.html?id=zion-smart-dca-configuracao-completa" class="lesson-item glass-card rounded-xl px-5 py-4 flex items-center justify-between group cursor-pointer block" style="border-color:rgba(255,215,0,0.2)">
+            <div class="flex items-center gap-4">
+              <div class="w-8 h-8 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-400 text-xs font-bold border border-yellow-500/20"><i class="fas fa-crown" style="font-size:10px"></i></div>
+              <div>
+                <div class="font-semibold text-sm group-hover:text-yellow-400 transition-colors">Configuração Completa da Zion Smart DCA</div>
+                <div class="text-white/40 text-xs mt-0.5 flex items-center gap-2"><i class="far fa-clock mr-1"></i>25 min leitura <span class="premium-badge"><i class="fas fa-crown" style="font-size:8px"></i> PRO</span></div>
+              </div>
+            </div>
+            <i class="fas fa-lock text-yellow-500/40 group-hover:text-yellow-400 transition-colors text-xs"></i>
+          </a>
+        </div>
+      </section>
+
+      <!-- TRAIL 3: SCALING OUT -->
+      <section class="mb-16">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-12 h-12 rounded-xl bg-primary/15 border border-primary/30 flex items-center justify-center text-primary-glow text-xl">
+            <i class="fas fa-chart-bar"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h2 class="font-display font-bold text-xl sm:text-2xl">Trilha 3 — Scaling Out</h2>
+              <span class="text-[10px] font-bold bg-amber-500/15 text-amber-400 px-2 py-0.5 rounded-full border border-amber-500/30">INTERMEDIÁRIO</span>
+            </div>
+            <p class="text-white/40 text-sm mt-1">Realizando lucro sem sair do jogo</p>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <a href="artigo.html?id=bull-market-voc-sabe-escalar-suas-sa-das-o-poder-do-lucro-parcial-que-ningu-m-te-conta" class="lesson-item glass-card rounded-xl px-5 py-4 flex items-center justify-between group cursor-pointer block">
+            <div class="flex items-center gap-4">
+              <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary-bright text-xs font-bold border border-primary/20">01</div>
+              <div>
+                <div class="font-semibold text-sm group-hover:text-primary-glow transition-colors">O Poder do Lucro Parcial</div>
+                <div class="text-white/40 text-xs mt-0.5"><i class="far fa-clock mr-1"></i>12 min leitura • Gratuito</div>
+              </div>
+            </div>
+            <i class="fas fa-chevron-right text-white/20 group-hover:text-primary-glow transition-colors text-xs"></i>
+          </a>
+          <div class="lesson-item glass-card rounded-xl px-5 py-4 flex items-center justify-between opacity-50 cursor-not-allowed">
+            <div class="flex items-center gap-4">
+              <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-white/30 text-xs font-bold border border-white/10">02</div>
+              <div>
+                <div class="font-semibold text-sm text-white/40">Estratégias de Saída com Fibonacci</div>
+                <div class="text-white/30 text-xs mt-0.5"><i class="fas fa-hourglass-half mr-1"></i>Em breve</div>
+              </div>
+            </div>
+            <span class="text-[10px] bg-white/5 text-white/30 px-2 py-0.5 rounded-full border border-white/10">SOON</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- TRAIL 4: POOLS DeFi -->
+      <section class="mb-16">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-12 h-12 rounded-xl bg-primary/15 border border-primary/30 flex items-center justify-center text-primary-glow text-xl">
+            <i class="fas fa-water"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h2 class="font-display font-bold text-xl sm:text-2xl">Trilha 4 — Pools de Liquidez DeFi</h2>
+              <span class="text-[10px] font-bold bg-red-500/15 text-red-400 px-2 py-0.5 rounded-full border border-red-500/30">AVANÇADO</span>
+            </div>
+            <p class="text-white/40 text-sm mt-1">Renda ativa com gestão de range e concentrated liquidity</p>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <a href="artigo.html?id=pools-de-liquidez-defi-guia-avancado" class="lesson-item glass-card rounded-xl px-5 py-4 flex items-center justify-between group cursor-pointer block" style="border-color:rgba(255,215,0,0.2)">
+            <div class="flex items-center gap-4">
+              <div class="w-8 h-8 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-400 text-xs font-bold border border-yellow-500/20"><i class="fas fa-crown" style="font-size:10px"></i></div>
+              <div>
+                <div class="font-semibold text-sm group-hover:text-yellow-400 transition-colors">Pools de Liquidez DeFi — Guia Avançado</div>
+                <div class="text-white/40 text-xs mt-0.5 flex items-center gap-2"><i class="far fa-clock mr-1"></i>30 min leitura <span class="premium-badge"><i class="fas fa-crown" style="font-size:8px"></i> PRO</span></div>
+              </div>
+            </div>
+            <i class="fas fa-lock text-yellow-500/40 group-hover:text-yellow-400 transition-colors text-xs"></i>
+          </a>
+          <div class="lesson-item glass-card rounded-xl px-5 py-4 flex items-center justify-between opacity-50 cursor-not-allowed">
+            <div class="flex items-center gap-4">
+              <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-white/30 text-xs font-bold border border-white/10">02</div>
+              <div>
+                <div class="font-semibold text-sm text-white/40">Calculando Impermanent Loss na Prática</div>
+                <div class="text-white/30 text-xs mt-0.5"><i class="fas fa-hourglass-half mr-1"></i>Em breve</div>
+              </div>
+            </div>
+            <span class="text-[10px] bg-white/5 text-white/30 px-2 py-0.5 rounded-full border border-white/10">SOON</span>
+          </div>
+          <div class="lesson-item glass-card rounded-xl px-5 py-4 flex items-center justify-between opacity-50 cursor-not-allowed">
+            <div class="flex items-center gap-4">
+              <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-white/30 text-xs font-bold border border-white/10">03</div>
+              <div>
+                <div class="font-semibold text-sm text-white/40">Rebalanceamento de Range — Quando e Como</div>
+                <div class="text-white/30 text-xs mt-0.5"><i class="fas fa-hourglass-half mr-1"></i>Em breve</div>
+              </div>
+            </div>
+            <span class="text-[10px] bg-white/5 text-white/30 px-2 py-0.5 rounded-full border border-white/10">SOON</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA PRO -->
+      <section class="glass-card border border-primary/30 rounded-2xl p-10 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 pointer-events-none"></div>
+        <div class="relative z-10">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-5 border border-primary/30">
+            <i class="fas fa-crown text-primary-glow text-2xl"></i>
+          </div>
+          <h3 class="font-display font-bold text-2xl mb-2">Desbloqueie todo o conteúdo</h3>
+          <p class="text-white/50 text-sm mb-6 max-w-md mx-auto">Artigos PRO, configurações exclusivas, carteira transparente e newsletter semanal com análises.</p>
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="https://buy.stripe.com/fZu14n9hh5UVdDG1uI9R600" target="_blank" class="btn-cta text-black font-bold px-6 py-3 rounded-full text-sm inline-flex items-center justify-center gap-2"><i class="fas fa-rocket"></i> PRO Mensal R$29,90</a>
+            <a href="https://buy.stripe.com/00w6oH0KLcjjfLOddq9R601" target="_blank" class="glass-card text-yellow-400 hover:text-yellow-300 font-bold px-6 py-3 rounded-full text-sm inline-flex items-center justify-center gap-2 hover:border-yellow-500/50 transition-all" style="border-color:rgba(255,215,0,0.3)"><i class="fas fa-crown"></i> Anual R$249,90 <span class="text-xs opacity-70">(-30%)</span></a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="py-8 border-t border-white/10 text-center text-white/40 text-sm">
+      <p>&copy; 2026 Cripto Zion Pro. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

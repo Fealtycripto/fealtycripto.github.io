@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
-Disallow:
+Disallow: /node_modules/
+Disallow: /backend/
+Disallow: /cartaz/
 
 Sitemap: https://criptozion.xyz/sitemap.xml
-
-# Cripto Zion — criptozion.xyz

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsletter Cripto Zion — Análises Semanais</title>
+  <meta name="description" content="Receba toda segunda-feira análises on-chain, posições da carteira da comunidade e oportunidades de DCA direto no seu email.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%234cbf93'/%3E%3Cstop offset='100%25' style='stop-color:%23008862'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-family='Arial Black,sans-serif' font-size='55' font-weight='900' text-anchor='middle' fill='%23000'%3ECZ%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { primary: { DEFAULT: '#008862', light: '#29a37a', bright: '#4cbf93', glow: '#6adbae', soft: '#87f8c9' }, dark: { DEFAULT: '#000000', 1: '#050d09', 2: '#0a1410', 3: '#0f1d16', card: '#0d1a13' } }, fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], display: ['Space Grotesk', 'Inter', 'sans-serif'] } } } }
+  </script>
+  <style>
+    * { scroll-behavior: smooth; box-sizing: border-box }
+    body { font-family: 'Inter', sans-serif; background: #000; color: #fff; overflow-x: hidden }
+    .gradient-text { background: linear-gradient(135deg, #4cbf93, #008862, #87f8c9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text }
+    .glass-card { background: rgba(13, 26, 19, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(0, 136, 98, 0.2) }
+    .neon-border { border: 1px solid rgba(76, 191, 147, 0.4); box-shadow: 0 0 20px rgba(0, 136, 98, 0.15) }
+    .bg-grid { background-image: linear-gradient(rgba(0, 136, 98, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 136, 98, .05) 1px, transparent 1px); background-size: 60px 60px }
+    .btn-cta { background: linear-gradient(135deg, #008862, #29a37a, #4cbf93); background-size: 200% 200%; transition: all 0.3s; animation: btnShimmer 3s ease infinite; }
+    .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0, 136, 98, 0.5) }
+    @keyframes btnShimmer { 0% { background-position: 0% 50% } 50% { background-position: 100% 50% } 100% { background-position: 0% 50% } }
+    nav { background: rgba(0, 0, 0, .85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0, 136, 98, .15) }
+    .pro-badge { display: inline-flex; align-items: center; font-size: .65rem; background: rgba(0, 136, 98, .2); border: 1px solid rgba(0, 136, 98, .3); color: #6adbae; padding: 2px 8px; border-radius: 9999px; font-weight: 600; margin-left: 6px }
+    .edition-card { transition: all 0.3s ease; }
+    .edition-card:hover { transform: translateY(-2px); border-color: rgba(76,191,147,0.5); }
+    .input-field { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s; }
+    .input-field:focus { border-color: rgba(0,136,98,0.6); box-shadow: 0 0 20px rgba(0,136,98,0.15); outline: none; }
+    @keyframes pulse-glow { 0%,100% { box-shadow: 0 0 20px rgba(0,136,98,0.2); } 50% { box-shadow: 0 0 40px rgba(0,136,98,0.4); } }
+    .pulse-ring { animation: pulse-glow 2s ease-in-out infinite; }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="index.html" class="font-display font-bold text-lg sm:text-xl tracking-tight flex items-center">
+        <span class="text-white">CRIPTO</span><span class="gradient-text"> ZION</span><span class="pro-badge">PRO</span>
+      </a>
+      <div class="hidden sm:flex items-center gap-6">
+        <a href="index.html" class="text-sm font-medium text-white/60 hover:text-primary-glow transition-colors">Início</a>
+        <a href="blog.html" class="text-sm font-medium text-white/60 hover:text-primary-glow transition-colors"><i class="fas fa-newspaper mr-1"></i> Blog</a>
+        <a href="academy.html" class="text-sm font-medium text-white/60 hover:text-primary-glow transition-colors"><i class="fas fa-graduation-cap mr-1"></i> Academy</a>
+        <a href="newsletter.html" class="text-sm font-medium text-primary-glow"><i class="fas fa-envelope mr-1"></i> Newsletter</a>
+      </div>
+      <a href="index.html#pricing" class="btn-cta text-black font-bold px-5 py-2 rounded-full text-sm hidden sm:inline-flex items-center gap-2">
+        <i class="fas fa-bolt text-xs"></i> Assinar
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="pt-32 pb-20 px-4 bg-grid relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black pointer-events-none"></div>
+    <div class="max-w-3xl mx-auto text-center relative z-10">
+      <!-- Icon -->
+      <div class="w-20 h-20 rounded-2xl bg-primary/10 border border-primary/30 flex items-center justify-center mx-auto mb-6 pulse-ring">
+        <i class="fas fa-envelope-open-text text-primary-glow text-3xl"></i>
+      </div>
+      <h1 class="font-display font-black text-4xl sm:text-5xl md:text-6xl mb-4">
+        Zion <span class="gradient-text">Newsletter</span>
+      </h1>
+      <p class="text-lg text-white/60 max-w-xl mx-auto mb-8">
+        Toda segunda-feira no seu email: análises on-chain, movimentação Smart Money, posições da carteira e oportunidades de DCA.
+      </p>
+
+      <!-- SIGNUP FORM -->
+      <div class="glass-card neon-border rounded-2xl p-8 max-w-md mx-auto">
+        <form id="newsletterForm" onsubmit="subscribeNewsletter(event)" class="space-y-4">
+          <input type="text" name="name" id="nlName" placeholder="Seu nome" required
+            class="input-field w-full px-4 py-3 rounded-xl text-white text-sm placeholder-white/30">
+          <input type="email" name="email" id="nlEmail" placeholder="seu@email.com" required
+            class="input-field w-full px-4 py-3 rounded-xl text-white text-sm placeholder-white/30">
+          <div id="nlError" class="hidden text-red-400 text-xs"><i class="fas fa-exclamation-circle mr-1"></i><span id="nlErrorMsg"></span></div>
+          <button type="submit" id="nlSubmitBtn"
+            class="btn-cta w-full text-black font-bold py-3.5 rounded-xl text-sm flex items-center justify-center gap-2">
+            <i class="fas fa-paper-plane"></i><span id="nlSubmitText">Quero Receber Gratuitamente</span>
+          </button>
+        </form>
+        <p class="text-white/25 text-[10px] mt-3 text-center"><i class="fas fa-lock mr-1"></i>Sem spam. Cancele quando quiser.</p>
+      </div>
+
+      <div class="flex items-center justify-center gap-6 mt-6 text-white/30 text-xs">
+        <div class="flex items-center gap-1"><i class="fas fa-users text-primary-bright"></i> +200 assinantes</div>
+        <div class="flex items-center gap-1"><i class="fas fa-calendar text-primary-bright"></i> Toda segunda-feira</div>
+        <div class="flex items-center gap-1"><i class="fas fa-check-circle text-primary-bright"></i> 100% gratuita</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- O QUE VOCÊ RECEBE -->
+  <section class="py-16 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-primary-bright text-xs font-semibold uppercase tracking-widest">O que vem em cada edição</span>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl mt-2">Conteúdo que move <span class="gradient-text">portfólios</span></h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="glass-card rounded-xl p-6 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-lg bg-primary/15 border border-primary/30 flex items-center justify-center text-primary-glow flex-shrink-0">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div>
+            <h3 class="font-semibold text-sm mb-1">Análise de Mercado</h3>
+            <p class="text-white/50 text-xs leading-relaxed">Visão macro da semana: BTC, ETH, Fear & Greed Index, dominância e tendências on-chain.</p>
+          </div>
+        </div>
+        <div class="glass-card rounded-xl p-6 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-lg bg-primary/15 border border-primary/30 flex items-center justify-center text-primary-glow flex-shrink-0">
+            <i class="fas fa-wallet"></i>
+          </div>
+          <div>
+            <h3 class="font-semibold text-sm mb-1">Carteira da Comunidade</h3>
+            <p class="text-white/50 text-xs leading-relaxed">Atualizações de posições, novos aportes DCA, e performance acumulada com total transparência.</p>
+          </div>
+        </div>
+        <div class="glass-card rounded-xl p-6 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-lg bg-primary/15 border border-primary/30 flex items-center justify-center text-primary-glow flex-shrink-0">
+            <i class="fas fa-bullseye"></i>
+          </div>
+          <div>
+            <h3 class="font-semibold text-sm mb-1">Oportunidades de DCA</h3>
+            <p class="text-white/50 text-xs leading-relaxed">Zonas de acumulação, níveis de Buy the Dip e sinais de Scaling Out baseados em dados.</p>
+          </div>
+        </div>
+        <div class="glass-card rounded-xl p-6 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-lg bg-primary/15 border border-primary/30 flex items-center justify-center text-primary-glow flex-shrink-0">
+            <i class="fas fa-water"></i>
+          </div>
+          <div>
+            <h3 class="font-semibold text-sm mb-1">DeFi & Pools</h3>
+            <p class="text-white/50 text-xs leading-relaxed">Rendimentos ativos atualizados, rebalanceamentos de range e novas pools monitoradas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDIÇÕES ANTERIORES (Preview) -->
+  <section class="py-16 px-4 sm:px-6 bg-dark-1 bg-grid relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto relative z-10">
+      <div class="text-center mb-12">
+        <span class="text-primary-bright text-xs font-semibold uppercase tracking-widest">Arquivo</span>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl mt-2">Edições <span class="gradient-text">anteriores</span></h2>
+      </div>
+      <div class="space-y-4">
+        <!-- Edition Preview 1 -->
+        <div class="edition-card glass-card neon-border rounded-xl p-5 flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary-bright text-sm font-bold border border-primary/20">#01</div>
+            <div>
+              <div class="font-semibold text-sm">Bitcoin em zona de acumulação + Pools rendendo 45% APR</div>
+              <div class="text-white/40 text-xs mt-0.5">24 Mar 2026 • 5 min leitura</div>
+            </div>
+          </div>
+          <span class="text-[10px] bg-primary/10 text-primary-glow px-2 py-0.5 rounded-full border border-primary/20 hidden sm:inline">EM BREVE</span>
+        </div>
+        <!-- Edition Preview 2 -->
+        <div class="edition-card glass-card rounded-xl p-5 flex items-center justify-between opacity-50">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-white/30 text-sm font-bold border border-white/10">#02</div>
+            <div>
+              <div class="font-semibold text-sm text-white/40">Edição #02 — Em breve</div>
+              <div class="text-white/30 text-xs mt-0.5">31 Mar 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="text-center text-white/30 text-xs mt-8">A primeira edição será enviada em <strong class="text-primary-glow">24 de março de 2026</strong>. Inscreva-se acima para não perder!</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-8 border-t border-white/10 text-center text-white/40 text-sm">
+    <p>&copy; 2026 Cripto Zion Pro. Todos os direitos reservados.</p>
+    <div class="mt-2 flex justify-center gap-4 text-xs">
+      <a href="index.html" class="hover:text-white/70">Início</a>
+      <a href="blog.html" class="hover:text-white/70">Blog</a>
+      <a href="academy.html" class="hover:text-white/70">Academy</a>
+      <a href="/privacidade.html" class="hover:text-white/70">Privacidade</a>
+    </div>
+  </footer>
+
+  <script>
+    async function subscribeNewsletter(e) {
+      e.preventDefault();
+      const name = document.getElementById('nlName').value.trim();
+      const email = document.getElementById('nlEmail').value.trim();
+      const btn = document.getElementById('nlSubmitBtn');
+      const btnText = document.getElementById('nlSubmitText');
+      const errDiv = document.getElementById('nlError');
+      const errMsg = document.getElementById('nlErrorMsg');
+
+      if (!name || !email) return;
+
+      btn.disabled = true;
+      btnText.textContent = 'Inscrevendo...';
+      errDiv.classList.add('hidden');
+
+      try {
+        const res = await fetch('https://criptozion.xyz/api/leads/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, source: 'newsletter' })
+        });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('newsletterForm').innerHTML = `
+            <div class="text-center py-6">
+              <div class="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4 border border-primary/40">
+                <i class="fas fa-check text-primary-glow text-2xl"></i>
+              </div>
+              <h3 class="font-display font-bold text-xl mb-2">Inscrito com sucesso! 🎉</h3>
+              <p class="text-white/50 text-sm">Verifique seu email para o email de boas-vindas.<br>A primeira newsletter chega segunda-feira!</p>
+            </div>`;
+        } else {
+          throw new Error(data.error || 'Erro ao inscrever');
+        }
+      } catch (err) {
+        errMsg.textContent = err.message || 'Erro de conexão. Tente novamente.';
+        errDiv.classList.remove('hidden');
+        btn.disabled = false;
+        btnText.textContent = 'Quero Receber Gratuitamente';
+      }
+    }
+  </script>
+</body>
+</html>

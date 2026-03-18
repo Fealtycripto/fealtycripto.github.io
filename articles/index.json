@@ -1,5 +1,38 @@
 [
   {
+    "id": "o-que-e-bitcoin-e-por-que-ele-importa",
+    "title": "O que é Bitcoin e Por Que Ele Importa",
+    "summary": "Entenda de uma vez por todas o que é Bitcoin, como ele funciona, por que ele foi criado e por que investidores sérios estão acumulando.",
+    "category": "Fundamentos",
+    "author": "Fealty",
+    "date": "17 Mar 2026"
+  },
+  {
+    "id": "ethereum-smart-contracts-e-defi",
+    "title": "Ethereum, Smart Contracts e DeFi em 10 Minutos",
+    "summary": "Entenda o que é Ethereum, como funcionam os Smart Contracts, e por que DeFi está revolucionando o sistema financeiro global.",
+    "category": "Fundamentos",
+    "author": "Fealty",
+    "date": "17 Mar 2026"
+  },
+  {
+    "id": "carteiras-exchanges-e-seguranca",
+    "title": "Carteiras, Exchanges e Segurança: O Essencial",
+    "summary": "Aprenda a diferença entre carteiras, como escolher uma exchange confiável, e as 10 regras de ouro de segurança cripto.",
+    "category": "Fundamentos",
+    "author": "Fealty",
+    "date": "17 Mar 2026"
+  },
+  {
+    "id": "pools-de-liquidez-defi-guia-avancado",
+    "title": "Pools de Liquidez DeFi — Guia Avançado: Como Gerar Renda Ativa com Gestão de Range",
+    "summary": "O guia completo e avançado sobre Pools de Liquidez em DeFi. Aprenda Concentrated Liquidity, gestão de range, Impermanent Loss na prática, e como a Cripto Zion usa isso como renda ativa real.",
+    "category": "DeFi Avançado",
+    "author": "Fealty",
+    "date": "17 Mar 2026",
+    "premium": true
+  },
+  {
     "id": "zion-smart-dca-configuracao-completa",
     "title": "Configuração Completa da Estratégia Zion Smart DCA — Passo a Passo PRO",
     "summary": "O guia definitivo para configurar a Zion Smart DCA do zero: parâmetros ideais de F&G, RSI, multiplicadores e percentuais de Scaling Out que nós realmente usamos.",
