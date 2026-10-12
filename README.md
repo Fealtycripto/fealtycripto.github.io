@@ -1,6 +1,6 @@
 # 🟢 Cripto Zion — Site Oficial
 
-Site oficial do projeto **Cripto Zion** — maior referência cripto da América Latina até 2030.
+Apresentação do **CriptoZion**, projeto fundado por **Rony Costa (Zion)**, empreendedor, criador de conteúdo e criador da **Zion Smart DCA**, metodologia e projeto de software em evolução. Versão editorial BIO-1.0.
 
 Comunidade de educação e investimento em criptomoedas com foco em **estratégias de longo prazo**.
 
