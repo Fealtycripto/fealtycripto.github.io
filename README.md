@@ -1,50 +1,32 @@
-# 🟢 Cripto Zion — Site Oficial
+# CriptoZion — fonte do site estático
 
-Site oficial do projeto **Cripto Zion** — maior referência cripto da América Latina até 2030.
+Repositório **público** da apresentação estática do CriptoZion, projeto fundado por **Rony Costa (Zion)**, empreendedor, criador de conteúdo e criador da **Zion Smart DCA**, metodologia e projeto de software em evolução. Referência editorial BIO-1.0.
 
-Comunidade de educação e investimento em criptomoedas com foco em **estratégias de longo prazo**.
+O conteúdo aborda Bitcoin, DeFi e planejamento de aportes. Este código HTML é uma frente histórica separada da aplicação atual: não reúne o backend, autenticação, dados de usuários ou serviços da plataforma.
 
-## 🌐 Acesso
+## Destinos atuais
 
-| URL | Produto |
-|-----|---------|
-| [criptozion.xyz](https://criptozion.xyz) | Homepage |
-| [criptozion.xyz/academy.html](https://criptozion.xyz/academy.html) | Zion Academy |
-| [criptozion.xyz/blog.html](https://criptozion.xyz/blog.html) | Blog |
-| [criptozion.xyz/calculadora.html](https://criptozion.xyz/calculadora.html) | Calculadora DCA |
-| [criptozion.xyz/newsletter.html](https://criptozion.xyz/newsletter.html) | Newsletter |
-| [criptozion.xyz/afiliados.html](https://criptozion.xyz/afiliados.html) | Programa de Afiliados |
-| [app.criptozion.xyz](https://app.criptozion.xyz) | Dashboard DCA |
+- [Site público do CriptoZion](https://criptozion.xyz).
+- [Estratégias e conteúdos](https://criptozion.xyz/estrategias).
+- [Acesso à plataforma](https://app.criptozion.xyz/login?next=%2F), que exige conta; alguns recursos dependem do Zion Pass.
+- [Skill pública e experimentos](https://github.com/Fealtycripto/zion-smart-dca-skill).
 
-## 📂 Estrutura
+A configuração GitHub Pages deste repositório contém CNAME `criptozion.xyz`. A presença dessa associação no GitHub não prova que estes arquivos sejam o código atualmente servido pelo domínio. Antes de uma mudança de hospedagem, conferir o destino efetivo e evitar substituir a aplicação por uma versão histórica.
 
-```
-├── index.html              # Homepage (prova social, testemunhos, pricing)
-├── academy.html            # Zion Academy — 4 trilhas de aprendizado
-├── blog.html               # Listagem de artigos
-├── artigo.html             # Template de exibição de artigos
-├── calculadora.html        # Calculadora Zion Smart DCA
-├── newsletter.html         # Inscrição na newsletter (→ Brevo)
-├── afiliados.html          # Programa de afiliados (25% comissão)
-├── privacidade.html        # Política de Privacidade
-├── termos.html             # Termos de Uso
-├── articles/               # Artigos do blog (JSON)
-│   ├── index.json          # Índice de artigos
-│   └── *.json              # Artigos individuais (10+)
-├── images/                 # Imagens do site
-├── robots.txt              # SEO
-├── sitemap.xml             # SEO
-├── CNAME                   # Domínio customizado
-└── README.md
+## Conteúdo e tecnologias
+
+HTML, CSS e JavaScript; páginas `index.html`, `academy.html`, `blog.html`, `calculadora.html` e artigos/assets locais. Links e integrações internas das páginas históricas podem exigir atualização; não tratá-los como serviços atuais validados.
+
+Para inspecionar os arquivos localmente, na pasta deste repositório:
+
+```sh
+python -m http.server 8766 --bind 127.0.0.1
 ```
 
-## 🚀 Estratégias
+Abra `http://127.0.0.1:8766/`. As páginas podem consultar CDNs/APIs externas; não envie formulários ou teste pagamentos para uma simples revisão visual.
 
-- 💰 **DCA** — Dollar Cost Averaging: aportes consistentes otimizados em base patrimonial
-- 📉 **Smart DCA** — DCA otimizado com RSI + Fear & Greed Index
-- 🏊 **Pools de Liquidez** — Rendimento passivo (Uniswap, Aerodrome, Orca, Raydium, Meteora)
-- 🎯 **Scaling Out** — Saída parcial nos alvos
+## Estágio, identidade e licença
 
-## 📜 Licença
+Fonte estática com revisão editorial de identidade; não representa comprovação de performance financeira ou implantação da plataforma. Simulações não garantem retorno. DoubleDyn é iniciativa independente e Rony Costa (Zion) é sócio; Vila Pet Banho e Tosa é outra frente independente.
 
-Projeto privado — Cripto Zion © 2026
+CriptoZion © 2026. Não há arquivo `LICENSE` versionado neste repositório; seu acesso público não concede automaticamente licença de reutilização. Nenhuma licença foi adicionada ou alterada nesta revisão.
